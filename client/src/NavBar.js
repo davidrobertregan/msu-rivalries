@@ -8,10 +8,16 @@ function NavBar({ currentUser, setCurrentUser }) {
     }
 
     return( 
-        <div>
-            <p>Hello, {currentUser.username}!</p>
-            <button onClick={handleClick}>Logout</button>
-        </div>
+        <ul className="navbar">
+            <li id="nav-logo"><a>Spartan Rivalries</a></li>
+            <li>
+                <button onClick={handleClick}>Logout</button>
+            </li>
+            <li> Hello, {currentUser.username}!</li>
+            <li><a>My Favorites</a></li>
+            <li><a>Rivals</a></li>
+            
+        </ul>
     )
 }
 
