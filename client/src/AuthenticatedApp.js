@@ -1,11 +1,21 @@
 import NavBar from './NavBar'
+import Body from './Body'
 
 function AuthenticatedApp( {currentUser, setCurrentUser } ) {
     return (
-        <NavBar 
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-        />
+        <div>
+            <div>
+                <NavBar 
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                />
+            </div>
+            <div>
+                <Body
+                    currentUser={currentUser}
+                />
+            </div>
+        </div>
     )
 }
 

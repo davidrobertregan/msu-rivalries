@@ -8,6 +8,7 @@ function NavBar({ currentUser, setCurrentUser }) {
     }
 
     return( 
+
         <ul className="navbar">
             <li id="nav-logo"><a>Spartan Rivalries</a></li>
             <li>
@@ -15,8 +16,7 @@ function NavBar({ currentUser, setCurrentUser }) {
             </li>
             <li> Hello, {currentUser.username}!</li>
             <li><a>My Favorites</a></li>
-            <li><a>Rivals</a></li>
-            
+            <li><a>Rivals</a></li>  
         </ul>
     )
 }
