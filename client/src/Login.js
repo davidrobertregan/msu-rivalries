@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Login() {
+function Login({setCurrentUser, currentUser}) {
 
     const [formData, setFormData ] = useState({username: '', password: ''})
 
@@ -27,7 +27,7 @@ function Login() {
         .then(r => {
             if(r.ok) {
                 r.json()
-                .then(user => console.log(user))
+                .then(user => setCurrentUser(user))
                 setFormData({username: '', password: ''})
             } else {
                 r.json()

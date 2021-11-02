@@ -2,7 +2,7 @@ import { useState } from "react"
 import Login from './Login'
 import Signup from "./Signup"
 
-function UnauthenticatedApp() {
+function UnauthenticatedApp({ setCurrentUser, currentUser}) {
 
 const [viewSignUp, setViewSignUp] = useState(false)
 
@@ -14,7 +14,7 @@ console.log(viewSignUp)
                 { 
                 !viewSignUp ? 
                     <>
-                    <Login />
+                    <Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>
                     <p onClick={() => setViewSignUp(true)}>sign up</p>
                     </>
                 :
