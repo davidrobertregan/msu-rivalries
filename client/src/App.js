@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import UnauthenticatedApp from './UnauthenticatedApp'
+import AuthenticatedApp from './AuthenticatedApp'
 
 function App() {
 
@@ -24,10 +25,18 @@ function App() {
 
   if(!authChecked) {return <div></div>}
   return (
-    <UnauthenticatedApp 
-      setCurrentUser={setCurrentUser}
-      currentUser={currentUser}
-    />
+    <div>
+    { currentUser ?
+      <AuthenticatedApp 
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+      />
+    :
+      <UnauthenticatedApp 
+        setCurrentUser={setCurrentUser}
+      />
+    }
+    </div>
   );
 
 }
