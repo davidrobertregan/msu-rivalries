@@ -4,16 +4,16 @@ import RivalryContainer from './RivalryContainer'
 import FavoritesContainer from './FavoritesContainer'
 import Account from './Account'
 
-function Body( { currentUser }) {
+function Body( { currentUser, rivalries }) {
+
+    const rivalryRoutes = rivalries.map(r => <Route path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r}/></Route>)
 
     return(
         <Switch>
             <Route path="/about">
                 <About />
             </Route>
-            <Route path="/rivalry">
-                <RivalryContainer />
-            </Route>
+                {rivalryRoutes}
             <Route path="/favorites">
                 <FavoritesContainer />
             </Route>

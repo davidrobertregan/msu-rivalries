@@ -8,7 +8,7 @@ function NavBar({ currentUser, setCurrentUser, rivalries }) {
         setCurrentUser(null)
     }
 
-    const rivalriesListItems = rivalries.map(r => <li key={r.id}><NavLink to="rivalry">{r.name}</NavLink></li>)
+    const rivalriesListItems = rivalries.map(r => <li key={r.id}><NavLink to={`/rivalries/${r.name}`}>{r.name}</NavLink></li>)
 
     return( 
         <nav>

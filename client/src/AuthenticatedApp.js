@@ -16,7 +16,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
                 r.json().then(errors => console.log(errors))
             }
         })
-    })
+    }, [])
 
     return (
         <div>
@@ -30,6 +30,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
             <div>
                 <Body
                     currentUser={currentUser}
+                    rivalries={rivalries}
                 />
             </div>
         </div>
