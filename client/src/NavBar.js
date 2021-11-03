@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-function NavBar({ currentUser, setCurrentUser }) {
+function NavBar({ currentUser, setCurrentUser, rivalries }) {
 
 
     function handleClick() {
@@ -8,24 +8,19 @@ function NavBar({ currentUser, setCurrentUser }) {
         setCurrentUser(null)
     }
 
-    return( 
-        // <nav>
-        //     <ul className="navbar">
-        //         <li className="logo"><NavLink to="/about">Spartan Rivalries</NavLink></li>
-        //         <li className="item">
-        //             <button onClick={handleClick}>Logout</button>
-        //         </li>
-        //         <li className="item"><NavLink to={`/${currentUser.username}`}> Hello, {currentUser.username}!</NavLink></li>
-        //         <li className="item"><NavLink to="/favorites">My Favorites</NavLink></li>
-        //         <li className="item"><NavLink to="rivalry">Rivals</NavLink></li>  
-        //     </ul>
-        // </nav>
+    const rivalriesListItems = rivalries.map(r => <li key={r.id}><NavLink to="rivalry">{r.name}</NavLink></li>)
 
+    return( 
         <nav>
             <ul className="menu">
                 <li className="logo"><NavLink to="/about">Spartan Rivalries</NavLink></li>
+                <li className="item has-subitem">
+                    <a tabindex="0">Rivalries</a>
+                    <ul>
+                        {rivalriesListItems}
+                    </ul>
+                </li>
                 <li className="item"><NavLink to="/favorites">My Favorites</NavLink></li>
-                <li className="item"><NavLink to="rivalry">Rivals</NavLink></li>
                 <li className="item has-subitem">
                     <a tabindex="0">{currentUser.username}</a>
                     <ul class="submenu">
@@ -35,6 +30,8 @@ function NavBar({ currentUser, setCurrentUser }) {
                 </li>
             </ul>
         </nav>
+
+        // <NavLink to="rivalry">Rivals</NavLink>
     )
 }
 
