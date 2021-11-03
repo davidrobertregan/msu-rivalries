@@ -8,7 +8,7 @@ notre_dame = Team.create(name: "Notre Dame", mascot: "Fighting Irish", cheer: "G
 
 puts "creating rivalries..."
 
-paul = "https://www.google.com/url?sa=i&url=https%3A%2F%2Frivalrytrophy.com%2Fproducts%2Fpaul-bunyan-trophy-michigan&psig=AOvVaw0MzPUglyYxNOrf9aCIIKSf&ust=1636044086248000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMi0sKzR_PMCFQAAAAAdAAAAABAa"
+paul = "https://cdn.shopify.com/s/files/1/0085/8402/products/paul-bunyan-cover_4a7fb092-0e9e-4a7b-9249-83a2e049d9bf_900x.png?v=1535572432"
 megaphone = "https://i.pinimg.com/originals/88/7b/99/887b998c126cc0000388e312e46b3157.jpg"
 
 

@@ -1,4 +1,12 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :year, :winning_score, :losing_score, :notes
-  has_one :rivalry
+  attributes :id, :date, :location, :score, :winning_team, :losing_team, :notes
+
+  def winning_team
+    self.object.winner.name
+  end
+
+  def losing_team
+    self.object.loser.name
+  end
+
 end
