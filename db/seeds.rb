@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
 
 puts "creating teams..."
 
@@ -26,3 +20,35 @@ puts "seeding games..."
 # i'll need to grab seed date from a csv file. 
 # csv file:
 # - rivalry association - winning and losing team association, hightlights (can always update these)
+
+def loser losing_team
+    if losing_team == "msu"
+        Team.find_by(name: "Michigan State")
+    elsif losing_team == "michigan"
+        Team.find_by(name: "Michigan")
+    else
+        nil
+    end
+end
+
+def winner winning_team
+    if winning_team == "msu"
+        Team.find_by(name: "Michigan State")
+    elsif winning_team == "michigan"
+        Team.find_by(name: "Michigan")
+    else 
+        nil
+    end
+end
+
+CSV.foreach('Mich-MSU.csv') do |row|
+    date = row[0]
+    location = row[1]
+    winning_team = row[2]
+    losing_team = row[3]
+    score = row[4]
+    notes = row[5]
+
+    Game.create(date: date, score: score, location: location, loser: loser(losing_team), winner: winner(winning_team), notes: notes, rivalry: mich_rival)
+
+end

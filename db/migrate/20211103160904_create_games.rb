@@ -1,9 +1,8 @@
 class CreateGames < ActiveRecord::Migration[6.1]
   def change
     create_table :games do |t|
-      t.integer :year
-      t.integer :winning_score
-      t.integer :losing_score
+      t.integer :date
+      t.string :score
       t.text :notes
       t.belongs_to :rivalry, null: false, foreign_key: true
       t.integer :winner_id
