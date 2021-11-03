@@ -24,20 +24,24 @@ puts "seeding games..."
 def loser losing_team
     if losing_team == "msu"
         Team.find_by(name: "Michigan State")
-    elsif losing_team == "michigan"
-        Team.find_by(name: "Michigan")
     else
-        nil
+        Team.find_by(name: "Michigan")
     end
 end
 
 def winner winning_team
     if winning_team == "msu"
         Team.find_by(name: "Michigan State")
-    elsif winning_team == "michigan"
+    else
         Team.find_by(name: "Michigan")
-    else 
+    end
+end
+
+def notes notes_content
+    if notes_content == "no content"
         nil
+    else
+        notes_content
     end
 end
 
@@ -47,8 +51,8 @@ CSV.foreach('Mich-MSU.csv') do |row|
     winning_team = row[2]
     losing_team = row[3]
     score = row[4]
-    notes = row[5]
+    notes_content = row[5]
 
-    Game.create(date: date, score: score, location: location, loser: loser(losing_team), winner: winner(winning_team), notes: notes, rivalry: mich_rival)
+    Game.create(date: date, score: score, location: location, loser: loser(losing_team), winner: winner(winning_team), notes: notes(notes_content), rivalry: mich_rival)
 
 end

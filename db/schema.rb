@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_11_03_183901) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "location"
-    t.date "date"
+    t.string "date"
     t.index ["rivalry_id"], name: "index_games_on_rivalry_id"
   end
 
