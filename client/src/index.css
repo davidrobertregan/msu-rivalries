@@ -12,20 +12,31 @@ code {
     monospace;
 }
 
-.navbar {
-  font-weight: 800;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+nav {
+  background: darkgreen;
+  padding: 0 15px;
 }
 
-#nav-logo {
-  float: left;
-  font-size: larger;
+a {
+  color: white;
+  text-decoration: none;
 }
 
-.navbar li {
-  float: right;
-  display: block;
-  padding: 8px;
+.menu,
+.submenu {   
+    list-style-type: none;
+}
+
+.logo {
+  font-size: 20px;
+  padding: 7.5px 10px 7.5px 0;
+}
+
+.item {
+  padding: 10px;
+}
+
+a:hover,
+.item a:hover::after {
+    color: #ccc;
 }

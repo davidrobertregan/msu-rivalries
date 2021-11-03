@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Login({setCurrentUser, currentUser}) {
+function Login({setCurrentUser}) {
 
     const [formData, setFormData ] = useState({username: '', password: ''})
 

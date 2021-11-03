@@ -14,11 +14,11 @@ console.log(viewSignUp)
                 { 
                 !viewSignUp ? 
                     <>
-                    <Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+                    <Login setCurrentUser={setCurrentUser}/>
                     <p onClick={() => setViewSignUp(true)}>sign up</p>
                     </>
                 :
-                    <Signup /> 
+                    <Signup setCurrentUser={setCurrentUser}/> 
                 }
             </div>
 
