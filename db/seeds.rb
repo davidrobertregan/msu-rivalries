@@ -14,4 +14,4 @@ notre_dame = Team.create(name: "Notre Dame", mascot: "Fighting Irish", cheer: "G
 
 puts "creating rivalries..."
 
-Rivalry.create(name: "Michigan State-Notre Dame", trophy: "Megaphone Trophy", team_one: Team.third, team_two: Team.first)
+nd_rival = Rivalry.create(name: "Michigan State-Notre Dame", trophy: "Megaphone Trophy", team_one: Team.third, team_two: Team.first)
