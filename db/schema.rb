@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_150512) do
+ActiveRecord::Schema.define(version: 2021_11_03_152115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "rivalries", force: :cascade do |t|
+    t.string "name"
+    t.string "trophy"
+    t.string "trophy_img_url"
+    t.string "description"
+    t.integer "team_one_id"
+    t.integer "team_two_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "logo_url"
+    t.string "cheer"
+    t.string "mascot"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

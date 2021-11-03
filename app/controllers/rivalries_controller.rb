@@ -1,0 +1,2 @@
+class RivalriesController < ApplicationController
+end
