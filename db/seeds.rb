@@ -14,4 +14,15 @@ notre_dame = Team.create(name: "Notre Dame", mascot: "Fighting Irish", cheer: "G
 
 puts "creating rivalries..."
 
-nd_rival = Rivalry.create(name: "Michigan State-Notre Dame", trophy: "Megaphone Trophy", team_one: Team.third, team_two: Team.first)
+paul = "https://www.google.com/url?sa=i&url=https%3A%2F%2Frivalrytrophy.com%2Fproducts%2Fpaul-bunyan-trophy-michigan&psig=AOvVaw0MzPUglyYxNOrf9aCIIKSf&ust=1636044086248000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMi0sKzR_PMCFQAAAAAdAAAAABAa"
+megaphone = "https://i.pinimg.com/originals/88/7b/99/887b998c126cc0000388e312e46b3157.jpg"
+
+
+nd_rival = Rivalry.create(name: "Michigan State-Notre Dame", trophy: "Megaphone Trophy", trophy_img_url: megaphone, team_one: msu, team_two: notre_dame, description: "The ND-MSU description will be here!")
+mich_rival = Rivalry.create(name: "Michigan-Michigan State", trophy: "Paul Bunyan Trophy", trophy_img_url: paul, team_one: michigan, team_two: msu, description: "The Mich-MSU description will be here!")
+
+puts "seeding games..."
+
+# i'll need to grab seed date from a csv file. 
+# csv file:
+# - rivalry association - winning and losing team association, hightlights (can always update these)
