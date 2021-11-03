@@ -4,11 +4,14 @@ function RivalryContainer( { rivalry } ) {
 
     const [games, setGames] = useState([])
 
+// remember the sushis? we probably only want to show the most recent 10 games... 
+
     useEffect(() => {
+        console.log("fetching... add loading here")
         fetch(`/rivalries/${rivalry.id}`)
         .then(r => {
             if (r.ok) {
-                r.json().then(r => setGames(r.games))
+                r.json().then(r => setGames(r.games.reverse()))
             } else {
                 r.json().then(errors => console.log(errors))
             }
@@ -17,7 +20,7 @@ function RivalryContainer( { rivalry } ) {
 
     console.log(games)
 
-    const gameList = games.map(g => <li>{g.winning_team}. {g.score}</li>)
+    const gameList = games.map(g => <li>{g.date} - {g.winning_team} - {g.score}</li>)
 
     return (
         <div>
