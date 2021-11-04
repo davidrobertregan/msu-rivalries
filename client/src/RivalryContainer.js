@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import GameList from "./GameList"
 
 function RivalryContainer( { rivalry, games, onGameClick} ) {
 
@@ -7,12 +8,11 @@ function RivalryContainer( { rivalry, games, onGameClick} ) {
     }
 
     const filteredGames = games.filter(g => g.rivalry_name === rivalry.name)
-    const gameList = filteredGames.map(g => <li key={g.id} name={g.id} onClick={handleGameClick}>{g.date} - {g.winning_team} - {g.score}</li>)
-
     return (
         <div>
             <div className="game-list">
-                {gameList}
+                <GameList filteredGames={filteredGames} handleGameClick={handleGameClick}/>
+                
             </div>
 
             <div className="rivalry-card">

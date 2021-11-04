@@ -12,12 +12,14 @@ function Body( { currentUser, rivalries, games }) {
     const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games} onGameClick={onGameClick}/></Route>)
 
     function onGameClick(e){
-        let name = e.target.name
-        let featGame = games.filter(g => {debugger})
+        let value = e.target.value
+        console.log(value)
+        let featGame = games.filter(g => g.id === value)
         setGame(featGame)
     }
 
     console.log(game)
+    console.log(games)
 
     return(
         <Switch>
