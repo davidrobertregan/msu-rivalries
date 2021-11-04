@@ -7,19 +7,15 @@ import { useState, useEffect } from 'react'
 
 function Body( { currentUser, rivalries, games }) {
 
-    const [game, setGame] = useState(null)
+    const [game, setGame] = useState(games[0])
 
-    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games} onGameClick={onGameClick}/></Route>)
+    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games} game={game} onGameClick={onGameClick}/></Route>)
 
     function onGameClick(e){
         let value = e.target.value
-        console.log(value)
         let featGame = games.filter(g => g.id === value)
         setGame(featGame)
     }
-
-    console.log(game)
-    console.log(games)
 
     return(
         <Switch>
