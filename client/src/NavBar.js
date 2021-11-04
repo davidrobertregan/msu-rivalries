@@ -15,17 +15,17 @@ function NavBar({ currentUser, setCurrentUser, rivalries }) {
             <ul className="menu">
                 <li className="logo"><NavLink to="/about">Spartan Rivalries</NavLink></li>
                 <li className="item has-subitem">
-                    <a tabindex="0">Rivalries</a>
+                    <a tabIndex="0">Rivalries</a>
                     <ul>
                         {rivalriesListItems}
                     </ul>
                 </li>
                 <li className="item"><NavLink to="/favorites">My Favorites</NavLink></li>
                 <li className="item has-subitem">
-                    <a tabindex="0">{currentUser.username}</a>
-                    <ul class="submenu">
-                        <li class="subitem"><NavLink to={`/${currentUser.username}`}>My Account</NavLink></li>
-                        <li class="subitem"><button onClick={handleClick}>Logout</button></li>
+                    <a tabIndex="0">{currentUser.username}</a>
+                    <ul className="submenu">
+                        <li className="subitem"><NavLink to={`/${currentUser.username}`}>My Account</NavLink></li>
+                        <li className="subitem"><button onClick={handleClick}>Logout</button></li>
                     </ul>
                 </li>
             </ul>

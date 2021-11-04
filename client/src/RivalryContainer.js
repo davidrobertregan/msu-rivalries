@@ -20,7 +20,7 @@ function RivalryContainer( { rivalry } ) {
 
     console.log(games)
 
-    const gameList = games.map(g => <li>{g.date} - {g.winning_team} - {g.score}</li>)
+    const gameList = games.map(g => <li key={g.id}>{g.date} - {g.winning_team} - {g.score}</li>)
 
     return (
         <div>

@@ -6,7 +6,7 @@ import Account from './Account'
 
 function Body( { currentUser, rivalries }) {
 
-    const rivalryRoutes = rivalries.map(r => <Route path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r}/></Route>)
+    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r}/></Route>)
 
     return(
         <Switch>
