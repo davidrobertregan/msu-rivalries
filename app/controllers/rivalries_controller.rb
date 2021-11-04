@@ -1,4 +1,4 @@
-class API::RivalriesController < ApplicationController
+class RivalriesController < ApplicationController
 
     def index
         render json: Rivalry.all

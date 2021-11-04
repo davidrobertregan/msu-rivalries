@@ -1,2 +1,2 @@
-API::TeamsController < ApplicationController
+class TeamsController < ApplicationController
 end

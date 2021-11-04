@@ -8,7 +8,7 @@ function RivalryContainer( { rivalry } ) {
 
     useEffect(() => {
         console.log("fetching... add loading here")
-        fetch(`api/rivalries/${rivalry.id}`)
+        fetch(`/rivalries/${rivalry.id}`)
         .then(r => {
             if (r.ok) {
                 r.json().then(r => setGames(r.games.reverse()))
