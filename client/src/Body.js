@@ -4,9 +4,9 @@ import RivalryContainer from './RivalryContainer'
 import FavoritesContainer from './FavoritesContainer'
 import Account from './Account'
 
-function Body( { currentUser, rivalries }) {
+function Body( { currentUser, rivalries, games }) {
 
-    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r}/></Route>)
+    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games}/></Route>)
 
     return(
         <Switch>

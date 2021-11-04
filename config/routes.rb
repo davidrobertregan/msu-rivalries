@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # resources :games
+  resources :games, only: [:index]
   resources :rivalries, only: [:index, :show]
   # resources :teams
   # resources :users

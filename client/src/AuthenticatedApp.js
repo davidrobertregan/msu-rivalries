@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 function AuthenticatedApp( {currentUser, setCurrentUser } ) {
 
     const [rivalries, setRivalries] = useState([])
+    const [games, setGames] = useState([])
 
     
     useEffect(() => {
@@ -12,6 +13,17 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
         .then(r => {
             if (r.ok) {
                 r.json().then(rivalries => setRivalries(rivalries))
+            } else {
+                r.json().then(errors => console.log(errors))
+            }
+        })
+    }, [])
+
+    useEffect(() => {
+        fetch("/games")
+        .then(r => {
+            if (r.ok) {
+                r.json().then(games => setGames(games))
             } else {
                 r.json().then(errors => console.log(errors))
             }
@@ -31,6 +43,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
                 <Body
                     currentUser={currentUser}
                     rivalries={rivalries}
+                    games={games}
                 />
             </div>
         </div>
