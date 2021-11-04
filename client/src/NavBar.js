@@ -4,7 +4,7 @@ function NavBar({ currentUser, setCurrentUser, rivalries }) {
 
 
     function handleClick() {
-        fetch("/logout", { method: "DELETE" })
+        fetch("api/logout", { method: "DELETE" })
         setCurrentUser(null)
     }
 

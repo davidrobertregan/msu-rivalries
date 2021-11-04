@@ -11,7 +11,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("/me")
+    fetch("api/me")
     .then(r => {
       if (r.ok) {
         r.json().then(user => {

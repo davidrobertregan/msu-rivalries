@@ -23,7 +23,7 @@ function Login({setCurrentUser}) {
             body: JSON.stringify(formData)
         }
 
-        fetch("/login", configObj)
+        fetch("api/login", configObj)
         .then(r => {
             if(r.ok) {
                 r.json()

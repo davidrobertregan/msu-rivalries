@@ -8,7 +8,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
 
     
     useEffect(() => {
-        fetch("/rivalries")
+        fetch("/api/rivalries")
         .then(r => {
             if (r.ok) {
                 r.json().then(rivalries => setRivalries(rivalries))

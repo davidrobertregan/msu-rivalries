@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class API::UsersController < ApplicationController
 
     def show
         if current_user
