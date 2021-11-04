@@ -31,7 +31,7 @@ function RivalryContainer( { rivalry, games, onGameClick, game} ) {
                     </div>
                 </div>
             :
-                <GameCard game={game}/>
+                <GameCard game={game} setViewGame={setViewGame}/>
             }
         </div>
     )
