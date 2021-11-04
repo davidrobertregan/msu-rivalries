@@ -51,7 +51,7 @@ puts "seeding games..."
 
 puts "... michigan"
 
-CSV.foreach('MICH-MSU.csv') do |row|
+CSV.foreach('MSU-MICH.csv') do |row|
     date = row[0]
     location = row[1]
     winning_team = row[2]
