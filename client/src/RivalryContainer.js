@@ -2,12 +2,15 @@ import { useEffect, useState } from "react"
 import GameList from "./GameList"
 import GameCard from "./GameCard"
 
-function RivalryContainer( { rivalry, games, onGameClick, game} ) {
+function RivalryContainer( { rivalry, games} ) {
 
     const [viewGame, setViewGame] = useState(false)
+    const [game, setGame] = useState(null) 
 
     function handleGameClick(e) {
-        onGameClick(e)
+        let value = e.target.value
+        let featGame = games.filter(g => g.id === value)
+        setGame(featGame)
         setViewGame(true)
     }
 

@@ -11,7 +11,7 @@ const {winning_team, score, location, rivalry_name} = game[0]
         <h1>{winning_team}</h1>
         <h2>{score}</h2>
         <p>{location}</p>
-        <button onClick={() => setViewGame(false)}>Back to Rivalry Info</button>
+        <button onClick={() => setViewGame(false)}>Back Rivalry Info</button>
     </div>
     )
 }
