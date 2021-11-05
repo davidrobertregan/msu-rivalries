@@ -2,7 +2,7 @@ require 'csv'
 
 puts "seeding users... "
 
-User.create(username: "davidregan", email: "davidrobertregan@gmail.com", password: "password")
+david = User.create(username: "davidregan", email: "davidrobertregan@gmail.com", password: "password")
 
 puts "creating teams..."
 
@@ -21,10 +21,9 @@ puts "creating rivalries..."
     land_grant = "https://i0.wp.com/www.nittanyturkey.com/wp-content/uploads/2006/11/land_grant_trophy_450.jpg"
 
 
+    mich_rival = Rivalry.create(name: "Michigan - Michigan State", trophy: "Paul Bunyan Trophy", trophy_img_url: paul, team_one: michigan, team_two: msu, description: "The Mich-MSU description will be here!")
 
     nd_rival = Rivalry.create(name: "Michigan State - Notre Dame", trophy: "Megaphone Trophy", trophy_img_url: megaphone, team_one: msu, team_two: notre_dame, description: "The ND - MSU description will be here!")
-
-    mich_rival = Rivalry.create(name: "Michigan - Michigan State", trophy: "Paul Bunyan Trophy", trophy_img_url: paul, team_one: michigan, team_two: msu, description: "The Mich-MSU description will be here!")
 
     indiana_rival = Rivalry.create(name: "Michigan State - Indiana", trophy: "Old Brass Spittoon", trophy_img_url: spittoon, team_one: indiana, team_two: msu, description: "The Indiana - MSU description will be here!")
 
@@ -104,5 +103,10 @@ CSV.foreach('PSU-MSU.csv') do |row|
     Game.create(date: date, score: score, location: location, loser: loser(losing_team), winner: winner(winning_team), notes: notes(notes_content), rivalry: psu_rival)
 
 end
+
+puts "...creating Dave's favorites"
+
+david.favorites.create(game: mich_rival.games.last, description: "Tuck comin!")
+david.favorites.create(game: indiana_rival.games.last, description: "Cal Haladay with a pick 6!")
 
 puts "done ✅"

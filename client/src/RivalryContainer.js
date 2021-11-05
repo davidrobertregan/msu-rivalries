@@ -11,8 +11,6 @@ function RivalryContainer( { rivalry, games, onGameClick, game} ) {
         setViewGame(true)
     }
 
-    console.log(game)
-
     const filteredGames = games.filter(g => g.rivalry_name === rivalry.name)
     return (
         <div>

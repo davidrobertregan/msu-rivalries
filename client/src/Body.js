@@ -7,7 +7,8 @@ import { useState, useEffect } from 'react'
 
 function Body( { currentUser, rivalries, games }) {
 
-    const [game, setGame] = useState(games[0])
+    // refactor note: could I move this state and function to Rivalry Container?
+    const [game, setGame] = useState(games[0]) 
 
     const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games} game={game} onGameClick={onGameClick}/></Route>)
 
