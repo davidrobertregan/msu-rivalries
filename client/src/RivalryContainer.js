@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import GameList from "./GameList"
 import GameCard from "./GameCard"
 
-function RivalryContainer( { rivalry, games} ) {
+function RivalryContainer( { rivalry, games, favorites} ) {
 
     const [viewGame, setViewGame] = useState(false)
     const [game, setGame] = useState(null) 
@@ -32,7 +32,7 @@ function RivalryContainer( { rivalry, games} ) {
                     </div>
                 </div>
             :
-                <GameCard game={game} setViewGame={setViewGame}/>
+                <GameCard game={game} setViewGame={setViewGame} favorites={favorites}/>
             }
         </div>
     )

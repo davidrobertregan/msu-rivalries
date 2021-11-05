@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 
 function Body( { currentUser, rivalries, games, favorites }) {
 
-    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games}/></Route>)
+    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games} favorites={favorites}/></Route>)
 
     return(
         <Switch>
