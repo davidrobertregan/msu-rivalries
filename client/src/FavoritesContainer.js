@@ -2,7 +2,7 @@ import GameList from "./GameList"
 import GameCard from "./GameCard"
 import { useState } from 'react'
 
-function FavoritesContainer( { favorites } ) {
+function FavoritesContainer( { favorites, deleteFavorite } ) {
     const [viewGame, setViewGame] = useState(false)
     const [game, setGame] = useState(null)
 
@@ -23,7 +23,7 @@ function FavoritesContainer( { favorites } ) {
 
             {viewGame ?
                 <div>
-                    <GameCard setViewGame={setViewGame} game={game} favorites={favorites}/>
+                    <GameCard setViewGame={setViewGame} game={game} favorites={favorites} deleteFavorite={deleteFavorite}/>
                 </div>
             :
                 <></>

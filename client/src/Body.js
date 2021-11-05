@@ -5,9 +5,10 @@ import FavoritesContainer from './FavoritesContainer'
 import Account from './Account'
 import { useState, useEffect } from 'react'
 
-function Body( { currentUser, rivalries, games, favorites }) {
+function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFavorite }) {
 
-    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games} favorites={favorites}/></Route>)
+
+    const rivalryRoutes = rivalries.map(r => <Route key={r.id} path={`/rivalries/${r.name}`}><RivalryContainer rivalry={r} games={games} favorites={favorites} addFavorite={addFavorite} deleteFavorite={deleteFavorite}/></Route>)
 
     return(
         <Switch>
@@ -16,7 +17,7 @@ function Body( { currentUser, rivalries, games, favorites }) {
             </Route>
                 {rivalryRoutes}
             <Route path="/favorites">
-                <FavoritesContainer favorites={favorites}/>
+                <FavoritesContainer favorites={favorites} deleteFavorite={deleteFavorite}/>
             </Route>
             <Route path={`/${currentUser.username}`}>
                 <Account />

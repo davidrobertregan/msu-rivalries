@@ -42,6 +42,16 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
         })
     }, [])
 
+    function addFavorite(fav){
+        let newFavorites = [...favorites, fav]
+        setFavorites(newFavorites)
+    }
+
+    function deleteFavorite(id) {
+        let newFavorites = favorites.filter(f => f.id !== id)
+        setFavorites(newFavorites)
+    }
+
     
 
     return (
@@ -59,6 +69,8 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
                     rivalries={rivalries}
                     games={games}
                     favorites={favorites}
+                    addFavorite={addFavorite}
+                    deleteFavorite={deleteFavorite}
                 />
             </div>
         </div>
