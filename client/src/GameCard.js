@@ -1,19 +1,23 @@
 import { useHistory } from "react-router-dom"
 
-function GameCard( {game, setViewGame, favorites={favorites}}) {
+function GameCard( {game, setViewGame, favorites}) {
+
+    let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
+    let userFavs = favorites.map(f => f.game)
 
     function favCheck() {
-        let userFavs = favorites.map(f => f.game)
         let matches = userFavs.filter(g => g.id === game[0].id)
         return matches.length > 0
     }
 
-    console.log(favCheck())
+    function findFavId(){
+
+    }
 
     const history = useHistory()
     const {winning_team, score, location, rivalry_name} = game[0]
 
-    function favoriteGameFetch() {
+    function createFavFetch() {
         let newFav = {
             game_id: game[0].id
         }
@@ -28,8 +32,12 @@ function GameCard( {game, setViewGame, favorites={favorites}}) {
         fetch("/favorites", configObj)
     }
 
+    function deleteFavFetch() {
+        fetch(`/favorites/${favorite.id}`, {method: "DELETE" })
+    }
+
     function handleFavoriteClick() {
-        favCheck() ? console.log('deleteFavFetch!') : favoriteGameFetch()
+        favCheck() ? deleteFavFetch() : createFavFetch()
     }
 
     const favButtonText = favCheck() ? "unfavorite" : "favorite"

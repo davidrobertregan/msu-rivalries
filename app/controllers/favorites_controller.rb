@@ -21,6 +21,20 @@ class FavoritesController < ApplicationController
         end
     end
 
+    def destroy
+        if current_user
+            fav = Favorite.find_by(id: params[:id])
+            if fav
+                fav.destroy
+                head :no_content
+            else
+                render json: {error: "Favorite not found"}, status: :not_found
+            end
+        else
+            render json: {error: "You must be logged in"}, status: :unauthorized
+        end
+    end
+
     private 
 
     def favorite_params

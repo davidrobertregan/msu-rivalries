@@ -23,7 +23,7 @@ function FavoritesContainer( { favorites } ) {
 
             {viewGame ?
                 <div>
-                    <GameCard setViewGame={setViewGame} game={game}/>
+                    <GameCard setViewGame={setViewGame} game={game} favorites={favorites}/>
                 </div>
             :
                 <></>
