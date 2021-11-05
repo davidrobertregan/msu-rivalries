@@ -5,7 +5,7 @@ import FavoritesContainer from './FavoritesContainer'
 import Account from './Account'
 import { useState, useEffect } from 'react'
 
-function Body( { currentUser, rivalries, games }) {
+function Body( { currentUser, rivalries, games, favorites }) {
 
     // refactor note: could I move this state and function to Rivalry Container?
     const [game, setGame] = useState(games[0]) 
@@ -25,7 +25,7 @@ function Body( { currentUser, rivalries, games }) {
             </Route>
                 {rivalryRoutes}
             <Route path="/favorites">
-                <FavoritesContainer />
+                <FavoritesContainer favorites={favorites}/>
             </Route>
             <Route path={`/${currentUser.username}`}>
                 <Account />

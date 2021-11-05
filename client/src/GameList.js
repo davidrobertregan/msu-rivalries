@@ -1,7 +1,7 @@
 
-function GameList({filteredGames, handleGameClick}) {
+function GameList({games, handleGameClick}) {
 
-    const gameList = filteredGames.map(g => <li onClick={handleGameClick} key={g.id} value={g.id}>{g.date} - {g.winning_team} - {g.score}</li>)
+    const gameList = games.map(g => <li onClick={handleGameClick} key={g.id} value={g.id}>{g.date} - {g.winning_team} - {g.score}</li>)
 
 
     return(

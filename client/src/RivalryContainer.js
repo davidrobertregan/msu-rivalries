@@ -15,7 +15,7 @@ function RivalryContainer( { rivalry, games, onGameClick, game} ) {
     return (
         <div>
             <div className="game-list">
-                <GameList filteredGames={filteredGames} handleGameClick={handleGameClick}/>  
+                <GameList games={filteredGames} handleGameClick={handleGameClick}/>  
             </div>
             {!viewGame ?
                 <div className="rivalry-card">

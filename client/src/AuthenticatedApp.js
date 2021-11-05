@@ -6,7 +6,8 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
 
     const [rivalries, setRivalries] = useState([])
     const [games, setGames] = useState([])
-
+    const [favorites, setFavorites] = useState([])
+ 
     
     useEffect(() => {
         fetch("/rivalries")
@@ -30,6 +31,19 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
         })
     }, [])
 
+    useEffect(() => {
+        fetch("/favorites")
+        .then(r => {
+            if (r.ok) {
+                r.json().then(favorites => setFavorites(favorites))
+            } else {
+                r.json().then(errors => console.log(errors))
+            }
+        })
+    }, [])
+
+    
+
     return (
         <div>
             <div>
@@ -44,6 +58,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
                     currentUser={currentUser}
                     rivalries={rivalries}
                     games={games}
+                    favorites={favorites}
                 />
             </div>
         </div>

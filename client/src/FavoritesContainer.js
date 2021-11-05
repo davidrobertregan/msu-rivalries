@@ -1,9 +1,17 @@
+import GameList from "./GameList"
 
-function FavoritesContainer() {
+function FavoritesContainer( { favorites } ) {
+    
+    console.log(favorites)
+
+    let games = favorites.map(f => f.game)
+
+    console.log(games)
+    
     return (
-        <h1>
-            Favorites Container...
-        </h1>
+        <div>
+            <GameList games={games}/>
+        </div>
     )
 }
 
