@@ -3,7 +3,6 @@ import About from './About'
 import RivalryContainer from './RivalryContainer'
 import FavoritesContainer from './FavoritesContainer'
 import Account from './Account'
-import { useState, useEffect } from 'react'
 
 function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFavorite }) {
 

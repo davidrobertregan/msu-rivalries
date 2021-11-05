@@ -1,13 +1,15 @@
 import NavBar from './NavBar'
 import Body from './Body'
 import { useEffect, useState } from 'react'
+import { useHistory } from "react-router-dom"
 
 function AuthenticatedApp( {currentUser, setCurrentUser } ) {
 
     const [rivalries, setRivalries] = useState([])
     const [games, setGames] = useState([])
     const [favorites, setFavorites] = useState([])
- 
+
+    let history = useHistory()
     
     useEffect(() => {
         fetch("/rivalries")

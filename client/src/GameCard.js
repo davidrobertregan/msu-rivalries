@@ -37,6 +37,7 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
 
     function deleteFavFetch() {
         deleteFavorite(favorite.id)
+        setViewGame(false)
         fetch(`/favorites/${favorite.id}`, {method: "DELETE" })
     }
 
