@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :favorites, only: [:index, :create, :destroy]
+  resources :favorites, only: [:index, :create, :destroy, :update]
   resources :games, only: [:index]
   resources :rivalries, only: [:index, :show]
   # resources :teams

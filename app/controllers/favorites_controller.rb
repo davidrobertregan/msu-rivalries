@@ -28,7 +28,21 @@ class FavoritesController < ApplicationController
                 fav.destroy
                 head :no_content
             else
-                render json: {error: "Favorite not found"}, status: :not_found
+                render json: {error: "Favorite does not exit"}, status: :not_found
+            end
+        else
+            render json: {error: "You must be logged in"}, status: :unauthorized
+        end
+    end
+
+    def update 
+        if current_user
+            fav = Favorite.find_by(id: params[:id])
+            if fav
+                fav.update(favorite_params)
+                render json: fav, status: :ok
+            else
+                render json: {error: "Favorite does not exist"}, status: :not_found
             end
         else
             render json: {error: "You must be logged in"}, status: :unauthorized
