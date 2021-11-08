@@ -1,5 +1,5 @@
 import GameList from "./GameList"
-import GameCard from "./GameCard"
+import FavoriteCard from "./FavoriteCard"
 import { useState } from 'react'
 
 function FavoritesContainer( { favorites, deleteFavorite } ) {
@@ -15,15 +15,13 @@ function FavoritesContainer( { favorites, deleteFavorite } ) {
         setViewGame(true)
     }
 
-    console.log(viewGame)
-    
     return (
         <div>
             <GameList games={games} handleGameClick={handleGameClick}/>
 
             {viewGame ?
                 <div>
-                    <GameCard setViewGame={setViewGame} game={game} favorites={favorites} deleteFavorite={deleteFavorite}/>
+                    <FavoriteCard setViewGame={setViewGame} game={game} favorites={favorites} deleteFavorite={deleteFavorite}/>
                 </div>
             :
                 <></>

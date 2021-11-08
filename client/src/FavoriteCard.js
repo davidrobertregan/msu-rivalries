@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom"
 
-function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) {
+function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) {
 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
@@ -37,6 +37,7 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
 
     function deleteFavFetch() {
         deleteFavorite(favorite.id)
+        setViewGame(false)
         fetch(`/favorites/${favorite.id}`, {method: "DELETE" })
     }
 
@@ -48,6 +49,7 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
 
     return(
         <div className="game-card">
+            <h1>Favorite Card</h1>
             <h1>{winning_team}</h1>
             <h2>{score}</h2>
             <p>{location}</p>
@@ -57,4 +59,4 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
     )
 }
 
-export default GameCard
+export default FavoriteCard
