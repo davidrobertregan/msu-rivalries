@@ -103,6 +103,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
             <label>Edit description</label>
             <input type="text" value={description} onChange={handleChange}></input>
             <input type="submit"></input>
+            <p>ie. Where were you? Favorite moment?</p>
         </form>
 
         :

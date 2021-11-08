@@ -6,7 +6,7 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
     let userFavs = favorites.map(f => f.game)
 
 
-    const comments = game[0].comments.map(c => <p>{c.author}: {c.content}</p>)
+    const comments = game[0].comments.map(c => <p key={c.id}>{c.author}: {c.content}</p>)
 
     function favCheck() {
         let matches = userFavs.filter(g => g.id === game[0].id)
