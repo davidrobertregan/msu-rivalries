@@ -74,6 +74,12 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
         setGames(gamesArr)
     }
 
+    function editFavorite(favorite) {
+        let favsArr =  favorites.filter(f => f.id !== favorite.id)
+        favsArr = [...favsArr, favorite]
+        setFavorites(favsArr)
+    }
+
     // for the favorite patch... 
 
     // because we're reusing game card in both rivalry container and favorites container, it may be tricky to condition what we want to display...
@@ -99,6 +105,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
                     deleteFavorite={deleteFavorite}
                     addCommentToGame={addCommentToGame}
                     deleteCommentFromGame={deleteCommentFromGame}
+                    editFavorite={editFavorite}
                 />
             </div>
         </div>

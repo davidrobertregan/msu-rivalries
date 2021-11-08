@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom"
 import { useState, useEffect } from 'react'
 
-function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) {
+function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorite, editFavorite }) {
 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
@@ -13,6 +13,8 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         let matches = userFavs.filter(g => g.id === game[0].id)
         return matches.length > 0
     }
+
+    useEffect(() => setDescription(favorite.description), [game])
 
     const history = useHistory()
     const {winning_team, score, location, rivalry_name} = game[0]
@@ -69,7 +71,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         fetch(`/favorites/${favorite.id}`, configObj)
         .then(r => {
             if (r.ok) {
-                r.json().then(fav => console.log(fav))
+                r.json().then(fav => editFavorite(fav))
             } else {
                 r.json().then(errors => console.log(errors))
             }
@@ -87,7 +89,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
             <h1>{winning_team}</h1>
             <h2>{score}</h2>
             <p>{location}</p>
-            <p>Description: {favorite.description}</p>
+            <p>Description: {description}</p>
             <button onClick={() => {setViewForm(true)}}>edit</button>
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
             <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
