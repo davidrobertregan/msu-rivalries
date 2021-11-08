@@ -7,12 +7,16 @@ function Account({ currentUser, setCurrentUser }) {
 
     function handleDelete(){
         if (window.confirm('Are you sure you want to delete your account?')) {
-        fetch(`/users/${currentUser.id}`, {method: "DELETE"})
-        setCurrentUser(null)
+            fetch(`/users/${currentUser.id}`, {method: "DELETE"})
+            setCurrentUser(null)
         } else {
             console.log("whew that was close")
         }
     }
+
+    let comments = currentUser.comments.map(c => <p>{c.author} commented: "{c.content}" at {c.time}</p>)
+
+    console.log(currentUser)
 
     return (
         <div>
@@ -20,8 +24,9 @@ function Account({ currentUser, setCurrentUser }) {
                 Hello, {currentUser.username}
             </h1>
             <p>{currentUser.email}</p>
-            <p>Your recent activity? Comments, favorites...</p>
             <button onClick={handleDelete}>Delete your account</button>
+            <h2>Recent Activity</h2>
+            {comments}
         </div>
     )
 }
