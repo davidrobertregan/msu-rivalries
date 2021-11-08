@@ -18,7 +18,9 @@ function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavor
     return (
         <div>
             <div className="game-list">
-                <GameList games={filteredGames} handleGameClick={handleGameClick}/>  
+                <GameList 
+                    games={filteredGames} 
+                    handleGameClick={handleGameClick}/>  
             </div>
             {!viewGame ?
                 <div className="rivalry-card">
@@ -32,7 +34,16 @@ function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavor
                     </div>
                 </div>
             :
-                <GameCard game={game} setViewGame={setViewGame} favorites={favorites} addFavorite={addFavorite} deleteFavorite={deleteFavorite} currentUser={currentUser} addCommentToGame={addCommentToGame} deleteCommentFromGame={deleteCommentFromGame}/>
+                <GameCard 
+                    game={game} 
+                    setViewGame={setViewGame} 
+                    favorites={favorites} 
+                    addFavorite={addFavorite} 
+                    deleteFavorite={deleteFavorite} 
+                    currentUser={currentUser} 
+                    addCommentToGame={addCommentToGame} 
+                    deleteCommentFromGame={deleteCommentFromGame}
+                />
             }
         </div>
     )

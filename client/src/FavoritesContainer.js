@@ -26,11 +26,20 @@ function FavoritesContainer( { favorites, deleteFavorite, editFavorite } ) {
 
     return (
         <div>
-            <GameList games={games} handleGameClick={handleGameClick}/>
+            <GameList 
+                games={games} 
+                handleGameClick={handleGameClick}
+            />
 
             {viewGame ?
                 <div>
-                    <FavoriteCard setViewGame={setViewGame} game={game} favorites={favorites} deleteFavorite={deleteFavorite} editFavorite={editFavorite}/>
+                    <FavoriteCard 
+                        setViewGame={setViewGame} 
+                        game={game} 
+                        favorites={favorites} 
+                        deleteFavorite={deleteFavorite} 
+                        editFavorite={editFavorite}
+                    />
                 </div>
             :
                 <></>

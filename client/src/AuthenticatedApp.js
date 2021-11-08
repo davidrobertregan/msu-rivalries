@@ -80,12 +80,6 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
         setFavorites(favsArr)
     }
 
-    // for the favorite patch... 
-
-    // because we're reusing game card in both rivalry container and favorites container, it may be tricky to condition what we want to display...
-    // it may be easier to nearly duplicate the gamecard and call it favoritecard in the favorites container. that should be pretty simply. we'll pretty much pass down the same things, jsut add a little extra stuff... we could actually just display a favorite card under the game card... i think building a new component is th eright move. 
-    
-
     return (
         <div>
             <div>

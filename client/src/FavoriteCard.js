@@ -14,7 +14,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         return matches.length > 0
     }
 
-    useEffect(() => setDescription(favorite.description), [game])
+    useEffect(() => setDescription(favorite.description ? favorite.description : ""), [game])
 
     const history = useHistory()
     const {winning_team, score, location, rivalry_name} = game[0]
