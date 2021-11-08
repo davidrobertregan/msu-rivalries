@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useHistory } from "react-router-dom"
 
 function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame }) {
@@ -6,13 +6,18 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
 
-    // const [comments, setComments] = useState(game[0].comments)
-
-    // useEffect(() => setComments(game[0].comments), [game])
-
     const comments = game[0].comments
     
-    const commentDivs = comments.map(c => <div key={c.id}><p>{c.author}: {c.content}</p></div>)
+    const commentDivs = comments.map(c => 
+        <div key={c.id}>
+            <p>{c.author}: {c.content}</p>
+            {c.author === currentUser.username ? 
+                <button>Edit</button> 
+            :
+                <></>
+            }
+        </div>
+        )
 
     const [newComment, setNewComment] = useState("")
 
@@ -20,7 +25,6 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         let matches = userFavs.filter(g => g.id === game[0].id)
         return matches.length > 0
     }
-
 
     const history = useHistory()
     const {winning_team, score, location, rivalry_name} = game[0]

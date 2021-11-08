@@ -14,8 +14,6 @@ function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavor
         setViewGame(true)
     }
 
-    console.log(game)
-
     const filteredGames = games.filter(g => g.rivalry_name === rivalry.name)
     return (
         <div>
