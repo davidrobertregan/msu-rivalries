@@ -34,7 +34,7 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
                     editFavorite={editFavorite}/>
             </Route>
             <Route path={`/${currentUser.username}`}>
-                <Account />
+                <Account currentUser={currentUser}/>
             </Route>
         </Switch>
     )
