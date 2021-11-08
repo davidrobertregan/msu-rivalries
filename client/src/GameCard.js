@@ -5,10 +5,14 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
 
+
+    const comments = game[0].comments.map(c => <p>{c.author}: {c.content}</p>)
+
     function favCheck() {
         let matches = userFavs.filter(g => g.id === game[0].id)
         return matches.length > 0
     }
+
 
     const history = useHistory()
     const {winning_team, score, location, rivalry_name} = game[0]
@@ -46,6 +50,8 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
 
     const favButtonText = favCheck() ? "unfavorite" : "favorite"
 
+
+
     return(
         <div className="game-card">
             <h1>{winning_team}</h1>
@@ -53,6 +59,10 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
             <p>{location}</p>
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
             <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
+            <div>
+                <h2>Comments</h2>
+                    {comments}
+            </div>
         </div>
     )
 }

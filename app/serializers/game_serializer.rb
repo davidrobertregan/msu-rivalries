@@ -1,5 +1,6 @@
 class GameSerializer < ActiveModel::Serializer
   attributes :id, :date, :location, :score, :winning_team, :losing_team, :notes, :rivalry_name
+  has_many :comments
 
   def winning_team
     self.object.winner.name

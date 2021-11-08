@@ -85,7 +85,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
 
     return(
         <>
-
+{/*  Refactor op: put game card below and pass down another level */}
         <div className="game-card">
             <h1>Favorite Card</h1>
             <h1>{winning_team}</h1>
