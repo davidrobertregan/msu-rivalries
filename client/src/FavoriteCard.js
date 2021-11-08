@@ -1,14 +1,13 @@
 import { useHistory } from "react-router-dom"
 import { useState, useEffect } from 'react'
 
-function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorite, editFavorite}) {
+function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) {
 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
 
     const [description, setDescription] = useState(favorite.description ? favorite.description : "")
     const [viewForm, setViewForm] = useState(false)
-
 
     function favCheck() {
         let matches = userFavs.filter(g => g.id === game[0].id)
@@ -70,7 +69,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         fetch(`/favorites/${favorite.id}`, configObj)
         .then(r => {
             if (r.ok) {
-                r.json().then(fav => editFavorite(fav))
+                r.json().then(fav => console.log(fav))
             } else {
                 r.json().then(errors => console.log(errors))
             }
