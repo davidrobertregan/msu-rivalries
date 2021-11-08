@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import GameList from "./GameList"
 import GameCard from "./GameCard"
 
-function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavorite} ) {
+function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame } ) {
 
     const [viewGame, setViewGame] = useState(false)
     const [game, setGame] = useState(null) 
@@ -13,6 +13,8 @@ function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavor
         setGame(featGame)
         setViewGame(true)
     }
+
+    console.log(game)
 
     const filteredGames = games.filter(g => g.rivalry_name === rivalry.name)
     return (
@@ -32,7 +34,7 @@ function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavor
                     </div>
                 </div>
             :
-                <GameCard game={game} setViewGame={setViewGame} favorites={favorites} addFavorite={addFavorite} deleteFavorite={deleteFavorite}/>
+                <GameCard game={game} setViewGame={setViewGame} favorites={favorites} addFavorite={addFavorite} deleteFavorite={deleteFavorite} currentUser={currentUser} addCommentToGame={addCommentToGame}/>
             }
         </div>
     )

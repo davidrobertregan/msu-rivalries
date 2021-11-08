@@ -54,6 +54,16 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
         setFavorites(newFavorites)
     }
 
+    function addCommentToGame(comment){
+        let game = games.filter(g => g.id === comment.game_id)[0]
+        let gamesArr = games.filter(g => g.id !== comment.game_id)
+        game.comments = [...game.comments, comment]
+        gamesArr = [...gamesArr, game]
+
+        setGames(gamesArr)
+    }
+
+
     // for the favorite patch... 
 
     // because we're reusing game card in both rivalry container and favorites container, it may be tricky to condition what we want to display...
@@ -77,6 +87,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
                     favorites={favorites}
                     addFavorite={addFavorite}
                     deleteFavorite={deleteFavorite}
+                    addCommentToGame={addCommentToGame}
                 />
             </div>
         </div>

@@ -1,15 +1,18 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 
-function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) {
+function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame }) {
 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
 
-    const [comments, setComments] = useState(game[0].comments)
+    // const [comments, setComments] = useState(game[0].comments)
 
-    const commentDivs = comments.map(c => <p key={c.id}>{c.author}: {c.content}</p>)
+    // useEffect(() => setComments(game[0].comments), [game])
 
+    const comments = game[0].comments
+    
+    const commentDivs = comments.map(c => <div key={c.id}><p>{c.author}: {c.content}</p></div>)
 
     const [newComment, setNewComment] = useState("")
 
@@ -77,7 +80,7 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
         fetch("/comments", configObj)
         .then(r => {
             if(r.ok) {
-                r.json().then(comment => setComments([...comments, comment]))
+                r.json().then(comment => addCommentToGame(comment))
             } else {
                 r.json().then(errors => console.log(errors))
             }
@@ -93,10 +96,11 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
             <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
             <div className="comment-div">
+                <h2>{winning_team}</h2>
                 <h2>Comments</h2>
                     {commentDivs}
                 <form onSubmit={handleSubmit}>
-                    <label>CurrentUser:</label>
+                    <label>{currentUser.username}:</label>
                     <input type="text" value={newComment} onChange={handleChange} placeholder="add a comment"></input>
                     <input type="submit"></input>
                 </form>
