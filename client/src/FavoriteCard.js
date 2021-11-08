@@ -1,16 +1,13 @@
 import { useHistory } from "react-router-dom"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) {
+function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorite, editFavorite}) {
 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
 
     const [description, setDescription] = useState(favorite.description ? favorite.description : "")
     const [viewForm, setViewForm] = useState(false)
-
-
-    console.log(description)
 
 
     function favCheck() {
@@ -60,7 +57,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
     function handleSubmit(e) {
         e.preventDefault()
 
-        const body = {description: description}
+        const body = { description: description }
 
         const configObj = {
             method: "PATCH",
@@ -73,7 +70,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         fetch(`/favorites/${favorite.id}`, configObj)
         .then(r => {
             if (r.ok) {
-                r.json().then(fav => console.log(fav))
+                r.json().then(fav => editFavorite(fav))
             } else {
                 r.json().then(errors => console.log(errors))
             }
@@ -91,7 +88,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
             <h1>{winning_team}</h1>
             <h2>{score}</h2>
             <p>{location}</p>
-            <p>Description: {description}</p>
+            <p>Description: {favorite.description}</p>
             <button onClick={() => {setViewForm(true)}}>edit</button>
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
             <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
