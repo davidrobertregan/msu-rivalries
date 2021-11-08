@@ -63,6 +63,15 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
         setGames(gamesArr)
     }
 
+    function deleteCommentFromGame(comment) {
+        let game = games.filter(g => g.id === comment.game_id)[0]
+        let gamesArr = games.filter(g => g.id !== comment.game_id)
+        game.comments = game.comments.filter(c => c.id !== comment.id)
+        gamesArr = [...gamesArr, game]
+        // need to make sure these games stay in order by date
+        setGames(gamesArr)
+    }
+
 
     // for the favorite patch... 
 
@@ -88,6 +97,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
                     addFavorite={addFavorite}
                     deleteFavorite={deleteFavorite}
                     addCommentToGame={addCommentToGame}
+                    deleteCommentFromGame={deleteCommentFromGame}
                 />
             </div>
         </div>

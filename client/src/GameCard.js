@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 
-function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame }) {
+function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame }) {
 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
@@ -12,7 +12,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         <div key={c.id}>
             <p>{c.author}: {c.content}</p>
             {c.author === currentUser.username ? 
-                <button>Edit</button> 
+                <button value={c.id} onClick={handleDeleteCommentClick}>delete</button> 
             :
                 <></>
             }
@@ -58,6 +58,17 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
 
     function handleFavoriteClick() {
         favCheck() ? deleteFavFetch() : createFavFetch()
+    }
+
+    function handleDeleteCommentClick(e){
+        fetch(`/comments/${e.target.value}`, {method: "DELETE"})
+        .then(r => {
+            if(r.ok) {
+                r.json().then(comment => deleteCommentFromGame(comment))
+            } else {
+                r.json().then(errors => console.log(errors))
+            }
+        })
     }
 
     const favButtonText = favCheck() ? "unfavorite" : "favorite"

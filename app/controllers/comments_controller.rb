@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
             comment = current_user.comments.find_by(id: params[:id])
             if comment
                 comment.destroy
-                head :no_content
+                render json: comment
             else
                 render json: {error: "Comment does not exist"}, status: :not_found
             end
