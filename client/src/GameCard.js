@@ -6,7 +6,10 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
 
-    const comments = game[0].comments.map(c => <p key={c.id}>{c.author}: {c.content}</p>)
+    const [comments, setComments] = useState(game[0].comments)
+
+    const commentDivs = comments.map(c => <p key={c.id}>{c.author}: {c.content}</p>)
+
 
     const [newComment, setNewComment] = useState("")
 
@@ -74,11 +77,12 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
         fetch("/comments", configObj)
         .then(r => {
             if(r.ok) {
-                r.json().then(comment => console.log(comment))
+                r.json().then(comment => setComments([...comments, comment]))
             } else {
                 r.json().then(errors => console.log(errors))
             }
         })
+        setNewComment("")
     }
 
     return(
@@ -90,7 +94,7 @@ function GameCard( {game, setViewGame, favorites, addFavorite, deleteFavorite}) 
             <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
             <div className="comment-div">
                 <h2>Comments</h2>
-                    {comments}
+                    {commentDivs}
                 <form onSubmit={handleSubmit}>
                     <label>CurrentUser:</label>
                     <input type="text" value={newComment} onChange={handleChange} placeholder="add a comment"></input>
