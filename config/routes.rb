@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index, :create, :destroy, :update]
   resources :games, only: [:index]
   resources :rivalries, only: [:index, :show]
+  resources :users, only: [:destroy]
   # resources :teams
   # resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

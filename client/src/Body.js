@@ -4,7 +4,7 @@ import RivalryContainer from './RivalryContainer'
 import FavoritesContainer from './FavoritesContainer'
 import Account from './Account'
 
-function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFavorite, addCommentToGame, deleteCommentFromGame, editFavorite }) {
+function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFavorite, addCommentToGame, deleteCommentFromGame, editFavorite, setCurrentUser }) {
 
 
     const rivalryRoutes = rivalries.map(r => 
@@ -34,7 +34,7 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
                     editFavorite={editFavorite}/>
             </Route>
             <Route path={`/${currentUser.username}`}>
-                <Account currentUser={currentUser}/>
+                <Account currentUser={currentUser} setCurrentUser={setCurrentUser}/>
             </Route>
         </Switch>
     )

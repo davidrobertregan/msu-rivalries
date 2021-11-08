@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :favorites
-    has_many :comments
+    has_many :favorites, dependent: :destroy
+    has_many :comments, dependent: :destroy
 
     validates :username, uniqueness: :true
     validates :email, uniqueness: :true
