@@ -1,4 +1,4 @@
-import NavBar from './NavBar'
+import Header from './Header'
 import Body from './Body'
 import { useEffect, useState } from 'react'
 
@@ -80,7 +80,7 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
     return (
         <div>
             <div>
-                <NavBar 
+                <Header 
                     currentUser={currentUser}
                     setCurrentUser={setCurrentUser}
                     rivalries={rivalries}

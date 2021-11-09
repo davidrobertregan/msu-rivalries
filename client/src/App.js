@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import UnauthenticatedApp from './UnauthenticatedApp'

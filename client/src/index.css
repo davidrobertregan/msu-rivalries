@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-nav {
+/* nav {
   background: darkgreen;
   padding: 0 15px;
 }
@@ -20,8 +20,8 @@ nav {
 a {
   color: white;
   text-decoration: none;
-}
-
+} */
+/* 
 .menu,
 .submenu {   
     list-style-type: none;
@@ -43,7 +43,7 @@ a:hover,
 
 /* mobile menu */
 
-.menu {
+/* .menu {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -63,7 +63,7 @@ a:hover,
   width: 100%;
   text-align: center;
   /* display: none; */
-}
+/* }
 
 .submenu {
   display: none;
@@ -88,4 +88,4 @@ a:hover,
   font-weight: 250;
   border-radius: 3px;
   list-style-type: none;
-}
+}   */
