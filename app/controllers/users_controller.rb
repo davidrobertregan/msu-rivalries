@@ -28,6 +28,19 @@ class UsersController < ApplicationController
         end
     end
 
+    def update
+        if current_user
+            current_user.update(user_params)
+            if current_user.valid?
+                render json: current_user
+            else
+                render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
+            end
+        else
+            render json: { error: "No active session" }, status: :unauthorized
+        end
+    end
+
     private 
 
     def user_params
