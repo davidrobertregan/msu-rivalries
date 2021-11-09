@@ -1,18 +1,27 @@
 import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-function Account({ currentUser, setCurrentUser }) {
 
-    // what do we want to do here? delete account would be good and easy. An edit info... see recent activity would be dope! What if you could delete or edit actions from here? That's be cool too... stretch perhaps. We shoudl add a user avatar too. Extra note.
+function Account({ currentUser, setCurrentUser, favorites }) {
+
     let history = useHistory()
-
+    
     const [viewEditForm, setViewEditForm] = useState(false)
     const [errors, setErrors] = useState(null)
     const [formData, setFormData] = useState({ username: currentUser.username, email: currentUser.email })
-
+    
     let comments = currentUser.comments.map(c => <p><b>{c.time}: </b>{c.author} commented: "{c.content}"</p>)
+    let favoritesList = favorites.map(f => 
+        <div>
+            <h5>{f.game.winning_team} beat {f.game.losing_team} on {f.game.date}</h5>
+            <p>Your description: {f.description}</p>
+        </div>)
+    
+    console.log(favorites)
     
     function handleDelete(){
         if (window.confirm('Are you sure you want to delete your account?')) {
@@ -22,7 +31,7 @@ function Account({ currentUser, setCurrentUser }) {
             console.log("whew that was close")
         }
     }
-
+    
     function handleChange(e) {
         let key = e.target.name
         
@@ -31,10 +40,10 @@ function Account({ currentUser, setCurrentUser }) {
             [key]: e.target.value
         })
     }
-
+    
     function handleSubmit(e) {
         e.preventDefault()
-
+        
         const configObj ={
             method: "PATCH",
             headers: {
@@ -42,7 +51,7 @@ function Account({ currentUser, setCurrentUser }) {
             },
             body: JSON.stringify(formData)
         }
-
+        
         fetch(`/users/{currentUser.id}`, configObj)
         .then(r => {
             if(r.ok) {
@@ -56,17 +65,22 @@ function Account({ currentUser, setCurrentUser }) {
             }
         })
     }
-
+    
     return (
         <Container style={{paddingTop: "120px"}}>
-            <h1>
-                Hello, {currentUser.username}
-            </h1>
-            <p><b>Email:</b> {currentUser.email}</p>
-            <Button onClick={() => setViewEditForm(!viewEditForm)}>Edit your account</Button>
+            <Row>
+                <Col sm={8}>
+                    <h1>
+                        Hello, {currentUser.username}
+                    </h1>
+                    <p><b>Email:</b> {currentUser.email}</p>
+                </Col>
+                <Col sm={3}>
+                    <Button onClick={() => setViewEditForm(!viewEditForm)}>Edit your account</Button>
+                </Col>
             {
                 viewEditForm ? 
-                    <div>
+                <div>
                         <form onSubmit={handleSubmit}>
                             <label>Username</label>
                             <input onChange={handleChange} name="username" value={formData.username} type="text"></input>
@@ -80,17 +94,23 @@ function Account({ currentUser, setCurrentUser }) {
                             </div>    
                             :
                             <></>
-                    }
+                        }
                         <Button variant="danger" onClick={handleDelete}>Delete your account</Button>
                     </div>
             : 
-                    <div>
-                    <h2>Recent Activity</h2>
+            <div>
+                    <h3><em>Your recent activity</em></h3>
                         {comments}
+                    <h3><em>Your favorites</em></h3>
+                        {favoritesList}
                     </div>
             }
+            </Row>
         </Container>
     )
 }
 
 export default Account
+
+
+// what do we want to do here? delete account would be good and easy. An edit info... see recent activity would be dope! What if you could delete or edit actions from here? That's be cool too... stretch perhaps. We shoudl add a user avatar too. Extra note.
