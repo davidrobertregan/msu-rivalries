@@ -8,26 +8,36 @@ function NavBar({ currentUser, setCurrentUser, rivalries }) {
         setCurrentUser(null)
     }
 
-    const rivalriesListItems = rivalries.map(r => <li key={r.id}><NavLink to={`/rivalries/${r.name}`}>{r.name}</NavLink></li>)
+    const rivalriesListItems = rivalries.map(r => 
+        <li key={r.id}>
+            <a>
+                <NavLink 
+                    className="subitem" 
+                    to={`/rivalries/${r.name}`}>
+                        {r.name}
+                </NavLink>
+            </a>
+        </li>)
 
     return( 
         <nav>
-            <ul className="menu">
-                <li className="logo"><NavLink to="/about">Spartan Rivalries</NavLink></li>
-                <li className="item has-subitem">
+            <ul className="menu"> 
+                <li className="logo"><a><NavLink to="/about">Spartan Rivalries</NavLink></a></li>
+                <li className="item has-submenu">
                     <a tabIndex="0">Rivalries</a>
-                    <ul>
+                    <ul className="submenu">
                         {rivalriesListItems}
                     </ul>
                 </li>
-                <li className="item"><NavLink to="/favorites">My Favorites</NavLink></li>
-                <li className="item has-subitem">
+                <li className="item"><a><NavLink to="/favorites">My Favorites</NavLink></a></li>
+                <li className="item has-submenu">
                     <a tabIndex="0">{currentUser.username}</a>
                     <ul className="submenu">
-                        <li className="subitem"><NavLink to={`/${currentUser.username}`}>My Account</NavLink></li>
-                        <li className="subitem"><button onClick={handleClick}>Logout</button></li>
+                        <li className="subitem"><a><NavLink to={`/${currentUser.username}`}>My Account</NavLink></a></li>
+                        <li className="subitem"><a><button onClick={handleClick}>Logout</button></a></li>
                     </ul>
                 </li>
+                <li class="toggle"><a><i className="fas fa-bars"></i></a></li>
             </ul>
         </nav>
 
