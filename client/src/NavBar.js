@@ -1,11 +1,22 @@
 import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 
 function NavBar({ currentUser, setCurrentUser, rivalries }) {
 
+    const [rivalriesClass, setRivalriesClass] = useState("submenu")
+    const [accountClass, setAccountClass] = useState("submenu")
 
     function handleClick() {
         fetch("/logout", { method: "DELETE" })
         setCurrentUser(null)
+    }
+
+    function handleRivalriesClick() {
+        rivalriesClass === "submenu" ? setRivalriesClass("submenu-active") : setRivalriesClass("submenu")
+    }
+
+    function handleAccountClick() {
+        accountClass === "submenu" ? setAccountClass("submenu-active") : setAccountClass("submenu")
     }
 
     const rivalriesListItems = rivalries.map(r => 
@@ -23,21 +34,20 @@ function NavBar({ currentUser, setCurrentUser, rivalries }) {
         <nav>
             <ul className="menu"> 
                 <li className="logo"><a><NavLink to="/about">Spartan Rivalries</NavLink></a></li>
-                <li className="item has-submenu">
+                <li className="item has-submenu"  onClick={handleRivalriesClick}>
                     <a tabIndex="0">Rivalries</a>
-                    <ul className="submenu">
+                    <ul className={rivalriesClass}>
                         {rivalriesListItems}
                     </ul>
                 </li>
                 <li className="item"><a><NavLink to="/favorites">My Favorites</NavLink></a></li>
-                <li className="item has-submenu">
+                <li className="item has-submenu" onClick={handleAccountClick}>
                     <a tabIndex="0">{currentUser.username}</a>
-                    <ul className="submenu">
-                        <li className="subitem"><a><NavLink to={`/${currentUser.username}`}>My Account</NavLink></a></li>
-                        <li className="subitem"><a><button onClick={handleClick}>Logout</button></a></li>
+                    <ul className={accountClass}>
+                        <li><a><NavLink className="subitem" to={`/${currentUser.username}`}>My Account</NavLink></a></li>
+                        <li><a className="subitem" onClick={handleClick}>Logout</a></li>
                     </ul>
                 </li>
-                <li class="toggle"><a><i className="fas fa-bars"></i></a></li>
             </ul>
         </nav>
 
