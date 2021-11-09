@@ -29,7 +29,7 @@ function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavor
         {!viewGame ?
             <Col className="rivalry-card">
             <h1>{rivalry.name}</h1>
-            <h3>Overall series record (ruby method)</h3>
+            <h3>{rivalry.record}</h3>
             <img style={{maxWidth: "300px"}}src={rivalry.trophy_img_url}></img>
             <h4>{rivalry.trophy}</h4>
             <div>
