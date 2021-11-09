@@ -35,9 +35,9 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
                 )
 
     return( 
-        <Navbar bg="light" expand="lg">
+        <Navbar fixed="top" bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">Spartan Rivalries</Navbar.Brand>
+                <Navbar.Brand>Spartan Rivalries</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -49,6 +49,9 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
                     </Nav.Link>
                     <Nav.Link>
                         <NavLink to={`/${currentUser.username}`}>{currentUser.username}</NavLink>
+                    </Nav.Link>
+                    <Nav.Link onClick={handleClick}>
+                        Logout
                     </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

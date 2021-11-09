@@ -1,6 +1,9 @@
 import GameList from "./GameList"
 import FavoriteCard from "./FavoriteCard"
 import { useState } from 'react'
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 function FavoritesContainer( { favorites, deleteFavorite, editFavorite } ) {
     const [viewGame, setViewGame] = useState(false)
@@ -15,24 +18,18 @@ function FavoritesContainer( { favorites, deleteFavorite, editFavorite } ) {
         setViewGame(true)
     }
 
-    // function editFavorite(fav) {
-    //     let favorite = currentFavorites.filter(f => f.id === fav.id)[0]
-    //     favorite.description = fav.description
-
-    //     let favsArr = currentFavorites.filter(f => f.id !== fav.id)
-
-    //     favsArr = [...favsArr, favorites]
-    // }
-
     return (
-        <div>
-            <GameList 
-                games={games} 
-                handleGameClick={handleGameClick}
-            />
+        <Container style={{paddingTop: "125px"}}>
+            <Row>
+                <Col>
+                    <GameList 
+                        games={games} 
+                        handleGameClick={handleGameClick}
+                    />
+                </Col>
 
             {viewGame ?
-                <div>
+                <Col>
                     <FavoriteCard 
                         setViewGame={setViewGame} 
                         game={game} 
@@ -40,11 +37,12 @@ function FavoritesContainer( { favorites, deleteFavorite, editFavorite } ) {
                         deleteFavorite={deleteFavorite} 
                         editFavorite={editFavorite}
                     />
-                </div>
+                </Col>
             :
                 <></>
             }
-        </div>
+            </Row>
+        </Container>
     )
 }
 
