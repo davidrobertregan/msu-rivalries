@@ -1,10 +1,19 @@
+import Container from 'react-bootstrap/Container'
 
 function About() {
 
     return (
-    <h3>
-        About component 
-    </h3>
+    <Container style={{paddingTop: "125px"}}>
+        <div>
+            <h3>
+                Welcome to Spartan Rivalries
+            </h3>
+            <p><em>Relive your favorite MSU moments...</em></p>
+        </div>
+        <div>
+            <p>Potential recent activity feed...</p>
+        </div>
+    </Container>
     )
 }
 
