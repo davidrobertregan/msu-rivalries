@@ -27,6 +27,7 @@ function Account({ currentUser, setCurrentUser, favorites }) {
         if (window.confirm('Are you sure you want to delete your account?')) {
             fetch(`/users/${currentUser.id}`, {method: "DELETE"})
             setCurrentUser(null)
+            history.push("/login")
         } else {
             console.log("whew that was close")
         }
