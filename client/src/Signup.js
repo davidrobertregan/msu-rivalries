@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 function Signup({setCurrentUser, setErrors}) {
 
     const [formData, setFormData ] = useState({ username: '', email:'', password: '', password_confirmation: '' })
+
+    let history = useHistory()
 
     function handleChange(e) {
         setFormData({
@@ -29,6 +32,7 @@ function Signup({setCurrentUser, setErrors}) {
                 r.json()
                 .then(user => setCurrentUser(user))
                 setFormData({username: '', email: '', password:'', password_confirmation: ''})
+                history.push("/")
             } else {
                 r.json()
                 .then(errors => setErrors(errors.errors))

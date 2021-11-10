@@ -11,7 +11,7 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
     function handleClick() {
         fetch("/logout", { method: "DELETE" })
         setCurrentUser(null)
-        history.push('/login')
+        history.push('/')
     }
 
     let history = useHistory()
@@ -28,7 +28,7 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
     return( 
         <Navbar fixed="top" bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="/home">Spartan Rivalries</Navbar.Brand>
+                <Navbar.Brand href="/">Spartan Rivalries</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">

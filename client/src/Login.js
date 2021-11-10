@@ -32,7 +32,7 @@ function Login({setCurrentUser, setErrors}) {
                 r.json()
                 .then(user => setCurrentUser(user))
                 setFormData({username: '', password: ''})
-                history.push('/home')
+                history.push('/')
             } else {
                 r.json()
                 .then(errors => setErrors(errors.errors))

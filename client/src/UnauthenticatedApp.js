@@ -13,13 +13,13 @@ let errorsList = errors ? errors.map(e => <li key={e} className="errors">{e}</li
     return (
         <div>
             <Switch>
-                <Route path="/login">
+                <Route exact path="/">
                     <Login setCurrentUser={setCurrentUser} setErrors={setErrors}/>
                     <Link to="/signup" onClick={() => setErrors(null)}>sign up</Link>
                 </Route>
                 <Route path="/signup">
                     <Signup setCurrentUser={setCurrentUser} setErrors={setErrors}/> 
-                    <Link to="/login" onClick={() => setErrors(null)}>I already have an account</Link>
+                    <Link to="/" onClick={() => setErrors(null)}>I already have an account</Link>
                 </Route>
             </Switch>
             <div>
