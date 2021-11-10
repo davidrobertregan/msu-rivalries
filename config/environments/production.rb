@@ -113,13 +113,10 @@ Rails.application.configure do
 
 config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { 
-:host => 'msu-rivalries.herokuapp.com', 
-:protocol => 'http'
-}
+config.action_mailer.default_url_options = { :host => 'msu-rivalries.herokuapp.com' }
   
   config.action_mailer.smtp_settings = {
-    port: 3000,
+    port: 587,
     address: 'smtp.gmail.com',
     user_name: 'davidrobertregan@gmail.com',
     password: 'wmjjfvagrvxqizwy',
