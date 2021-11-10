@@ -17,8 +17,8 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
     let history = useHistory()
 
     const rivalryNavLinks = rivalries.map(r => 
-                <NavDropdown.Item>
-                    <NavLink  
+                <NavDropdown.Item key={r.id}>
+                    <NavLink 
                         to={`/rivalries/${r.name}`}>
                             {r.name}
                     </NavLink>

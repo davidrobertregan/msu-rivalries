@@ -18,7 +18,7 @@ function Account({ currentUser, setCurrentUser, favorites }) {
     let favoritesList = favorites.map(f => 
         <div>
             <h5>{f.game.winning_team} beat {f.game.losing_team} on {f.game.date}</h5>
-            <p>Your description: {f.description}</p>
+            <p>Favorite Moment: "{f.favorite_moment}"</p>
         </div>)
     
     console.log(favorites)

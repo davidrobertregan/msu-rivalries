@@ -6,7 +6,13 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
     let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
     let userFavs = favorites.map(f => f.game)
 
-    const [description, setDescription] = useState(favorite.description ? favorite.description : "")
+    // const [description, setDescription] = useState(favorite.description ? favorite.description : "")
+    
+    const [formData, setFormData] = useState({
+        location: favorite.location ? favorite.location : "",
+        favorite_moment: favorite.favorite_moment ? favorite.favorite_moment : "",
+        img_url: favorite.img_url ? favorite.img_url : ""
+    })
     const [viewForm, setViewForm] = useState(false)
 
     function favCheck() {
@@ -14,7 +20,11 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         return matches.length > 0
     }
 
-    useEffect(() => setDescription(favorite.description ? favorite.description : ""), [game])
+    useEffect(() => setFormData({
+        location: favorite.location ? favorite.location : "",
+        favorite_moment: favorite.favorite_moment ? favorite.favorite_moment : "",
+        img_url: favorite.img_url ? favorite.img_url : ""
+    }), [game])
 
     const history = useHistory()
     const {winning_team, score, location, rivalry_name} = game[0]
@@ -52,20 +62,22 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
     }
 
     function handleChange(e) {
-        setDescription(e.target.value)
+        let key = e.target.name
+        setFormData({
+            ...formData,
+            [key]: e.target.value
+        })
     }
 
     function handleSubmit(e) {
         e.preventDefault()
-
-        const body = { description: description }
 
         const configObj = {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify(formData)
         }
 
         fetch(`/favorites/${favorite.id}`, configObj)
@@ -87,7 +99,9 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         <div className="game-card">
             <h1>{winning_team} won {score}</h1>
             <p>{location}</p>
-            <p>Description: {description}</p>
+            <img style={{maxWidth: "300px"}}src={formData.img_url} alt="upload a picture for your favorite"></img>
+            <p><b>Where you were:</b> {formData.location}</p>
+            <p><b>Your favorite moment:</b> {formData.favorite_moment}</p>
             <button onClick={() => {setViewForm(true)}}>edit</button>
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
             <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
@@ -96,10 +110,13 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         {viewForm ?
 
         <form onSubmit={handleSubmit}>
-            <label>Edit description</label>
-            <input type="text" value={description} onChange={handleChange}></input>
+            <label>Where were you?</label>
+            <input type="text" name="location" value={formData.location} onChange={handleChange}></input>
+            <label>Favorite moment?</label>
+            <input type="text" name="favorite_moment" value={formData.favorite_moment} onChange={handleChange}></input>
+            <label>Upload a personal picture from the game!</label>
+            <input type="text" name="img_url" value={formData.img_url} onChange={handleChange}></input>
             <input type="submit"></input>
-            <p>ie. Where were you? Favorite moment?</p>
         </form>
 
         :

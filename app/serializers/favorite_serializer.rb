@@ -1,5 +1,5 @@
 class FavoriteSerializer < ActiveModel::Serializer
-  attributes :id, :description
+  attributes :id, :location, :favorite_moment, :img_url
 
   has_one :game
 
