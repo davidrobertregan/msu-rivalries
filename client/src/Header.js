@@ -18,28 +18,29 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
 
     const rivalryNavLinks = rivalries.map(r => 
                 <NavDropdown.Item key={r.id}>
-                    <NavLink 
+                    <Nav.Link 
+                        as={NavLink}
                         to={`/rivalries/${r.name}`}>
                             {r.name}
-                    </NavLink>
+                    </Nav.Link>
                 </NavDropdown.Item>
                 )
 
     return( 
         <Navbar fixed="top" bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="/">Spartan Rivalries</Navbar.Brand>
+                <Navbar.Brand as={NavLink} to="/">Spartan Rivalries</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                     <NavDropdown title="Rivalries" id="basic-nav-dropdown">
                         {rivalryNavLinks}
                     </NavDropdown>
-                    <Nav.Link>
-                        <NavLink to="/favorites">Favorites</NavLink>
+                    <Nav.Link as={NavLink} to="/favorites">
+                        Favorites
                     </Nav.Link>
-                    <Nav.Link>
-                        <NavLink to={`/${currentUser.username}`}>{currentUser.username}</NavLink>
+                    <Nav.Link as={NavLink} to={`/${currentUser.username}`}>
+                        {currentUser.username}
                     </Nav.Link>
                     <Nav.Link onClick={handleClick}>
                         Logout

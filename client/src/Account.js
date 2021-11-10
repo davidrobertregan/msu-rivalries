@@ -14,15 +14,13 @@ function Account({ currentUser, setCurrentUser, favorites }) {
     const [errors, setErrors] = useState(null)
     const [formData, setFormData] = useState({ username: currentUser.username, email: currentUser.email })
     
-    let comments = currentUser.comments.map(c => <p><b>{c.time}: </b>{c.author} commented: "{c.content}"</p>)
+    let comments = currentUser.comments.map(c => <p key={c.id}><b>{c.time}: </b>{c.author} commented: "{c.content}"</p>)
     let favoritesList = favorites.map(f => 
-        <div>
+        <div key={f.id}>
             <h5>{f.game.winning_team} beat {f.game.losing_team} on {f.game.date}</h5>
             <p>Favorite Moment: "{f.favorite_moment}"</p>
         </div>)
-    
-    console.log(favorites)
-    
+        
     function handleDelete(){
         if (window.confirm('Are you sure you want to delete your account?')) {
             fetch(`/users/${currentUser.id}`, {method: "DELETE"})

@@ -98,6 +98,7 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
 {/*  Refactor op: put game card below and pass down another level */}
         <div className="game-card">
             <h1>{winning_team} won {score}</h1>
+            <h5>Rivalry: {favorite.game.rivalry_name}</h5>
             <p>{location}</p>
             <img style={{maxWidth: "300px"}}src={formData.img_url} alt="upload a picture for your favorite"></img>
             <p><b>Where you were:</b> {formData.location}</p>
