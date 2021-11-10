@@ -23,7 +23,7 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
 
     return(
         <Switch>
-            <Route path="/about">
+            <Route path="/home">
                 <About />
             </Route>
                 {rivalryRoutes}

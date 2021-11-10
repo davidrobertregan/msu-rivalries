@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-function Login({setCurrentUser}) {
+function Login({setCurrentUser, setErrors}) {
 
     const [formData, setFormData ] = useState({username: '', password: ''})
+
+    let history = useHistory()
 
     function handleChange(e) {
         setFormData({
@@ -29,9 +32,10 @@ function Login({setCurrentUser}) {
                 r.json()
                 .then(user => setCurrentUser(user))
                 setFormData({username: '', password: ''})
+                history.push('/home')
             } else {
                 r.json()
-                .then(errors => console.log(errors.error))
+                .then(errors => setErrors(errors.errors))
             }
         })
     }

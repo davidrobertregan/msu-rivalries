@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
@@ -11,7 +11,10 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
     function handleClick() {
         fetch("/logout", { method: "DELETE" })
         setCurrentUser(null)
+        history.push('/login')
     }
+
+    let history = useHistory()
 
     const rivalryNavLinks = rivalries.map(r => 
                 <NavDropdown.Item>
@@ -25,7 +28,7 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
     return( 
         <Navbar fixed="top" bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="/about">Spartan Rivalries</Navbar.Brand>
+                <Navbar.Brand href="/home">Spartan Rivalries</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">

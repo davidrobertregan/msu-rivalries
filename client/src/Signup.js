@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Signup({setCurrentUser}) {
+function Signup({setCurrentUser, setErrors}) {
 
     const [formData, setFormData ] = useState({ username: '', email:'', password: '', password_confirmation: '' })
 
@@ -31,7 +31,7 @@ function Signup({setCurrentUser}) {
                 setFormData({username: '', email: '', password:'', password_confirmation: ''})
             } else {
                 r.json()
-                .then(errors => console.log(errors.errors))
+                .then(errors => setErrors(errors.errors))
             }
         })
     }
