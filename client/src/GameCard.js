@@ -7,11 +7,13 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     let userFavs = favorites.map(f => f.game)
 
     const comments = game[0].comments
+
+    console.log(comments)
     
     const commentDivs = comments.map(c => 
         <div key={c.id}>
             <p>{c.author}: {c.content}</p>
-            {c.author === currentUser.username ? 
+            {c.user_can_modify ?
                 <button value={c.id} onClick={handleDeleteCommentClick}>delete</button> 
             :
                 <></>
