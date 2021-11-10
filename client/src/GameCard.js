@@ -27,7 +27,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     }
 
     const history = useHistory()
-    const {winning_team, score, location, rivalry_name} = game[0]
+    const {winning_team, score, location, date} = game[0]
 
     function createFavFetch() {
         let newFav = {
@@ -71,7 +71,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         })
     }
 
-    const favButtonText = favCheck() ? "unfavorite" : "favorite"
+    const favButtonText = favCheck() ? "⭐️" : "★"
 
     function handleChange(e) {
         setNewComment(e.target.value)
@@ -107,12 +107,12 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         <div className="game-card">
             <h1>{winning_team}</h1>
             <h2>{score}</h2>
+            <p>{date}</p>
             <p>{location}</p>
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
             <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
             <div className="comment-div">
-                <h2>{winning_team}</h2>
-                <h2>Comments</h2>
+                <h3>Comments</h3>
                     {commentDivs}
                 <form onSubmit={handleSubmit}>
                     <label>{currentUser.username}:</label>

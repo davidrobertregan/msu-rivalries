@@ -79,15 +79,13 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         setViewForm(false)
     }
 
-    const favButtonText = favCheck() ? "unfavorite" : "favorite"
+    const favButtonText = favCheck() ? "🗑" : "⭐️"
 
     return(
         <>
 {/*  Refactor op: put game card below and pass down another level */}
         <div className="game-card">
-            <h1>Favorite Card</h1>
-            <h1>{winning_team}</h1>
-            <h2>{score}</h2>
+            <h1>{winning_team} won {score}</h1>
             <p>{location}</p>
             <p>Description: {description}</p>
             <button onClick={() => {setViewForm(true)}}>edit</button>
