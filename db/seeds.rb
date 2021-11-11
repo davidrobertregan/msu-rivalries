@@ -2,7 +2,7 @@ require 'csv'
 
 puts "seeding users... "
 
-david = User.create(username: "davidregan", email: "davidrobertregan@gmail.com", password: "password")
+david = User.create(username: "davidregan", email: "davidrobertregan@gmail.com", password: "password" admin: true)
 meltucker = User.create(username: "meltucker", email: "meltucker@gmail.com", password: "password")
 mark_dantonio = User.create(username: "mark_dantonio", email: "mark@gmail.com", password: "password")
 
@@ -112,8 +112,8 @@ end
 
 puts "...creating Dave's favorites"
 
-david.favorites.create(game: mich_rival.games.last, description: "Tuck comin!")
-david.favorites.create(game: indiana_rival.games.last, description: "Cal Haladay with a pick 6!")
+david.favorites.create(game: mich_rival.games.last)
+david.favorites.create(game: indiana_rival.games.last)
 
 puts "...creating comments"
 
