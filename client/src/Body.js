@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router'
 import About from './About'
 import RivalryContainer from './RivalryContainer'
 import FavoritesContainer from './FavoritesContainer'
+import FavoriteDetails from './FavoriteDetails'
 import Account from './Account'
 
 function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFavorite, addCommentToGame, deleteCommentFromGame, editFavorite, setCurrentUser }) {
@@ -32,6 +33,9 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
                     favorites={favorites} 
                     deleteFavorite={deleteFavorite} 
                     editFavorite={editFavorite}/>
+            </Route>
+            <Route exact path="/favorite/:id">
+                <FavoriteDetails/>
             </Route>
             <Route path={`/${currentUser.username}`}>
                 <Account currentUser={currentUser} setCurrentUser={setCurrentUser} favorites={favorites}/>

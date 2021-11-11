@@ -1,10 +1,15 @@
 class FavoritesController < ApplicationController
     
     def index
-        if current_user
-            render json: current_user.favorites.all
+        render json: current_user.favorites.all
+    end
+
+    def show 
+        fav = Favorite.find(params[:id])
+        if fav
+            render json: fav
         else
-            render json: {error: "You must be logged in"}, status: :unauthorized
+            render json: {error: "Favorite does not exit"}, status: :not_found
         end
     end
 

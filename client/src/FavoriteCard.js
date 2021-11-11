@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { useState, useEffect } from 'react'
 
 function FavoriteCard( {favorite, deleteFavorite, editFavorite }) {
@@ -67,6 +67,7 @@ function FavoriteCard( {favorite, deleteFavorite, editFavorite }) {
         <>
 {/*  Refactor op: put game card below and pass down another level */}
         <div className="game-card">
+            <Link to={`/favorite/${favorite.id}`}>To Details</Link>
             <h1>{favorite.game.winning_team} won {favorite.game.score}</h1>
             <h5>Rivalry: {favorite.game.rivalry_name}</h5>
             <p>{favorite.game.location}</p>
