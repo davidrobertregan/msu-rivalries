@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+    skip_before_action :confirm_authentication, only: [:create]
+
     def create
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
@@ -11,11 +13,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        if current_user
-            session.delete :user_id
-        else 
-            render json: { error: "No active session" }, status: :unprocessable_entity
-        end
+        session.delete :user_id
     end
 
 end

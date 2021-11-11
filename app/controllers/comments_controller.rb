@@ -9,25 +9,17 @@ class CommentsController < ApplicationController
     end
 
     def create
-        if current_user
-            comment = current_user.comments.create(comment_params)
-            if comment.valid?
-                render json: comment, status: :created
-            else
-                render json: { errors: comment.errors.full_messages }
-            end
+        comment = current_user.comments.create(comment_params)
+        if comment.valid?
+            render json: comment, status: :created
         else
-            render json: { error: "You must be logged in" }, status: :unauthorized
+            render json: { errors: comment.errors.full_messages }
         end
     end
 
     def destroy
-        if current_user
             @comment.destroy
             render json: @comment
-        else
-            render json: { error: "You must be logged in" }, status: :unauthorized
-        end
     end
 
     private

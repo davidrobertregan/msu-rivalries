@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :confirm_authentication, only: [:create, :show]
 
     def show
         if current_user
@@ -21,24 +22,20 @@ class UsersController < ApplicationController
 
     def destroy 
         user = User.find_by(id: params[:id])
-        if user
+        if user === current_user
             user.destroy
             render json: user
         else
-            render json: {error: "User does not exist"}, status: :not_found
+            render json: {error: "You can only delete your own account"}, status: :not_found
         end
     end
 
     def update
-        if current_user
-            current_user.update(user_params)
-            if current_user.valid?
-                render json: current_user
-            else
-                render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
-            end
+        current_user.update(user_params)
+        if current_user.valid?
+            render json: current_user
         else
-            render json: { error: "No active session" }, status: :unauthorized
+            render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
