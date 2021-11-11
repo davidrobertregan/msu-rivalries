@@ -7,8 +7,6 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     let userFavs = favorites.map(f => f.game)
 
     const comments = game[0].comments
-
-    console.log(comments)
     
     const commentDivs = comments.map(c => 
         <div key={c.id}>

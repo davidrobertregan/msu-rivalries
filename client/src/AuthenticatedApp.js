@@ -9,10 +9,12 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
     const [favorites, setFavorites] = useState([])
     
     useEffect(() => {
+        console.log("fetching rivalries...")
         fetch("/rivalries")
         .then(r => {
             if (r.ok) {
                 r.json().then(rivalries => setRivalries(rivalries))
+                console.log("done fetching rivalries...")
             } else {
                 r.json().then(errors => console.log(errors))
             }
@@ -20,10 +22,12 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
     }, [])
 
     useEffect(() => {
+        console.log("fetching games...")
         fetch("/games")
         .then(r => {
             if (r.ok) {
                 r.json().then(games => setGames(games))
+                console.log("done fetching games...")
             } else {
                 r.json().then(errors => console.log(errors))
             }
@@ -31,10 +35,12 @@ function AuthenticatedApp( {currentUser, setCurrentUser } ) {
     }, [])
 
     useEffect(() => {
+        console.log("fetching favorites...")
         fetch("/favorites")
         .then(r => {
             if (r.ok) {
                 r.json().then(favorites => setFavorites(favorites))
+                console.log("done fetching favorites...")
             } else {
                 r.json().then(errors => console.log(errors))
             }

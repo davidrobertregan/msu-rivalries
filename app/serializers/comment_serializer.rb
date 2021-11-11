@@ -1,6 +1,6 @@
 class CommentSerializer < ActiveModel::Serializer
   attributes :id, :content, :author, :game_id, :time, :user_can_modify
-  has_one :game
+  # has_one :game
 
   def author
     self.object.user.username
