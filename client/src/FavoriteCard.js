@@ -1,10 +1,10 @@
 import { useHistory } from "react-router-dom"
 import { useState, useEffect } from 'react'
 
-function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorite, editFavorite }) {
+function FavoriteCard( {favorite, deleteFavorite, editFavorite }) {
 
-    let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
-    let userFavs = favorites.map(f => f.game)
+    // let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
+    // let userFavs = favorites.map(f => f.game)
 
     // const [description, setDescription] = useState(favorite.description ? favorite.description : "")
     
@@ -15,50 +15,20 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
     })
     const [viewForm, setViewForm] = useState(false)
 
-    function favCheck() {
-        let matches = userFavs.filter(g => g.id === game[0].id)
-        return matches.length > 0
-    }
-
-    useEffect(() => setFormData({
-        location: favorite.location ? favorite.location : "",
-        favorite_moment: favorite.favorite_moment ? favorite.favorite_moment : "",
-        img_url: favorite.img_url ? favorite.img_url : ""
-    }), [game])
+    // function favCheck() {
+    //     let matches = userFavs.filter(g => g.id === game[0].id)
+    //     return matches.length > 0
+    // }
 
     const history = useHistory()
-    const {winning_team, score, location, rivalry_name} = game[0]
-
-    function createFavFetch() {
-        let newFav = {
-            game_id: game[0].id
-        }
-
-        const configObj = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newFav)
-        }
-        fetch("/favorites", configObj)
-        .then(r => {
-            if(r.ok) {
-                r.json().then(fav => addFavorite(fav))
-            } else {
-                r.json().then(errors => console.log(errors))
-            }
-        })
-    }
 
     function deleteFavFetch() {
         deleteFavorite(favorite.id)
-        setViewGame(false)
         fetch(`/favorites/${favorite.id}`, {method: "DELETE" })
     }
 
     function handleFavoriteClick() {
-        favCheck() ? deleteFavFetch() : createFavFetch()
+        deleteFavFetch()
     }
 
     function handleChange(e) {
@@ -91,21 +61,20 @@ function FavoriteCard( {game, setViewGame, favorites, addFavorite, deleteFavorit
         setViewForm(false)
     }
 
-    const favButtonText = favCheck() ? "🗑" : "⭐️"
+    // const favButtonText = favCheck() ? "🗑" : "⭐️"
 
     return(
         <>
 {/*  Refactor op: put game card below and pass down another level */}
         <div className="game-card">
-            <h1>{winning_team} won {score}</h1>
+            <h1>{favorite.game.winning_team} won {favorite.game.score}</h1>
             <h5>Rivalry: {favorite.game.rivalry_name}</h5>
-            <p>{location}</p>
+            <p>{favorite.game.location}</p>
             <img style={{maxWidth: "300px"}}src={formData.img_url} alt="upload a picture for your favorite"></img>
             <p><b>Where you were:</b> {formData.location}</p>
             <p><b>Your favorite moment:</b> {formData.favorite_moment}</p>
             <button onClick={() => {setViewForm(true)}}>edit</button>
-            <button onClick={handleFavoriteClick}>{favButtonText}</button>
-            <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
+            <button onClick={handleFavoriteClick}>Trash</button>
         </div>
 
         {viewForm ?
