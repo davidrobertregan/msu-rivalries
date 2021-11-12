@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 
-function Account({ currentUser, setCurrentUser, favorites }) {
+function Account({ currentUser, setCurrentUser, userFavs }) {
 
     let history = useHistory()
     
@@ -15,9 +15,9 @@ function Account({ currentUser, setCurrentUser, favorites }) {
     const [formData, setFormData] = useState({ username: currentUser.username, email: currentUser.email })
     
     let comments = currentUser.comments.map(c => <p key={c.id}><b>{c.time}: </b>{c.author} commented: "{c.content}"</p>)
-    let favoritesList = favorites.map(f => 
+    let favoritesList = userFavs.map(f => 
         <div key={f.id}>
-            <h5>{f.game.winning_team} beat {f.game.losing_team} on {f.game.date}</h5>
+            <h5>{f.winning_team} beat {f.losing_team} on {f.game_date}</h5>
             <p>Favorite Moment: "{f.favorite_moment}"</p>
         </div>)
         

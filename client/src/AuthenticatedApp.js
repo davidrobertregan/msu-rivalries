@@ -7,6 +7,7 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
     const [rivalries, setRivalries] = useState([])
     const [games, setGames] = useState([])
     const [favorites, setFavorites] = useState([])
+    const [userFavs, setUserFavs] = useState(currentUser.favorites)
     
     useEffect(() => {
         console.log("fetching rivalries...")
@@ -48,13 +49,13 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
     }, [])
 
     function addFavorite(fav){
-        let newFavorites = [...favorites, fav]
-        setFavorites(newFavorites)
+        let newFavorites = [...userFavs, fav]
+        setUserFavs(newFavorites)
     }
 
     function deleteFavorite(id) {
-        let newFavorites = favorites.filter(f => f.id !== id)
-        setFavorites(newFavorites)
+        let newFavorites = userFavs.filter(f => f.id !== id)
+        setUserFavs(newFavorites)
     }
 
     function addCommentToGame(comment){
@@ -78,9 +79,9 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
     }
 
     function editFavorite(favorite) {
-        let favsArr =  favorites.filter(f => f.id !== favorite.id)
-        favsArr = [...favsArr, favorite]
-        setFavorites(favsArr)
+        let userFavsArr =  userFavs.filter(f => f.id !== favorite.id)
+        userFavsArr = [...userFavsArr, favorite]
+        setUserFavs(userFavsArr)
     }
 
     return (
@@ -104,6 +105,7 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
                     addCommentToGame={addCommentToGame}
                     deleteCommentFromGame={deleteCommentFromGame}
                     editFavorite={editFavorite}
+                    userFavs={userFavs}
                 />
             </div>
         </div>

@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
-function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame } ) {
+function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame } ) {
 
     const [viewGame, setViewGame] = useState(false)
     const [game, setGame] = useState(null) 
@@ -42,7 +42,7 @@ function RivalryContainer( { rivalry, games, favorites, addFavorite, deleteFavor
                 <GameCard 
                     game={game} 
                     setViewGame={setViewGame} 
-                    favorites={favorites} 
+                    favorites={userFavs} 
                     addFavorite={addFavorite} 
                     deleteFavorite={deleteFavorite} 
                     currentUser={currentUser} 
