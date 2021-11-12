@@ -40,7 +40,7 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
         fetch("/favorites")
         .then(r => {
             if (r.ok) {
-                r.json().then(favorites => setFavorites(favorites))
+                r.json().then(favorites => setFavorites(favorites.reverse()))
                 console.log("done fetching favorites...")
             } else {
                 r.json().then(errors => console.log(errors))
