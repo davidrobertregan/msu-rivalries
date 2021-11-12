@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom"
 
 function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame }) {
 
-    let favorite = favorites.filter(f => f.game.id === game[0].id)[0]
-    let userFavs = favorites.map(f => f.game)
+    let favorite = favorites.filter(f => f.game_id === game[0].id)[0]
+    let userFavs = favorites.filter(f => f.owner === currentUser.username)
 
     const comments = game[0].comments
     
@@ -22,12 +22,11 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     const [newComment, setNewComment] = useState("")
 
     function favCheck() {
-        let matches = userFavs.filter(g => g.id === game[0].id)
+        let matches = userFavs.filter(f => f.game_id === game[0].id)
         return matches.length > 0
     }
 
-    const history = useHistory()
-    const {winning_team, score, location, date} = game[0]
+    const { winning_team, score, location, date } = game[0]
 
     function createFavFetch() {
         let newFav = {

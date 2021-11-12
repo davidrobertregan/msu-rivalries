@@ -2,7 +2,7 @@ import Header from './Header'
 import Body from './Body'
 import { useEffect, useState } from 'react'
 
-function AuthenticatedApp( {currentUser, setCurrentUser } ) {
+function AuthenticatedApp( { currentUser, setCurrentUser } ) {
 
     const [rivalries, setRivalries] = useState([])
     const [games, setGames] = useState([])

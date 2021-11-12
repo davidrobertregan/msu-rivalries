@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 
-function FavoriteDetails({ editFavorite, deleteFavorite}) {
+function FavoriteDetails({ editFavorite, deleteFavorite }) {
 
     const id = useParams().id
     const history = useHistory()
@@ -80,11 +80,12 @@ function FavoriteDetails({ editFavorite, deleteFavorite}) {
                 <h1>{game.winning_team} won {game.score}</h1>
                 <h5>Rivalry: {game.rivalry_name}</h5>
                 <img style={{maxWidth: "400px"}}src={formData.img_url}></img>
+                <p>{game.location}</p>
+                <p>{game.date}</p>
                 <p>Where you were: {formData.location}</p>
                 <p>Your favorite moment: {formData.favorite_moment}</p>
-                <p>{game.winning_team}</p>
                 <button onClick={() => history.push('/favorites')}>Back</button>
-                <button onClick={() => {setViewForm(true)}}>edit</button>
+                <button onClick={() => {setViewForm(true)}}>Edit</button>
                 <button onClick={handleDelete}>Remove</button>
             </div>
 

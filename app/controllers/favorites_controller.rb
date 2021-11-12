@@ -1,13 +1,13 @@
 class FavoritesController < ApplicationController
     
     def index
-        render json: current_user.favorites.all
+        render json: Favorite.all
     end
 
     def show 
         fav = Favorite.find(params[:id])
         if fav
-            render json: fav
+            render json: fav, serializer: FavoriteShowSerializer
         else
             render json: {error: "Favorite does not exit"}, status: :not_found
         end

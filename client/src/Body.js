@@ -7,6 +7,7 @@ import Account from './Account'
 
 function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFavorite, addCommentToGame, deleteCommentFromGame, editFavorite, setCurrentUser }) {
 
+    console.log(currentUser)
 
     const rivalryRoutes = rivalries.map(r => 
         <Route 
@@ -30,9 +31,7 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
                 {rivalryRoutes}
             <Route path="/favorites">
                 <FavoritesContainer 
-                    favorites={favorites} 
-                    deleteFavorite={deleteFavorite} 
-                    editFavorite={editFavorite}/>
+                    favorites={favorites}/>
             </Route>
             <Route exact path="/favorite/:id">
                 <FavoriteDetails editFavorite={editFavorite} deleteFavorite={deleteFavorite}/>
