@@ -1,9 +1,9 @@
 import FavoriteCard from "./FavoriteCard"
 import Container from "react-bootstrap/Container"
 
-function FavoritesContainer( { userFavs } ) {
+function FavoritesContainer( { favorites } ) {
 
-    let favCards = userFavs.map(f => 
+    let favCards = favorites.map(f => 
         <FavoriteCard 
             favorite={f}
             />)

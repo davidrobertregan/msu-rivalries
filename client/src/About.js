@@ -11,7 +11,7 @@ function About() {
             <p><em>Relive your favorite MSU moments...</em></p>
         </div>
         <div>
-            <p>Potential recent activity feed...</p>
+            <p>Favorites feed...</p>
         </div>
     </Container>
     )
