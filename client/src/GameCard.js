@@ -9,10 +9,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     let userFavs = favorites.filter(f => f.owner === currentUser.username)
 
     const [showMessage, setShowMessage] = useState(false)
-
     useEffect(() => setShowMessage(favorite ? true : false), [game])
-
-    console.log(favorite)
 
     const comments = game[0].comments
 
@@ -129,6 +126,8 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
             :
             <></>
 }
+
+{/* comments needs to be its own component */}
             <div className="comment-div">
                 <h3>Comments</h3>
                     {commentDivs}
