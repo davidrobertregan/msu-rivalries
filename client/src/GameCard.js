@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 
@@ -6,8 +7,12 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     let favorite = favorites.filter(f => f.game_id === game[0].id)[0]
     let userFavs = favorites.filter(f => f.owner === currentUser.username)
 
+    const [showMessage, setShowMessage] = useState(false)
+    useEffect(() => setShowMessage(false), [game])
+
     const comments = game[0].comments
-    
+    let history = useHistory()
+
     const commentDivs = comments.map(c => 
         <div key={c.id}>
             <p>{c.author}: {c.content}</p>
@@ -32,7 +37,6 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         let newFav = {
             game_id: game[0].id
         }
-
         const configObj = {
             method: "POST",
             headers: {
@@ -48,11 +52,16 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                 r.json().then(errors => console.log(errors))
             }
         })
+        setShowMessage(true)
     }
 
     function deleteFavFetch() {
-        deleteFavorite(favorite.id)
-        fetch(`/favorites/${favorite.id}`, {method: "DELETE" })
+        if (window.confirm("Are you sure you want to unfavorite? This action cannot be undone")){
+            deleteFavorite(favorite.id)
+            fetch(`/favorites/${favorite.id}`, {method: "DELETE" })
+        } else {
+            console.log('whew! that was close.')
+        }
     }
 
     function handleFavoriteClick() {
@@ -110,6 +119,11 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
             <p>{location}</p>
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
             <button onClick={() => setViewGame(false)}>Rivalry Info</button>
+            {showMessage ?
+            <p><em>Successfly added! Customize it in "Favorites"</em></p>
+            :
+            <></>
+}
             <div className="comment-div">
                 <h3>Comments</h3>
                     {commentDivs}
