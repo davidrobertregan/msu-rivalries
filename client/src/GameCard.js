@@ -1,17 +1,20 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame }) {
 
     let favorite = favorites.filter(f => f.game_id === game[0].id)[0]
+    let favId = favorite ? favorite.id : null
     let userFavs = favorites.filter(f => f.owner === currentUser.username)
 
     const [showMessage, setShowMessage] = useState(false)
-    useEffect(() => setShowMessage(false), [game])
+
+    useEffect(() => setShowMessage(favorite ? true : false), [game])
+
+    console.log(favorite)
 
     const comments = game[0].comments
-    let history = useHistory()
 
     const commentDivs = comments.map(c => 
         <div key={c.id}>
@@ -47,18 +50,18 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         fetch("/favorites", configObj)
         .then(r => {
             if(r.ok) {
-                r.json().then(fav => addFavorite(fav))
+                r.json().then(fav => addFavorite(fav), setShowMessage(true))
             } else {
                 r.json().then(errors => console.log(errors))
             }
         })
-        setShowMessage(true)
     }
 
     function deleteFavFetch() {
         if (window.confirm("Are you sure you want to unfavorite? This action cannot be undone")){
             deleteFavorite(favorite.id)
             fetch(`/favorites/${favorite.id}`, {method: "DELETE" })
+            setShowMessage(false)
         } else {
             console.log('whew! that was close.')
         }
@@ -120,7 +123,9 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
             <button onClick={() => setViewGame(false)}>Rivalry Info</button>
             {showMessage ?
-            <p><em>Successfly added! Customize it in "Favorites"</em></p>
+            <div>
+                <p><em>This game is in your favorites! Customize it <Link to={`/favorite/${favId}`}>here</Link></em></p>
+            </div>
             :
             <></>
 }
