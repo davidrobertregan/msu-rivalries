@@ -35,7 +35,7 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
                     editFavorite={editFavorite}/>
             </Route>
             <Route exact path="/favorite/:id">
-                <FavoriteDetails/>
+                <FavoriteDetails editFavorite={editFavorite} deleteFavorite={deleteFavorite}/>
             </Route>
             <Route path={`/${currentUser.username}`}>
                 <Account currentUser={currentUser} setCurrentUser={setCurrentUser} favorites={favorites}/>

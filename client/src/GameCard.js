@@ -110,7 +110,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
             <p>{date}</p>
             <p>{location}</p>
             <button onClick={handleFavoriteClick}>{favButtonText}</button>
-            <button onClick={() => setViewGame(false)}>Okay, I'm done</button>
+            <button onClick={() => setViewGame(false)}>Rivalry Info</button>
             <div className="comment-div">
                 <h3>Comments</h3>
                     {commentDivs}
