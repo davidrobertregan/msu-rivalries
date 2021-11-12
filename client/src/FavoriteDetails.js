@@ -64,6 +64,8 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
         setViewForm(false)
     }
 
+    console.log(favorite)
+
     function handleDelete() {
         if (window.confirm("Are you sure? This action cannot be undone")){ 
             deleteFavorite(favorite.id)
@@ -85,11 +87,19 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                 <p>Where you were: {formData.location}</p>
                 <p>Your favorite moment: {formData.favorite_moment}</p>
                 <button onClick={() => history.push('/favorites')}>Back</button>
-                <button onClick={() => {setViewForm(true)}}>Edit</button>
-                <button onClick={handleDelete}>Remove</button>
+
+                { favorite.user_can_modify ? 
+                    <div>
+                        <button onClick={() => {setViewForm(true)}}>Edit</button>
+                        <button onClick={handleDelete}>Remove</button>
+                    </div>
+                :
+
+                <></>
+}
             </div>
 
-            {viewForm ?
+            { viewForm ?
 
             <form onSubmit={handleSubmit}>
                 <label>Where were you?</label>

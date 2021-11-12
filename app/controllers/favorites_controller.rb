@@ -40,7 +40,7 @@ class FavoritesController < ApplicationController
 
     def authorize_user
         user_can_modify = current_user.admin? || @favorite.user == current_user
-        render json: { error: "You don't have permission to perform that action" }, status: :forbidden
+        render json: { error: "You don't have permission to perform that action" }, status: :forbidden unless user_can_modify
     end
 
     def favorite_params
