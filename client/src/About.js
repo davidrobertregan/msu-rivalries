@@ -8,7 +8,7 @@ function About() {
 
     return (
 
-    <Container style={{paddingTop: "125px"}}>
+    <Container style={{paddingTop: "125px", maxWidth: "750px"}}>
         {/* <Row>
             <h2>
                 Welcome to Spartan Rivalries
@@ -16,11 +16,11 @@ function About() {
             <p><em>Relive your favorite MSU moments...</em></p>
         </Row> */}
         
-        <Carousel variant="dark">
+        <Carousel>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src={Gruff}
+                    src="https://sportshub.cbsistatic.com/i/r/2018/07/06/41fc4a29-d57b-4fac-8968-eb7739f06509/thumbnail/1200x675/0349f1767374a198c162401c44d590cc/usatsi-8866786-220956-lowres.jpg"
                     alt="First slide"
                 />
                 <Carousel.Caption>
@@ -29,16 +29,26 @@ function About() {
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <Container className='p-5'>
+            <img
+                    className="d-block w-100"
+                    src="https://advancelocal-adapter-image-uploads.s3.amazonaws.com/image.mlive.com/home/mlive-media/width2048/img/kzgazette/sports_impact/photo/24114849-standard.jpg"
+                    alt="First slide"
+                />
+                <Carousel.Caption>
                 <h3><em>Add games to your favorites...</em></h3>
                 <p>Star your most loved games and add them to your collection</p>
-                </Container>
+                </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <Container className='p-5'>
+            <img
+                    className="d-block w-100"
+                    src="https://www.mlive.com/resizer/xo3SFqBogHSfRdiWiuNFqDCTrqw=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.mlive.com/home/mlive-media/width2048/img/wolverines_impact/photo/devingardnerummsuhitjpg-78b03497fb4fec22.jpg"
+                    alt="First slide"
+                />
+                <Carousel.Caption>
                 <h3><em>Customize your favorites...</em></h3>
                 <p>Record where you were, remember your favorite moment and add a custom picture</p>
-                </Container>
+                </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
     </Container>
