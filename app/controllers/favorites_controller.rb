@@ -44,6 +44,6 @@ class FavoritesController < ApplicationController
     end
 
     def favorite_params
-        params.permit(:location, :img_url, :favorite_moment, :game_id)
+        params.permit(:location, :img_url, :favorite_moment, :game_id, :nickname)
     end
 end

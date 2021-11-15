@@ -11,6 +11,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
     const [viewForm, setViewForm] = useState(false)
 
     const [formData, setFormData] = useState({
+        nickname: favorite.nickname,
         location: favorite.location,
         favorite_moment: favorite.favorite_moment,
         img_url: favorite.img_url
@@ -24,6 +25,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                     setFavorite(fav) 
                     setGame(fav.game)
                     setFormData({
+                        nickname: fav.nickname,
                         location: fav.location,
                         favorite_moment: fav.favorite_moment,
                         img_url: fav.img_url
@@ -79,7 +81,8 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
     return(
         <div>
             <div style={{paddingTop: '200px'}}>
-                <h1>{game.winning_team} won {game.score}</h1>
+                <h1>{formData.nickname}</h1>
+                <h3>{game.winning_team} won {game.score}</h3>
                 <h5>Rivalry: {game.rivalry_name}</h5>
                 <img style={{maxWidth: "400px"}}src={formData.img_url}></img>
                 <p>{game.location}</p>
@@ -102,6 +105,8 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
             { viewForm ?
 
             <form onSubmit={handleSubmit}>
+                <label>Add a nickname:</label>
+                <input type="text" name="nickname" value={formData.nickname} onChange={handleChange}></input>
                 <label>Where were you?</label>
                 <input type="text" name="location" value={formData.location} onChange={handleChange}></input>
                 <label>Favorite moment?</label>
