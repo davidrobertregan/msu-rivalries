@@ -31,7 +31,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         return matches.length > 0
     }
 
-    const { winning_team, score, location, date } = game[0]
+    const { winner, loser, score, location, date } = game[0]
 
     function createFavFetch() {
         let newFav = {
@@ -113,8 +113,9 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
 
     return(
         <div className="game-card">
-            <h1>{winning_team}</h1>
+            <h1>{winner.name}</h1>
             <h2>{score}</h2>
+            <img src={winner.logo_url} style={{maxWidth: "250px"}}></img>
             <p>{date}</p>
             <p>{location}</p>
             <button onClick={handleFavoriteClick}>{favButtonText}</button>

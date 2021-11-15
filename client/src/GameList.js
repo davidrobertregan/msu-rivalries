@@ -15,7 +15,7 @@ games.sort((a, b) => b.id - a.id )
             onClick={handleGameClick} 
             key={g.id} 
             value={g.id}>
-            {g.date} - {g.winning_team} - {g.score}
+            {g.date} - {g.winner.name} - {g.score}
         </li>)
 
     return(
