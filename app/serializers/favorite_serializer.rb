@@ -1,5 +1,5 @@
 class FavoriteSerializer < ActiveModel::Serializer
-  attributes :id, :favorite_moment, :img_url, :owner, :winning_team, :losing_team, :game_date, :game_id
+  attributes :id, :favorite_moment, :img_url, :owner, :winning_team, :losing_team, :game_date, :game_id, :nickname
 
   def owner
     self.object.user.username
