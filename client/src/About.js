@@ -11,12 +11,12 @@ function About() {
     return (
 
     <Container style={{paddingTop: "125px", maxWidth: "1000px"}}>
-        {/* <Row>
-            <h2>
+        <Row>
+            <h1>
                 Welcome to Spartan Rivalries
-            </h2>
+            </h1>
             <p><em>Relive your favorite MSU moments...</em></p>
-        </Row> */}
+        </Row>
         
         <Carousel>
             <Carousel.Item>
@@ -27,7 +27,7 @@ function About() {
                     alt="First slide"
                 />
                 <Carousel.Caption style={{textShadow: "2px 2px black"}}>
-                <h2><em>Explore the history...</em></h2>
+                <h2><em>Explore the history</em></h2>
                 <p>See the results to every single game and comment on your most memorable games.</p>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -39,7 +39,7 @@ function About() {
                     alt="First slide"
                 />
                 <Carousel.Caption style={{textShadow: "2px 2px black"}}>
-                <h2><em>Add games to your favorites...</em></h2>
+                <h2><em>Add games to your favorites</em></h2>
                 <p>Star your most loved games and add them to your collection</p>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -51,7 +51,7 @@ function About() {
                     alt="First slide"
                 />
                 <Carousel.Caption style={{textShadow: "2px 2px black"}}>
-                <h2><em>Customize your favorites...</em></h2>
+                <h2><em>Customize your favorites</em></h2>
                 <p>Record where you were, remember your favorite moment and add a custom picture</p>
                 </Carousel.Caption>
             </Carousel.Item>
