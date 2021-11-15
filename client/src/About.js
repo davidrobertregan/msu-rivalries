@@ -2,25 +2,31 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Carousel from 'react-bootstrap/Carousel'
+import Gruff from './MSU-Gruff-Sparty-Throwback-Sticker.webp'
 
 function About() {
 
     return (
 
     <Container style={{paddingTop: "125px"}}>
-        <Row>
+        {/* <Row>
             <h2>
                 Welcome to Spartan Rivalries
             </h2>
             <p><em>Relive your favorite MSU moments...</em></p>
-        </Row>
+        </Row> */}
         
         <Carousel variant="dark">
             <Carousel.Item>
-                <Container className='p-5'>
-                <h3><em>Explore the history...</em></h3>
+                <img
+                    className="d-block w-100"
+                    src={Gruff}
+                    alt="First slide"
+                />
+                <Carousel.Caption>
+                <h2><em>Explore the history...</em></h2>
                 <p>See the results to every single game in the 'Rivalries' tab and comment on your most memorable games.</p>
-                </Container>
+                </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
                 <Container className='p-5'>
