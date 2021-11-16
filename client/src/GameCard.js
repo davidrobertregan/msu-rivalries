@@ -124,7 +124,6 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         setNewComment("")
     }
 
-    console.log(game)
     return(
         <>
             <Card>
@@ -166,7 +165,9 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                 }
                 </Card.Text>
             </Card>
+
 {/* comments should  be its own component */}
+
             <Container className="border-top pt-3">
                     {commentDivs}
                 <Form id="comment-form" className="pt-5 pb-5" onSubmit={handleSubmit}>

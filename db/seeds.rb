@@ -2,7 +2,7 @@ require 'csv'
 
 puts "seeding users... "
 
-david = User.create(username: "davidregan", email: "davidrobertregan@gmail.com", password: "password" admin: true)
+david = User.create(username: "davidregan", email: "davidrobertregan@gmail.com", password: "password", admin: true)
 meltucker = User.create(username: "meltucker", email: "meltucker@gmail.com", password: "password")
 mark_dantonio = User.create(username: "mark_dantonio", email: "mark@gmail.com", password: "password")
 
@@ -10,8 +10,8 @@ puts "creating teams..."
 
     msu = Team.create(name: "Michigan State", mascot: "Spartans", cheer: "Go Green", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100494/spartan-logo_qm7mfy.jpg")
     michigan = Team.create(name: "Michigan", mascot: "Wolverines", cheer: "Go Blue", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100557/1280px-Michigan_Wolverines_Logo.svg_kggnji.png")
-    notre_dame = Team.create(name: "Notre Dame", mascot: "Fighting Irish", cheer: "Go Irish", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100582/indiana-hoosiers-logo-vector_l1zeul.svg")
-    indiana = Team.create(name: "Indiana", mascot: "Hoosiers", cheer: "Go Hoosiers", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100973/1200px-Notre_Dame_Fighting_Irish_logo.svg_z4jd0f.png")
+    notre_dame = Team.create(name: "Notre Dame", mascot: "Fighting Irish", cheer: "Go Irish", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100973/1200px-Notre_Dame_Fighting_Irish_logo.svg_z4jd0f.png")
+    indiana = Team.create(name: "Indiana", mascot: "Hoosiers", cheer: "Go Hoosiers", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100582/indiana-hoosiers-logo-vector_l1zeul.svg")
     psu = Team.create(name: "Penn State", mascot: "Nittany Lions", cheer: "We are! Penn State!", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100593/penn-state-football-logo_lmfdzq.jpg")
     tie = Team.create(name: "Tie")
 

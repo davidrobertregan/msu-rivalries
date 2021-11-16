@@ -18,7 +18,7 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
     let favoritesList = userFavs.map(f => 
         <div key={f.id}>
             <h5>{f.winning_team} beat {f.losing_team} on {f.game_date}</h5>
-            <p>Favorite Moment: "{f.favorite_moment}"</p>
+            <p>Favorite Moment: "{f.preview}"</p>
         </div>)
         
     function handleDelete(){

@@ -87,7 +87,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
 
     return(
         <Container style={{padding: "100px"}}>
-                    <Card style={{ maxWidth: '60rem'}} className="mx-auto">
+                    <Card style={{ maxWidth: '60rem'}}>
                         <Card.Header>
                             <Row>
                                 <Col>
@@ -109,7 +109,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                                     <Card.Title className="d-flex justify-content-center">
                                         {favorite.nickname ? <h2><em>"{formData.nickname}"</em></h2> : <></>}
                                     </Card.Title>
-                                    <Card.Text className="border rounded">
+                                    <Card.Text className="border rounded p-4">
                                         <Row>
                                             <Col className="d-flex justify-content-center">
                                                 {game.winning_team}
