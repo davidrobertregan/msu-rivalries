@@ -38,14 +38,15 @@ games.sort((a, b) => b.id - a.id )
         )
 
         const testTabList = games.map(g => 
-            <Tab.Pane variant="success" eventKey={`#game${g.id}`}>
+            <Tab.Pane eventKey={`#game${g.id}`}>
             
             </Tab.Pane>
             )
 
     return(
         <div>
-            {gamesLoading ? <p>Loading...</p> : 
+            <h2>Series History</h2>
+            {gamesLoading ? <p>Games loading...</p> : 
             <>
             <Col sm={8} style={{maxHeight: "500px", overflow: "scroll"}}>
                 <Tab.Container>

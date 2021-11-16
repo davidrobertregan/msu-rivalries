@@ -15,11 +15,9 @@ let errorsList = errors ? errors.map(e => <li key={e} className="errors">{e}</li
             <Switch>
                 <Route exact path="/">
                     <Login setCurrentUser={setCurrentUser} setErrors={setErrors}/>
-                    <Link to="/signup" onClick={() => setErrors(null)}>sign up</Link>
                 </Route>
                 <Route path="/signup">
                     <Signup setCurrentUser={setCurrentUser} setErrors={setErrors}/> 
-                    <Link to="/" onClick={() => setErrors(null)}>I already have an account</Link>
                 </Route>
             </Switch>
             <div>

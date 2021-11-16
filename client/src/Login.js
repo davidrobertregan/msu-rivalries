@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom'
 
 function Login({setCurrentUser, setErrors}) {
 
@@ -41,13 +45,21 @@ function Login({setCurrentUser, setErrors}) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="userform">
-            <label>Username</label>
-            <input onChange={handleChange} value={formData.username} type="text" name="username"></input>
-            <label>Password</label>
-            <input onChange={handleChange} value={formData.password} type="password" name="password"></input>
-            <input type="submit"></input>
-        </form>
+        <Container>
+        <h2>Log In</h2>
+        <Form onSubmit={handleSubmit}> 
+            <Form.Group> 
+                <Form.Label>Username</Form.Label>
+                <Form.Control onChange={handleChange} value={formData.username} type="text" name="username"></Form.Control>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Password</Form.Label>
+                <Form.Control onChange={handleChange} value={formData.password} type="password" name="password"></Form.Control>
+            </Form.Group>
+            <Button type='submit'>Submit</Button>
+        </Form>
+        <Link to="/signup" onClick={() => setErrors(null)}>sign up</Link>
+        </Container>
     )
 }
 
