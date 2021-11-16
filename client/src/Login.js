@@ -44,7 +44,7 @@ function Login({setCurrentUser, setErrors}) {
     }
 
     return (
-        <Container>
+        <Container className='w-50 p-5'>
         <h2>Log In</h2>
         <Form onSubmit={handleSubmit}> 
             <Form.Group className="mb-3"> 

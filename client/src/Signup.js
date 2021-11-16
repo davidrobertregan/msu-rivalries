@@ -44,9 +44,9 @@ function Signup({setCurrentUser, setErrors}) {
     }
 
     return(
-        <Container>
+        <Container className='w-50 p-5'>
             <h2>Sign Up</h2>
-            <Form onSubmit={handleSubmit}> 
+            <Form onSubmit={handleSubmit} > 
                 <Form.Group className="mb-3"> 
                     <Form.Label>Username</Form.Label>
                     <Form.Control  type="text" name="username" value={formData.username} onChange={handleChange}></Form.Control>
