@@ -4,6 +4,7 @@ import GameCard from "./GameCard"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import Card from "react-bootstrap/Card"
 
 function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame } ) {
 
@@ -27,15 +28,34 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
                     handleGameClick={handleGameClick}/>  
                 </Col>
         {!viewGame ?
-            <Col className="rivalry-card">
-            <h1>{rivalry.name}</h1>
-            <h3>{rivalry.record}</h3>
-            <img style={{maxWidth: "300px"}}src={rivalry.trophy_img_url}></img>
-            <h4>{rivalry.trophy}</h4>
-            <div>
-                <h4>Backstory:</h4>
-                <p>{rivalry.description}</p>
-            </div>
+            // <Col className="rivalry-card">
+            // <h1>{rivalry.name}</h1>
+            // <h3>{rivalry.record}</h3>
+            // <img style={{maxWidth: "300px"}}src={rivalry.trophy_img_url}></img>
+            // <h4>{rivalry.trophy}</h4>
+            // <div>
+            //     <h4>Backstory:</h4>
+            //     <p>{rivalry.description}</p>
+            // </div>
+            // </Col>
+            <Col>
+                <Card>
+                    <Card.Body>
+                    <Card.Title>
+                        {rivalry.name}
+                    </Card.Title>
+                    <Card.Subtitle>
+                        {rivalry.record}
+                    </Card.Subtitle>
+                    <Card.Img style={{maxWidth: "300px", height: "300px", objectFit: "contain"}} src={rivalry.trophy_img_url}></Card.Img>
+                    <Card.Title>
+                        {rivalry.trophy}
+                    </Card.Title>
+                    <Card.Text>
+                        {rivalry.description}
+                    </Card.Text>
+                    </Card.Body>
+                </Card>
             </Col>
         :
             <Col>
