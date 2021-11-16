@@ -85,11 +85,9 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
         }
     }
 
-    console.log(game)
-
     return(
-        <Container style={{paddingTop: "100px"}}>
-                    <Card style={{ maxWidth: '50rem'}} className="mx-auto">
+        <Container style={{padding: "100px"}}>
+                    <Card style={{ maxWidth: '60rem'}} className="mx-auto">
                         <Card.Header>
                             <Row>
                                 <Col>
@@ -105,77 +103,75 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                         <Card.Body>
                             <Row>
                                 <Col>
-                                    <Link to={`/favorite/${favorite.id}`}>
-                                        <Card.Img src={formData.img_url}></Card.Img>
-                                    </Link>
-                                    </Col>
-                                    <Col>
-                                        <Card.Title className="d-flex justify-content-center">
-                                            {favorite.nickname ? <h2><em>"{formData.nickname}"</em></h2> : <></>}
-                                        </Card.Title>
-                                            <Card.Text className="border rounded">
-                                                <Row>
-                                                    <Col className="d-flex justify-content-center">
-                                                        {game.winning_team}
-                                                    </Col>
-                                                    <Col>
-                                                        <div className="d-flex flex-column">
-                                                            <h5 className="align-self-center">{game.score}</h5>
-                                                            <p className="align-self-center">{game.location}</p>
-                                                        </div>
-                                                    </Col>
-                                                    <Col className="d-flex justify-content-center">
-                                                        {game.losing_team}
-                                                    </Col>
-                                                </Row>
-                                            </Card.Text>
-                                            { viewForm ?
-                                                <Form onSubmit={handleSubmit}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Add a nickname:</Form.Label>
-                                                        <Form.Control type="text" name="nickname" value={formData.nickname} onChange={handleChange}></Form.Control>
-                                                    </Form.Group>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Where were you?</Form.Label>
-                                                        <Form.Control type="text" name="location" value={formData.location} onChange={handleChange}></Form.Control>
-                                                    </Form.Group>
-                                                    <Form.Group className='mb-3'>
-                                                        <Form.Label>Favorite moment?</Form.Label>
-                                                        <Form.Control type="text" name="favorite_moment" value={formData.favorite_moment} onChange={handleChange}></Form.Control>
-                                                    </Form.Group>
-                                                    <Form.Group className='mb-3'>
-                                                        <Form.Label>Upload a personal picture from the game!</Form.Label>
-                                                        <Form.Control type="text" name="img_url" value={formData.img_url} onChange={handleChange}></Form.Control>
-                                                    </Form.Group>
-                                                        <Button type="submit">Submit</Button>
-                                                        <Button onClick={handleDelete}>Remove</Button>
-                                                </Form>
-                                            :
-
-                                                <>
-                                                    <Card.Title>
-                                                    Where {favorite.owner} was:
-                                                    </Card.Title>
-                                                    <Card.Text>
-                                                        {formData.location}
-                                                    </Card.Text>
-                                                    <Card.Title>
-                                                        Favorite Moment:
-                                                    </Card.Title>
-                                                    <Card.Text>
-                                                        {formData.favorite_moment}
-                                                    </Card.Text>
-                                                </>
-                                            }
-                                            { favorite.user_can_modify ? 
-                                                <div className="d-flex justify-content-end">
-                                                    <Button onClick={() => {setViewForm(true)}}>Edit</Button>
+                                    <Card.Img src={formData.img_url}></Card.Img>
+                                </Col>
+                                <Col>
+                                    <Card.Title className="d-flex justify-content-center">
+                                        {favorite.nickname ? <h2><em>"{formData.nickname}"</em></h2> : <></>}
+                                    </Card.Title>
+                                    <Card.Text className="border rounded">
+                                        <Row>
+                                            <Col className="d-flex justify-content-center">
+                                                {game.winning_team}
+                                            </Col>
+                                            <Col>
+                                                <div className="d-flex flex-column">
+                                                    <h5 className="align-self-center">{game.score}</h5>
+                                                    <p className="align-self-center">{game.location}</p>
                                                 </div>
-                                            :
-                                                <></>
-                                            }                 
-                                    </Col>      
+                                            </Col>
+                                            <Col className="d-flex justify-content-center">
+                                                {game.losing_team}
+                                            </Col>
+                                        </Row>
+                                    </Card.Text>
+                                    { viewForm ?
+                                        <Form onSubmit={handleSubmit}>
+                                            <Form.Group className="mb-3">
+                                                <Form.Label>Add a nickname:</Form.Label>
+                                                <Form.Control type="text" name="nickname" value={formData.nickname} onChange={handleChange}></Form.Control>
+                                            </Form.Group>
+                                            <Form.Group className="mb-3">
+                                                <Form.Label>Where were you?</Form.Label>
+                                                <Form.Control type="text" name="location" value={formData.location} onChange={handleChange}></Form.Control>
+                                            </Form.Group>
+                                            <Form.Group className='mb-3'>
+                                                <Form.Label>Favorite moment?</Form.Label>
+                                                <Form.Control type="text" name="favorite_moment" value={formData.favorite_moment} onChange={handleChange}></Form.Control>
+                                            </Form.Group>
+                                            <Form.Group className='mb-3'>
+                                                <Form.Label>Upload a personal picture from the game!</Form.Label>
+                                                <Form.Control type="text" name="img_url" value={formData.img_url} onChange={handleChange}></Form.Control>
+                                            </Form.Group>
+                                                <Button type="submit">Submit</Button>
+                                                <Button onClick={handleDelete}>Remove</Button>
+                                        </Form>
+                                    :
+
+                                        <>
+                                            <Card.Title>
+                                            Where {favorite.owner} watched:
+                                            </Card.Title>
+                                            <Card.Text>
+                                                {formData.location}
+                                            </Card.Text>
+                                            <Card.Title>
+                                                Favorite Moment:
+                                            </Card.Title>
+                                            <Card.Text>
+                                                {formData.favorite_moment}
+                                            </Card.Text>
+                                        </>
+                                    } 
+                                </Col>      
                             </Row>
+                            { favorite.user_can_modify ? 
+                                <div className="d-flex justify-content-end">
+                                    <Button variant="light" onClick={() => {setViewForm(!viewForm)}}>✏️</Button>
+                                </div>
+                            :
+                                <></>
+                            }                
                         </Card.Body>
                     </Card>
         </Container>

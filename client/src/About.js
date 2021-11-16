@@ -1,16 +1,16 @@
 import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
+import FavoritesContainer from './FavoritesContainer'
 import Row from 'react-bootstrap/Row'
 import Carousel from 'react-bootstrap/Carousel'
 import Stadium from "./spartan-stadium.jpeg"
 import Duckett from "./tj-duckett.jpeg"
 import Jalen from "./jalen-watts-jackson.jpeg"
 
-function About() {
+function About( { favorites }) {
 
     return (
-
-    <Container style={{paddingTop: "125px", maxWidth: "1000px"}}>
+    <>
+    <Container style={{paddingTop: "125px", maxWidth: "700px"}}>
         <Row>
             <h1>
                 Welcome to Spartan Rivalries
@@ -57,6 +57,10 @@ function About() {
             </Carousel.Item>
         </Carousel>
     </Container>
+    <Container>
+        <FavoritesContainer favorites={favorites}/>
+    </Container>
+    </>
     )
 }
 

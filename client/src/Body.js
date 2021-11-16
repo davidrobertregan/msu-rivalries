@@ -24,8 +24,7 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
     return(
         <Switch>
             <Route exact path="/">
-                <About />
-                <FavoritesContainer favorites={favorites}/>
+                <About favorites={favorites}/>
             </Route>
                 {rivalryRoutes}
             <Route path="/favorites">

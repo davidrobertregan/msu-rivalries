@@ -10,9 +10,14 @@ function FavoritesContainer( { favorites } ) {
             />)
 
     return (
-        <Container style={{paddingTop: "125px"}}>
+        <>
+        <Container style={{paddingTop: "100px"}} className="d-flex justify-content-center">
+            <h2>Recent Favorites</h2>
+        </Container>
+        <Container className="d-flex flex-row flex-wrap justify-content-center">
             {favCards}
         </Container>  
+        </>
     )
 }
 

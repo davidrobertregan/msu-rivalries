@@ -6,30 +6,27 @@ import ListGroup from 'react-bootstrap/ListGroup'
 function FavoriteCard( { favorite }) {
 
     return(
-        <Container className="p-3">
-            <Card style={{ maxWidth: '20rem'}} className="mx-auto">
-                <Card.Header>
-                    <b>{favorite.owner}</b>
-                </Card.Header>
-                <Card.Body>
-                <Card.Title>
-                    {favorite.nickname ? <h2><em>"{favorite.nickname}"</em></h2> : <></>}
+        <Card style={{maxWidth: "15em", margin: "10px"}}>
+            <Card.Header>
+                <b>{favorite.owner}</b>
+            </Card.Header>
+            <Card.Body>
+            <Link to={`/favorite/${favorite.id}`}>
+                <Card.Img style={{maxWidth: "250px", height: "250px", objectFit: "cover"}} src={favorite.img_url}></Card.Img>
+            </Link>
+            <ListGroup className="list-group-flush">
+                <Card.Title className="d-flex justify-content-center">
+                    {favorite.nickname ? <em>"{favorite.nickname}"</em> : <></>}
                 </Card.Title>
-                <Link to={`/favorite/${favorite.id}`}>
-                    <Card.Img src={favorite.img_url}></Card.Img>
-                </Link>
-                <ListGroup className="list-group-flush">
-                    <ListGroup.Item><h6>{favorite.winning_team} over {favorite.losing_team}</h6></ListGroup.Item>
-                    <ListGroup.Item><p>{favorite.game_date}</p></ListGroup.Item>
-                    <ListGroup.Item>
-                        <Card.Text>
-                            {favorite.preview ? <p><em>"{favorite.preview}"</em></p> : <></>}
-                        </Card.Text>
-                    </ListGroup.Item>
-                </ListGroup>
-                </Card.Body>
-            </Card>
-        </Container>
+                <ListGroup.Item><p>{favorite.game_date}</p></ListGroup.Item>
+                <ListGroup.Item>
+                    <Card.Text>
+                        {favorite.preview ? <p><em>"{favorite.preview}"</em></p> : <></>}
+                    </Card.Text>
+                </ListGroup.Item>
+            </ListGroup>
+            </Card.Body>
+        </Card>
     )
 }
 

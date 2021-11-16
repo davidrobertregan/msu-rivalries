@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
+import Card from "react-bootstrap/Card"
 
 function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame }) {
 
@@ -123,36 +124,51 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         setNewComment("")
     }
 
+    console.log(game)
     return(
-        <div className="game-card">
-            <h1>{winner.name}</h1>
-            <h2>{score}</h2>
-            <img src={winner.logo_url} style={{maxWidth: "250px"}}></img>
-            <p>{date}</p>
-            <p>{location}</p>
-            <Container>
-                <Row>
-                    <Col className="d-flex justify-content-center"><Button variant="light" onClick={() => setViewGame(false)}>Back</Button></Col>
-                    <Col className="d-flex justify-content-center"><a href="#comment-form"><Button variant="light">Comment</Button></a></Col>
-                    <Col className="d-flex justify-content-center"><Button variant="light" onClick={handleFavoriteClick}>{favButtonText}</Button></Col>
-                </Row>
-            </Container>
-            {showMessage ?
-            <div>
-                <p><em>This game is in your favorites! Customize it <Link to={`/favorite/${favId}`}>here</Link></em></p>
-            </div>
-            :
-            <></>
-}
-
-{/* comments needs to be its own component */}
+        <>
+            <Card>
+                <Card.Header className="d-flex justify-content-end">
+                    {date}
+                </Card.Header>
+                <Card.Img className="p-5" src={winner.logo_url}>
+                </Card.Img>
+                <Card.Text>
+                    <Row>
+                        <Col className="d-flex justify-content-center">
+                            <b>{winner.name}</b>
+                        </Col>
+                        <Col>
+                            <div className="d-flex flex-column">
+                                <h5 className="align-self-center">{score}</h5>
+                                <p className="align-self-center">{location}</p>
+                            </div>
+                        </Col>
+                        <Col className="d-flex justify-content-center">
+                            {loser.name}
+                        </Col>
+                    </Row>
+                </Card.Text>
+                <Container className="border-top p-4">
+                    <Row>
+                        <Col className="d-flex justify-content-center"><Button variant="light" onClick={() => setViewGame(false)}>Back</Button></Col>
+                        <Col className="d-flex justify-content-center"><a href="#comment-form"><Button variant="light">Comment</Button></a></Col>
+                        <Col className="d-flex justify-content-center"><Button variant="light" onClick={handleFavoriteClick}>{favButtonText}</Button></Col>
+                    </Row>
+                </Container>
+                <Card.Text>
+                { showMessage ?
+                    <div>
+                        <p><em>This game is in your favorites! Customize it <Link to={`/favorite/${favId}`}>here</Link></em></p>
+                    </div>
+                :
+                    <></>
+                }
+                </Card.Text>
+            </Card>
+{/* comments should  be its own component */}
             <Container className="border-top pt-3">
                     {commentDivs}
-                {/* <form onSubmit={handleSubmit}>
-                    <label><b>{currentUser.username}:</b></label>
-                    <input type="text" value={newComment} onChange={handleChange} placeholder="add a comment"></input>
-                    <input type="submit"></input>
-                </form> */}
                 <Form id="comment-form" className="pt-5 pb-5" onSubmit={handleSubmit}>
                     <Row>
                         <Col>
@@ -167,7 +183,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                     </Row>
                 </Form>
             </Container>
-        </div>
+        </>
     )
 }
 
