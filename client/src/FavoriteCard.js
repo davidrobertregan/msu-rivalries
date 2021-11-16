@@ -7,7 +7,7 @@ function FavoriteCard( { favorite }) {
 
     return(
         <Container className="p-3">
-            <Card style={{ maxWidth: '25rem'}} className="mx-auto">
+            <Card style={{ maxWidth: '20rem'}} className="mx-auto">
                 <Card.Header>
                     <b>{favorite.owner}</b>
                 </Card.Header>

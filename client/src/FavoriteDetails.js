@@ -5,6 +5,10 @@ import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+import CardImg from 'react-bootstrap/esm/CardImg'
+import ListGroupItem from 'react-bootstrap/esm/ListGroupItem'
 
 function FavoriteDetails({ editFavorite, deleteFavorite }) {
 
@@ -83,46 +87,74 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
         }
     }
 
+    console.log(game)
+
     return(
         <Container style={{paddingTop: "100px"}}>
-                <Card style={{ maxWidth: '25rem'}} className="mx-auto">
-                    <Card.Header>
-                        <b>{favorite.owner}</b>
-                    </Card.Header>
-                    <Card.Body>
-                    <Card.Title>
-                        {favorite.nickname ? <h2><em>"{formData.nickname}"</em></h2> : <></>}
-                    </Card.Title>
-                    <Link to={`/favorite/${favorite.id}`}>
-                        <Card.Img src={formData.img_url}></Card.Img>
-                    </Link>
-                    <ListGroup className="list-group-flush">
-                        <ListGroup.Item><h6>{game.winning_team} over {game.losing_team}</h6></ListGroup.Item>
-                        <ListGroup.Item><h6>{game.score}</h6></ListGroup.Item>
-                        <ListGroup.Item><h6>{game.location}</h6></ListGroup.Item>
-                        <ListGroup.Item><p>{game.date}</p></ListGroup.Item>
-                        <ListGroup.Item>
-                            <Card.Text>
-                                <p>{formData.location}</p>
-                            </Card.Text>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                            <Card.Text>
-                                <p>{formData.favorite_moment}</p>
-                            </Card.Text>
-                        </ListGroup.Item>
-                    </ListGroup>
-                    { favorite.user_can_modify ? 
-                    <div>
-                        <Button onClick={() => {setViewForm(true)}}>Edit</Button>
-                        <Button onClick={handleDelete}>Remove</Button>
-                    </div>
-                :
-
-                <></>
-}
-                    </Card.Body>
-                </Card>
+                    <Card style={{ maxWidth: '60rem'}} className="mx-auto">
+                        <Card.Header>
+                            <Row>
+                                <Col>
+                                    <h4>{favorite.owner}</h4>
+                                </Col>
+                                <Col className="d-flex justify-content-end">
+                                    <div>
+                                        <h5>{game.date}</h5>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Card.Header>
+                        <Card.Body>
+                            <Row>
+                                <Col>
+                                    <Link to={`/favorite/${favorite.id}`}>
+                                        <Card.Img src={formData.img_url}></Card.Img>
+                                    </Link>
+                                    </Col>
+                                    <Col>
+                                        <Card.Title className="d-flex justify-content-center">
+                                            {favorite.nickname ? <h2><em>"{formData.nickname}"</em></h2> : <></>}
+                                        </Card.Title>
+                                            <Card.Text className="border rounded">
+                                                <Row>
+                                                    <Col className="d-flex justify-content-center">
+                                                        {game.winning_team}
+                                                    </Col>
+                                                    <Col>
+                                                        <div className="d-flex flex-column">
+                                                            <h5 className="align-self-center">{game.score}</h5>
+                                                            <p className="align-self-center">{game.location}</p>
+                                                        </div>
+                                                    </Col>
+                                                    <Col className="d-flex justify-content-center">
+                                                        {game.losing_team}
+                                                    </Col>
+                                                </Row>
+                                            </Card.Text>
+                                            <Card.Title>
+                                                Where {favorite.owner} was:
+                                            </Card.Title>
+                                            <Card.Text>
+                                                {formData.location}
+                                            </Card.Text>
+                                            <Card.Title>
+                                                Favorite Moment:
+                                            </Card.Title>
+                                            <Card.Text>
+                                                {formData.favorite_moment}
+                                            </Card.Text>
+                                    </Col>
+                                    { favorite.user_can_modify ? 
+                                    <div>
+                                        <Button onClick={() => {setViewForm(true)}}>Edit</Button>
+                                        <Button onClick={handleDelete}>Remove</Button>
+                                    </div>
+                                    :
+                                        <></>
+                                    }                       
+                            </Row>
+                        </Card.Body>
+                    </Card>
 
             { viewForm ?
 
