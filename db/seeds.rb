@@ -8,19 +8,20 @@ mark_dantonio = User.create(username: "mark_dantonio", email: "mark@gmail.com", 
 
 puts "creating teams..."
 
-    msu = Team.create(name: "Michigan State", mascot: "Spartans", cheer: "Go Green", logo_url:"http://brand.msu.edu/_files/images/spartan-helmet-og.png")
-    michigan = Team.create(name: "Michigan", mascot: "Wolverines", cheer: "Go Blue", logo_url:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Michigan_Wolverines_Logo.svg/1280px-Michigan_Wolverines_Logo.svg.png")
-    notre_dame = Team.create(name: "Notre Dame", mascot: "Fighting Irish", cheer: "Go Irish", logo_url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Notre_Dame_Fighting_Irish_logo.svg/1200px-Notre_Dame_Fighting_Irish_logo.svg.png")
-    indiana = Team.create(name: "Indiana", mascot: "Hoosiers", cheer: "Go Hoosiers", logo_url:"https://brandslogos.com/wp-content/uploads/thumbs/indiana-hoosiers-logo-vector.svg")
-    psu = Team.create(name: "Penn State", mascot: "Nittany Lions", cheer: "We are! Penn State!", logo_url:"https://1000logos.net/wp-content/uploads/2017/11/penn-state-football-logo.jpg")
+    msu = Team.create(name: "Michigan State", mascot: "Spartans", cheer: "Go Green", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100494/spartan-logo_qm7mfy.jpg")
+    michigan = Team.create(name: "Michigan", mascot: "Wolverines", cheer: "Go Blue", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100557/1280px-Michigan_Wolverines_Logo.svg_kggnji.png")
+    notre_dame = Team.create(name: "Notre Dame", mascot: "Fighting Irish", cheer: "Go Irish", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100582/indiana-hoosiers-logo-vector_l1zeul.svg")
+    indiana = Team.create(name: "Indiana", mascot: "Hoosiers", cheer: "Go Hoosiers", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100973/1200px-Notre_Dame_Fighting_Irish_logo.svg_z4jd0f.png")
+    psu = Team.create(name: "Penn State", mascot: "Nittany Lions", cheer: "We are! Penn State!", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100593/penn-state-football-logo_lmfdzq.jpg")
     tie = Team.create(name: "Tie")
 
 puts "creating rivalries..."
 
-    paul = "https://cdn.shopify.com/s/files/1/0085/8402/products/paul-bunyan-cover_4a7fb092-0e9e-4a7b-9249-83a2e049d9bf_900x.png?v=1535572432"
-    megaphone = "https://i.pinimg.com/originals/88/7b/99/887b998c126cc0000388e312e46b3157.jpg"
-    spittoon = "https://cdn.shopify.com/s/files/1/0085/8402/products/old-brass-spittoon-cover_355d77f5-e36b-4d6c-8a00-cea7f3d23697_600x.png?v=1535654017"
-    land_grant = "https://i0.wp.com/www.nittanyturkey.com/wp-content/uploads/2006/11/land_grant_trophy_450.jpg"
+    paul = "https://res.cloudinary.com/do4zijkje/image/upload/v1637100629/paul-bunyan-cover_4a7fb092-0e9e-4a7b-9249-83a2e049d9bf_900x_ipve0u.png"
+    megaphone = "https://res.cloudinary.com/do4zijkje/image/upload/v1637100733/887b998c126cc0000388e312e46b3157_pqph4x.jpg"
+    spittoon = "https://res.cloudinary.com/do4zijkje/image/upload/v1637100747/old-brass-spittoon-cover_355d77f5-e36b-4d6c-8a00-cea7f3d23697_600x_n8sjha.png"
+    land_grant = "https://res.cloudinary.com/do4zijkje/image/upload/v1637100843/land_grant_trophy_450_mnoxgv.jpg"
+    
 
     mich_rival_desc = "The Michigan–Michigan State football rivalry is an American college football rivalry between the University of Michigan Wolverines and the Michigan State University Spartans. The teams first played in 1898 and have met 114 times. The game has now been played uninterrupted, every year since 1945. The winner of each year's game receives the Paul Bunyan – Governor of Michigan Trophy, a four-foot wooden statue of a lumberjack that was first presented in 1953 to commemorate Michigan State's beginning football competition as a member of the Big Ten Conference."
     nd_rival_desc = "The Michigan State–Notre Dame football rivalry is an American college football rivalry between the Michigan State Spartans and Notre Dame Fighting Irish. The first game between the teams took place on November 25, 1897. Since 1949, the teams competed for the Megaphone Trophy, a trophy introduced by the Alumni Clubs of Notre Dame and Michigan State to be presented to the winner of the game. The rivalry includes several notable games, such as the 1966 game, arguably one of the greatest college football games ever played. Notre Dame currently leads the series."
@@ -110,10 +111,10 @@ CSV.foreach('PSU-MSU.csv') do |row|
 
 end
 
-puts "...creating Dave's favorites"
+# puts "...creating Dave's favorites"
 
-david.favorites.create(game: mich_rival.games.last)
-david.favorites.create(game: indiana_rival.games.last)
+# david.favorites.create(game: mich_rival.games.last)
+# david.favorites.create(game: indiana_rival.games.last)
 
 puts "...creating comments"
 

@@ -41,17 +41,20 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
             <Col>
                 <Card>
                     <Card.Body>
-                    <Card.Title>
-                        {rivalry.name}
+                    <Card.Title className='d-flex justify-content-center'>
+                        {rivalry.name} - Michigan State
                     </Card.Title>
-                    <Card.Subtitle>
+                    <Card.Subtitle className='d-flex justify-content-center'>
                         {rivalry.record}
                     </Card.Subtitle>
-                    <Card.Img style={{maxWidth: "300px", height: "300px", objectFit: "contain"}} src={rivalry.trophy_img_url}></Card.Img>
-                    <Card.Title>
+                    <div className='d-flex justify-content-center'>
+                        <Card.Img style={{maxWidth: "300px", height: "300px", objectFit: "contain"}} src={rivalry.trophy_img_url}>
+                        </Card.Img>
+                    </div>
+                    <Card.Title className='d-flex justify-content-center'>
                         {rivalry.trophy}
                     </Card.Title>
-                    <Card.Text>
+                    <Card.Text className='d-flex justify-content-center'>
                         {rivalry.description}
                     </Card.Text>
                     </Card.Body>
