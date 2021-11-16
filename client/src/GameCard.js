@@ -19,7 +19,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     const comments = game[0].comments
 
     const commentDivs = comments.map(c => 
-        <Container className="p-1" key={c.id}>
+        <Container className="p-2" key={c.id}>
             <Row className="bg-light border rounded">
                 <Col>
             <h6>{c.author}:</h6>
@@ -91,7 +91,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         })
     }
 
-    const favButtonText = favCheck() ? "⭐️" : "★"
+    const favButtonText = favCheck() ? "⭐️" : "☆"
 
     function handleChange(e) {
         setNewComment(e.target.value)
@@ -130,8 +130,13 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
             <img src={winner.logo_url} style={{maxWidth: "250px"}}></img>
             <p>{date}</p>
             <p>{location}</p>
-            <button onClick={handleFavoriteClick}>{favButtonText}</button>
-            <button onClick={() => setViewGame(false)}>Rivalry Info</button>
+            <Container>
+                <Row>
+                    <Col className="d-flex justify-content-center"><Button variant="light" onClick={() => setViewGame(false)}>Back</Button></Col>
+                    <Col className="d-flex justify-content-center"><a href="#comment-form"><Button variant="light">Comment</Button></a></Col>
+                    <Col className="d-flex justify-content-center"><Button variant="light" onClick={handleFavoriteClick}>{favButtonText}</Button></Col>
+                </Row>
+            </Container>
             {showMessage ?
             <div>
                 <p><em>This game is in your favorites! Customize it <Link to={`/favorite/${favId}`}>here</Link></em></p>
@@ -141,24 +146,23 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
 }
 
 {/* comments needs to be its own component */}
-            <Container>
-                <h3>Comments</h3>
+            <Container className="border-top pt-3">
                     {commentDivs}
                 {/* <form onSubmit={handleSubmit}>
                     <label><b>{currentUser.username}:</b></label>
                     <input type="text" value={newComment} onChange={handleChange} placeholder="add a comment"></input>
                     <input type="submit"></input>
                 </form> */}
-                <Form className="pt-5 pb-5" onSubmit={handleSubmit}>
+                <Form id="comment-form" className="pt-5 pb-5" onSubmit={handleSubmit}>
                     <Row>
                         <Col>
                             <Form.Label><h5>{currentUser.username}</h5></Form.Label>
                         </Col>
-                        <Col xs={7}>
+                        <Col xs={6}>
                             <Form.Control type="text" value={newComment} onChange={handleChange} placeholder="add a comment"/>
                         </Col>
-                        <Col>
-                        <Button style={{float: "right"}}variant="light" type="submit">✅</Button>
+                        <Col className="d-flex justify-content-end">
+                        <Button variant="light" type="submit">✅</Button>
                         </Col>
                     </Row>
                 </Form>

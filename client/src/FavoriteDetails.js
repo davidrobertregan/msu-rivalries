@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+import { Link } from "react-router-dom"
+import Container from 'react-bootstrap/Container'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button'
 
 function FavoriteDetails({ editFavorite, deleteFavorite }) {
 
@@ -79,28 +84,45 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
     }
 
     return(
-        <div>
-            <div style={{paddingTop: '200px'}}>
-                <h1>{formData.nickname}</h1>
-                <h3>{game.winning_team} won {game.score}</h3>
-                <h5>Rivalry: {game.rivalry_name}</h5>
-                <img style={{maxWidth: "400px"}}src={formData.img_url}></img>
-                <p>{game.location}</p>
-                <p>{game.date}</p>
-                <p>Where you were: {formData.location}</p>
-                <p>Your favorite moment: {formData.favorite_moment}</p>
-                <button onClick={() => history.push('/favorites')}>Back</button>
-
-                { favorite.user_can_modify ? 
+        <Container style={{paddingTop: "100px"}}>
+                <Card style={{ maxWidth: '25rem'}} className="mx-auto">
+                    <Card.Header>
+                        <b>{favorite.owner}</b>
+                    </Card.Header>
+                    <Card.Body>
+                    <Card.Title>
+                        {favorite.nickname ? <h2><em>"{formData.nickname}"</em></h2> : <></>}
+                    </Card.Title>
+                    <Link to={`/favorite/${favorite.id}`}>
+                        <Card.Img src={formData.img_url}></Card.Img>
+                    </Link>
+                    <ListGroup className="list-group-flush">
+                        <ListGroup.Item><h6>{game.winning_team} over {game.losing_team}</h6></ListGroup.Item>
+                        <ListGroup.Item><h6>{game.score}</h6></ListGroup.Item>
+                        <ListGroup.Item><h6>{game.location}</h6></ListGroup.Item>
+                        <ListGroup.Item><p>{game.date}</p></ListGroup.Item>
+                        <ListGroup.Item>
+                            <Card.Text>
+                                <p>{formData.location}</p>
+                            </Card.Text>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Card.Text>
+                                <p>{formData.favorite_moment}</p>
+                            </Card.Text>
+                        </ListGroup.Item>
+                    </ListGroup>
+                    { favorite.user_can_modify ? 
                     <div>
-                        <button onClick={() => {setViewForm(true)}}>Edit</button>
-                        <button onClick={handleDelete}>Remove</button>
+                        <Button onClick={() => {setViewForm(true)}}>Edit</Button>
+                        <Button onClick={handleDelete}>Remove</Button>
                     </div>
                 :
 
                 <></>
 }
-            </div>
+                    </Card.Body>
+                </Card>
 
             { viewForm ?
 
@@ -121,7 +143,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
             <></>
 
             }
-        </div>
+        </Container>
     )
 }
 
