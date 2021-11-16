@@ -1,5 +1,8 @@
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
 function Signup({setCurrentUser, setErrors}) {
 
@@ -41,18 +44,29 @@ function Signup({setCurrentUser, setErrors}) {
     }
 
     return(
-
-        <form className="userform" onSubmit={handleSubmit}>
-            <label>Username</label>
-            <input type="text" name="username" value={formData.username} onChange={handleChange}></input>
-            <label>Email</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange}></input>
-            <label>Password</label>
-            <input type="password" name="password" value={formData.password} onChange={handleChange}></input>
-            <label>Password confirmation</label>
-            <input type="password" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange}></input>
-            <input type="submit"></input>
-        </form>
+        <Container>
+            <h2>Sign Up</h2>
+            <Form onSubmit={handleSubmit}> 
+                <Form.Group className="mb-3"> 
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control  type="text" name="username" value={formData.username} onChange={handleChange}></Form.Control>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" name="email" value={formData.email} onChange={handleChange}></Form.Control>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" name="password" value={formData.password} onChange={handleChange}></Form.Control>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Control type="password" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange}></Form.Control>
+                </Form.Group>
+                <Button variant='light' type='submit'>Submit</Button>
+            </Form>
+            <Link to="/" onClick={() => setErrors(null)}>I already have an account</Link>
+        </Container>
 
     )
 }
