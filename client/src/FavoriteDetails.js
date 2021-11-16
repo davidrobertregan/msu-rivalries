@@ -3,12 +3,10 @@ import { useParams, useHistory } from 'react-router-dom'
 import { Link } from "react-router-dom"
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import CardImg from 'react-bootstrap/esm/CardImg'
-import ListGroupItem from 'react-bootstrap/esm/ListGroupItem'
+import Form from "react-bootstrap/Form"
 
 function FavoriteDetails({ editFavorite, deleteFavorite }) {
 
@@ -91,7 +89,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
 
     return(
         <Container style={{paddingTop: "100px"}}>
-                    <Card style={{ maxWidth: '60rem'}} className="mx-auto">
+                    <Card style={{ maxWidth: '50rem'}} className="mx-auto">
                         <Card.Header>
                             <Row>
                                 <Col>
@@ -131,50 +129,55 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                                                     </Col>
                                                 </Row>
                                             </Card.Text>
-                                            <Card.Title>
-                                                Where {favorite.owner} was:
-                                            </Card.Title>
-                                            <Card.Text>
-                                                {formData.location}
-                                            </Card.Text>
-                                            <Card.Title>
-                                                Favorite Moment:
-                                            </Card.Title>
-                                            <Card.Text>
-                                                {formData.favorite_moment}
-                                            </Card.Text>
-                                    </Col>
-                                    { favorite.user_can_modify ? 
-                                    <div>
-                                        <Button onClick={() => {setViewForm(true)}}>Edit</Button>
-                                        <Button onClick={handleDelete}>Remove</Button>
-                                    </div>
-                                    :
-                                        <></>
-                                    }                       
+                                            { viewForm ?
+                                                <Form onSubmit={handleSubmit}>
+                                                    <Form.Group className="mb-3">
+                                                        <Form.Label>Add a nickname:</Form.Label>
+                                                        <Form.Control type="text" name="nickname" value={formData.nickname} onChange={handleChange}></Form.Control>
+                                                    </Form.Group>
+                                                    <Form.Group className="mb-3">
+                                                        <Form.Label>Where were you?</Form.Label>
+                                                        <Form.Control type="text" name="location" value={formData.location} onChange={handleChange}></Form.Control>
+                                                    </Form.Group>
+                                                    <Form.Group className='mb-3'>
+                                                        <Form.Label>Favorite moment?</Form.Label>
+                                                        <Form.Control type="text" name="favorite_moment" value={formData.favorite_moment} onChange={handleChange}></Form.Control>
+                                                    </Form.Group>
+                                                    <Form.Group className='mb-3'>
+                                                        <Form.Label>Upload a personal picture from the game!</Form.Label>
+                                                        <Form.Control type="text" name="img_url" value={formData.img_url} onChange={handleChange}></Form.Control>
+                                                    </Form.Group>
+                                                        <Button type="submit">Submit</Button>
+                                                        <Button onClick={handleDelete}>Remove</Button>
+                                                </Form>
+                                            :
+
+                                                <>
+                                                    <Card.Title>
+                                                    Where {favorite.owner} was:
+                                                    </Card.Title>
+                                                    <Card.Text>
+                                                        {formData.location}
+                                                    </Card.Text>
+                                                    <Card.Title>
+                                                        Favorite Moment:
+                                                    </Card.Title>
+                                                    <Card.Text>
+                                                        {formData.favorite_moment}
+                                                    </Card.Text>
+                                                </>
+                                            }
+                                            { favorite.user_can_modify ? 
+                                                <div className="d-flex justify-content-end">
+                                                    <Button onClick={() => {setViewForm(true)}}>Edit</Button>
+                                                </div>
+                                            :
+                                                <></>
+                                            }                 
+                                    </Col>      
                             </Row>
                         </Card.Body>
                     </Card>
-
-            { viewForm ?
-
-            <form onSubmit={handleSubmit}>
-                <label>Add a nickname:</label>
-                <input type="text" name="nickname" value={formData.nickname} onChange={handleChange}></input>
-                <label>Where were you?</label>
-                <input type="text" name="location" value={formData.location} onChange={handleChange}></input>
-                <label>Favorite moment?</label>
-                <input type="text" name="favorite_moment" value={formData.favorite_moment} onChange={handleChange}></input>
-                <label>Upload a personal picture from the game!</label>
-                <input type="text" name="img_url" value={formData.img_url} onChange={handleChange}></input>
-                <input type="submit"></input>
-            </form>
-
-            :
-
-            <></>
-
-            }
         </Container>
     )
 }
