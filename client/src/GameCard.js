@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
+import Form from "react-bootstrap/Form"
 
 function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame }) {
 
@@ -19,9 +20,9 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
 
     const commentDivs = comments.map(c => 
         <Container className="p-1" key={c.id}>
-            <Row>
+            <Row className="bg-light border rounded">
                 <Col>
-            <h5>{c.author}:</h5>
+            <h6>{c.author}:</h6>
             <p>{c.content}</p>
             </Col>
             <Col>
@@ -140,15 +141,28 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
 }
 
 {/* comments needs to be its own component */}
-            <div className="comment-div">
+            <Container>
                 <h3>Comments</h3>
                     {commentDivs}
-                <form onSubmit={handleSubmit}>
+                {/* <form onSubmit={handleSubmit}>
                     <label><b>{currentUser.username}:</b></label>
                     <input type="text" value={newComment} onChange={handleChange} placeholder="add a comment"></input>
                     <input type="submit"></input>
-                </form>
-            </div>
+                </form> */}
+                <Form className="pt-5 pb-5" onSubmit={handleSubmit}>
+                    <Row>
+                        <Col>
+                            <Form.Label><h5>{currentUser.username}</h5></Form.Label>
+                        </Col>
+                        <Col xs={7}>
+                            <Form.Control type="text" value={newComment} onChange={handleChange} placeholder="add a comment"/>
+                        </Col>
+                        <Col>
+                        <Button style={{float: "right"}}variant="light" type="submit">✅</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Container>
         </div>
     )
 }
