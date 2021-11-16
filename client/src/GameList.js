@@ -32,7 +32,7 @@ games.sort((a, b) => b.id - a.id )
             key={g.id} 
             value={g.id}
             >
-            {g.date} - {g.winner.name} - {g.score}
+            {g.date} - {g.winner.name}
             </li>
         </ListGroup.Item>
         )
@@ -48,7 +48,7 @@ games.sort((a, b) => b.id - a.id )
             <h2>Series History</h2>
             {gamesLoading ? <p>Games loading...</p> : 
             <>
-            <Col sm={8} style={{maxHeight: "500px", overflow: "scroll"}}>
+            <Col sm={8} style={{maxHeight: "500px", maxWidth: "300px", overflow: "scroll"}}>
                 <Tab.Container>
                     <ListGroup>
                         {testList}

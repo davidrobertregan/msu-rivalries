@@ -1,6 +1,10 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+import Button from "react-bootstrap/Button"
 
 function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame }) {
 
@@ -14,14 +18,21 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     const comments = game[0].comments
 
     const commentDivs = comments.map(c => 
-        <div key={c.id}>
-            <p>{c.author}: {c.content}</p>
+        <Container className="p-1" key={c.id}>
+            <Row>
+                <Col>
+            <h5>{c.author}:</h5>
+            <p>{c.content}</p>
+            </Col>
+            <Col>
             {c.user_can_modify ?
-                <button value={c.id} onClick={handleDeleteCommentClick}>delete</button> 
+                <Button variant="light" value={c.id} onClick={handleDeleteCommentClick}>🗑</Button> 
             :
                 <></>
             }
-        </div>
+            </Col>
+            </Row>
+        </Container>
         )
 
     const [newComment, setNewComment] = useState("")
@@ -133,7 +144,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                 <h3>Comments</h3>
                     {commentDivs}
                 <form onSubmit={handleSubmit}>
-                    <label>{currentUser.username}:</label>
+                    <label><b>{currentUser.username}:</b></label>
                     <input type="text" value={newComment} onChange={handleChange} placeholder="add a comment"></input>
                     <input type="submit"></input>
                 </form>
