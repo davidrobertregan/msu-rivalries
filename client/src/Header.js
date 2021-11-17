@@ -33,18 +33,18 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                    <NavDropdown title="Rivalries" id="basic-nav-dropdown">
-                        {rivalryNavLinks}
-                    </NavDropdown>
-                    <Nav.Link as={NavLink} to="/favorites">
-                        Favorites
-                    </Nav.Link>
-                    <Nav.Link as={NavLink} to={`/${currentUser.username}`}>
-                        {currentUser.username}
-                    </Nav.Link>
-                    <Nav.Link onClick={handleClick}>
-                        Logout
-                    </Nav.Link>
+                        <NavDropdown title="Rivalries" id="basic-nav-dropdown">
+                            {rivalryNavLinks}
+                        </NavDropdown>
+                        <Nav.Link as={NavLink} to="/favorites">
+                            My Favorites
+                        </Nav.Link>
+                        <Nav.Link as={NavLink} to={`/${currentUser.username}`}>
+                            {currentUser.username}
+                        </Nav.Link>
+                        <Nav.Link onClick={handleClick}>
+                            Logout
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
