@@ -165,10 +165,13 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                             </Row>
                             { favorite.user_can_modify ? 
                                 <div className="d-flex justify-content-end">
+                                    <Button variant="light" onClick={() => {history.goBack()}}>Back</Button>
                                     <Button variant="light" onClick={() => {setViewForm(!viewForm)}}>✏️</Button>
                                 </div>
                             :
-                                <></>
+                                <div className="d-flex justify-content-end">
+                                    <Button variant="light" onClick={() => {history.goBack()}}>Back</Button>
+                                </div>
                             }                
                         </Card.Body>
                     </Card>
