@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Carousel from "react-bootstrap/Carousel"
 
-function Login({setCurrentUser, setErrors}) {
+function Login({setCurrentUser, setErrors, errorsList}) {
 
     const [formData, setFormData ] = useState({username: '', password: ''})
 
@@ -63,6 +63,9 @@ function Login({setCurrentUser, setErrors}) {
                     </Form.Group>
                     <Button variant='light' type='submit'>Submit</Button>
                 </Form>
+                <div className="p-4">
+                    {errorsList}
+                </div>
                 <Link to="/signup" onClick={() => setErrors(null)}>sign up</Link>
                 </Container>
             </Col>
@@ -73,18 +76,18 @@ function Login({setCurrentUser, setErrors}) {
             <p><em>Relive your favorite MSU moments...</em></p>
             <Carousel>
             <Carousel.Item>
-                <img
-                    style={{maxHeight: "400px", objectFit: "cover"}}
-                    className="d-block w-100"
-                    src={"https://res.cloudinary.com/do4zijkje/image/upload/v1637165794/10-19-michigan-01_vojthx.jpg"}
-                    alt="First slide"
-                />
-            </Carousel.Item>
-            <Carousel.Item>
             <img
                     style={{height: "400px", objectFit: "cover", objectPosition: "0 10%"}}
                     className="d-block w-100"
                     src={"https://res.cloudinary.com/do4zijkje/image/upload/v1637165759/upside-down-game-nd-msu-leadjpg_l61qkf.jpg"}
+                    alt="First slide"
+                />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    style={{maxHeight: "400px", objectFit: "cover"}}
+                    className="d-block w-100"
+                    src={"https://res.cloudinary.com/do4zijkje/image/upload/v1637165794/10-19-michigan-01_vojthx.jpg"}
                     alt="First slide"
                 />
             </Carousel.Item>

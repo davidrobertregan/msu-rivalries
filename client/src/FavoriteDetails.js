@@ -87,7 +87,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
 
     return(
         <Container className="d-flex justify-content-center" style={{padding: "100px"}}>
-                    <Card style={{ maxWidth: '50rem'}}>
+                    <Card style={{ maxWidth: '55em'}}>
                         <Card.Header>
                             <Row>
                                 <Col>

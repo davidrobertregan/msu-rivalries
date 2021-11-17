@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 
-function Signup({setCurrentUser, setErrors}) {
+function Signup({setCurrentUser, setErrors, errorsList}) {
 
     const [formData, setFormData ] = useState({ username: '', email:'', password: '', password_confirmation: '' })
 
@@ -65,6 +65,9 @@ function Signup({setCurrentUser, setErrors}) {
                 </Form.Group>
                 <Button variant='light' type='submit'>Submit</Button>
             </Form>
+            <div className="p-4">
+                {errorsList}
+            </div>
             <Link to="/" onClick={() => setErrors(null)}>I already have an account</Link>
         </Container>
 
