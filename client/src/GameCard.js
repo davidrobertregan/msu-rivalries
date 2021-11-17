@@ -90,14 +90,14 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                 </Card.Text>
                 <Container className="border-top p-4">
                     <Row>
-                        <Col className="d-flex justify-content-center"><Button variant="light" onClick={() => setViewGame(false)}>Back</Button></Col>
+                        <Col className="d-flex justify-content-start"><Button variant="light" onClick={() => setViewGame(false)}>Back</Button></Col>
                         <Col className="d-flex justify-content-center"><a href="#comment-form"><Button variant="light">Comment</Button></a></Col>
-                        <Col className="d-flex justify-content-center"><Button variant="light" onClick={handleFavoriteClick}>{favButtonText}</Button></Col>
+                        <Col className="d-flex justify-content-end"><Button variant="light" onClick={handleFavoriteClick}>{favButtonText}</Button></Col>
                     </Row>
                 </Container>
                 <Card.Text>
                 { showMessage ?
-                    <div>
+                    <div className="d-flex justify-content-center">
                         <p><em>This game is in your favorites! Customize it <Link to={`/favorite/${favId}`}>here</Link></em></p>
                     </div>
                 :

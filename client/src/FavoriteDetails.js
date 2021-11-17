@@ -73,8 +73,6 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
         setViewForm(false)
     }
 
-    console.log(favorite)
-
     function handleDelete() {
         if (window.confirm("Are you sure? This action cannot be undone")){ 
             deleteFavorite(favorite.id)

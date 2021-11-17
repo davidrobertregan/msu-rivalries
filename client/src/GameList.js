@@ -23,7 +23,8 @@ games.sort((a, b) => b.id - a.id )
             {g.date} - {g.winner.name} - {g.score}
         </li>)
 
-    const testList = games.map(g =>
+
+    const gameListItems = games.map(g =>
         <ListGroup.Item
             action href={`#game${g.id}`}>
             <li
@@ -32,12 +33,12 @@ games.sort((a, b) => b.id - a.id )
             key={g.id} 
             value={g.id}
             >
-            {g.date} - {g.winner.name}
+            {g.date.slice(g.date.length - 4)} - {g.winner.name}
             </li>
         </ListGroup.Item>
         )
 
-        const testTabList = games.map(g => 
+        const gameTabList = games.map(g => 
             <Tab.Pane eventKey={`#game${g.id}`}>
             
             </Tab.Pane>
@@ -51,13 +52,13 @@ games.sort((a, b) => b.id - a.id )
             <Col sm={8} style={{maxHeight: "500px", maxWidth: "300px", overflow: "scroll"}}>
                 <Tab.Container>
                     <ListGroup>
-                        {testList}
+                        {gameListItems}
                     </ListGroup>
                 </Tab.Container>
             </Col>
             <Col sm={8}>
             <Tab.Content>
-                {testTabList}
+                {gameTabList}
             </Tab.Content>
             </Col>
             </>

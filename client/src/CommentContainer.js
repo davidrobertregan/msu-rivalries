@@ -53,13 +53,13 @@ function CommentContainer( { game, deleteCommentFromGame, addCommentToGame, curr
     }
 
     const commentDivs = comments.map(c => 
-        <Container className="p-2" key={c.id}>
+        <Container className="w-70 p-2" key={c.id}>
             <Row className="bg-light border rounded">
                 <Col>
             <h6>{c.author}:</h6>
             <p>{c.content}</p>
             </Col>
-            <Col>
+            <Col className="d-flex justify-content-end">
             {c.user_can_modify ?
                 <Button variant="light" value={c.id} onClick={handleDeleteCommentClick}>🗑</Button> 
             :
@@ -73,7 +73,7 @@ function CommentContainer( { game, deleteCommentFromGame, addCommentToGame, curr
     return(
         <Container className="border-top pt-3">
                     {commentDivs}
-                <Form id="comment-form" className="pt-5 pb-5" onSubmit={handleSubmit}>
+                <Form id="comment-form" className="p-2 border rounded" onSubmit={handleSubmit}>
                     <Row>
                         <Col>
                             <Form.Label><h5>{currentUser.username}</h5></Form.Label>
