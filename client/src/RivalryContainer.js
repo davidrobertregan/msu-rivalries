@@ -13,7 +13,7 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
 
     function handleGameClick(e) {
         let value = e.target.value
-        let featGame = games.filter(g => g.id === value)
+        let featGame = games.filter(g => g.id === value)[0]
         setGame(featGame)
         setViewGame(true)
     }

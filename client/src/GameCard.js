@@ -7,48 +7,27 @@ import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Card from "react-bootstrap/Card"
+import CommentContainer from "./CommentContainer"
 
 function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame }) {
 
-    let favorite = favorites.filter(f => f.game_id === game[0].id)[0]
+    let favorite = favorites.filter(f => f.game_id === game.id)[0]
     let favId = favorite ? favorite.id : null
     let userFavs = favorites.filter(f => f.owner === currentUser.username)
 
     const [showMessage, setShowMessage] = useState(false)
     useEffect(() => setShowMessage(favorite ? true : false), [game])
 
-    const comments = game[0].comments
-
-    const commentDivs = comments.map(c => 
-        <Container className="p-2" key={c.id}>
-            <Row className="bg-light border rounded">
-                <Col>
-            <h6>{c.author}:</h6>
-            <p>{c.content}</p>
-            </Col>
-            <Col>
-            {c.user_can_modify ?
-                <Button variant="light" value={c.id} onClick={handleDeleteCommentClick}>🗑</Button> 
-            :
-                <></>
-            }
-            </Col>
-            </Row>
-        </Container>
-        )
-
-    const [newComment, setNewComment] = useState("")
+    const { winner, loser, score, location, date } = game
 
     function favCheck() {
-        let matches = userFavs.filter(f => f.game_id === game[0].id)
+        let matches = userFavs.filter(f => f.game_id === game.id)
         return matches.length > 0
     }
 
-    const { winner, loser, score, location, date } = game[0]
-
     function createFavFetch() {
         let newFav = {
-            game_id: game[0].id
+            game_id: game.id
         }
         const configObj = {
             method: "POST",
@@ -81,48 +60,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
         favCheck() ? deleteFavFetch() : createFavFetch()
     }
 
-    function handleDeleteCommentClick(e){
-        fetch(`/comments/${e.target.value}`, {method: "DELETE"})
-        .then(r => {
-            if(r.ok) {
-                r.json().then(comment => deleteCommentFromGame(comment))
-            } else {
-                r.json().then(errors => console.log(errors))
-            }
-        })
-    }
-
     const favButtonText = favCheck() ? "⭐️" : "☆"
-
-    function handleChange(e) {
-        setNewComment(e.target.value)
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        const body = {
-            game_id: game[0].id,
-            content: newComment
-        }
-
-        const configObj = {
-            method: "POST",
-            headers: {
-                "CONTENT-TYPE": "application/json"
-            },
-            body: JSON.stringify(body)
-        }
-        fetch("/comments", configObj)
-        .then(r => {
-            if(r.ok) {
-                r.json().then(comment => addCommentToGame(comment))
-            } else {
-                r.json().then(errors => console.log(errors))
-            }
-        })
-        setNewComment("")
-    }
 
     return(
         <Container>
@@ -167,25 +105,13 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                 }
                 </Card.Text>
             </Card>
+            
+            <CommentContainer 
+                game={game} 
+                deleteCommentFromGame={deleteCommentFromGame} 
+                addCommentToGame={addCommentToGame} 
+                currentUser={currentUser}/>
 
-{/* comments should  be its own component */}
-
-            <Container className="border-top pt-3">
-                    {commentDivs}
-                <Form id="comment-form" className="pt-5 pb-5" onSubmit={handleSubmit}>
-                    <Row>
-                        <Col>
-                            <Form.Label><h5>{currentUser.username}</h5></Form.Label>
-                        </Col>
-                        <Col xs={6}>
-                            <Form.Control type="text" value={newComment} onChange={handleChange} placeholder="add a comment"/>
-                        </Col>
-                        <Col className="d-flex justify-content-end">
-                        <Button variant="light" type="submit">✅</Button>
-                        </Col>
-                    </Row>
-                </Form>
-            </Container>
         </Container>
     )
 }
