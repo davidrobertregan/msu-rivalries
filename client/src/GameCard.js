@@ -125,13 +125,15 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     }
 
     return(
-        <>
+        <Container>
             <Card>
                 <Card.Header className="d-flex justify-content-end">
                     {date}
                 </Card.Header>
-                <Card.Img className="p-5" src={winner.logo_url}>
-                </Card.Img>
+                <div className="d-flex justify-content-center">
+                    <Card.Img  style={{maxWidth: "300px"}} className="p-5" src={winner.logo_url}>
+                    </Card.Img>
+                </div>
                 <Card.Text>
                     <Row>
                         <Col className="d-flex justify-content-center">
@@ -184,7 +186,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                     </Row>
                 </Form>
             </Container>
-        </>
+        </Container>
     )
 }
 

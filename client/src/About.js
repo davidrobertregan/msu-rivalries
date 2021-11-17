@@ -10,7 +10,7 @@ function About( { favorites }) {
 
     return (
     <>
-    <Container style={{paddingTop: "125px", maxWidth: "700px"}}>
+    <Container style={{paddingTop: "125px", maxWidth: "900px"}}>
         <Row>
             <h1>
                 Welcome to Spartan Rivalries
@@ -21,7 +21,7 @@ function About( { favorites }) {
         <Carousel>
             <Carousel.Item>
                 <img
-                    style={{maxHeight: "500px"}}
+                    style={{height: "400px", objectFit: "cover"}}
                     className="d-block w-100"
                     src={Jalen}
                     alt="First slide"
@@ -33,7 +33,7 @@ function About( { favorites }) {
             </Carousel.Item>
             <Carousel.Item>
             <img
-                    style={{maxHeight: "500px"}}
+                    style={{height: "400px", objectFit: "cover", objectPosition: "0 10%"}}
                     className="d-block w-100"
                     src={Duckett}
                     alt="First slide"
@@ -45,7 +45,7 @@ function About( { favorites }) {
             </Carousel.Item>
             <Carousel.Item>
             <img
-                    style={{maxHeight: "500px"}}
+                    style={{height: "400px", objectFit: "cover"}}
                     className="d-block w-100"
                     src={Stadium}
                     alt="First slide"
