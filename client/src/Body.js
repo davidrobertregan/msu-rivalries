@@ -24,7 +24,8 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
     return(
         <Switch>
             <Route exact path="/">
-                <About favorites={favorites}/>
+                <About 
+                    favorites={favorites}/>
             </Route>
                 {rivalryRoutes}
             <Route path="/favorites">
@@ -32,10 +33,15 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
                     favorites={userFavs}/>
             </Route>
             <Route exact path="/favorite/:id">
-                <FavoriteDetails editFavorite={editFavorite} deleteFavorite={deleteFavorite}/>
+                <FavoriteDetails 
+                    editFavorite={editFavorite} 
+                    deleteFavorite={deleteFavorite}/>
             </Route>
             <Route path={`/${currentUser.username}`}>
-                <Account currentUser={currentUser} setCurrentUser={setCurrentUser} userFavs={userFavs}/>
+                <Account 
+                    currentUser={currentUser} 
+                    setCurrentUser={setCurrentUser} 
+                    userFavs={userFavs}/>
             </Route>
         </Switch>
     )

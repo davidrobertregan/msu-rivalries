@@ -77,9 +77,7 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
         let gamesArr = games.filter(g => g.id !== comment.game_id)
         game.comments = game.comments.filter(c => c.id !== comment.id)
         gamesArr = [...gamesArr, game]
-        // need to make sure these games stay in order by date
         gamesArr.sort((a, b) => a.date - b.date)
-
         setGames(gamesArr)
     }
 
