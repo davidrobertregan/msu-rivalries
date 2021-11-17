@@ -49,13 +49,18 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
     }, [])
 
     function addFavorite(fav){
-        let newFavorites = [...userFavs, fav]
-        setUserFavs(newFavorites)
+        let newUserFavs = [fav, ...userFavs]
+        setUserFavs(newUserFavs)
+        let newFavs = [fav, ...favorites,]
+        setFavorites(newFavs)
+
     }
 
     function deleteFavorite(id) {
-        let newFavorites = userFavs.filter(f => f.id !== id)
-        setUserFavs(newFavorites)
+        let newUserFavs = userFavs.filter(f => f.id !== id)
+        setUserFavs(newUserFavs)
+        let newFavs = favorites.filter(f => f.id !== id)
+        setFavorites(newFavs)
     }
 
     function addCommentToGame(comment){
@@ -80,8 +85,11 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
 
     function editFavorite(favorite) {
         let userFavsArr =  userFavs.filter(f => f.id !== favorite.id)
-        userFavsArr = [...userFavsArr, favorite]
+        userFavsArr = [favorite, ...userFavsArr, ]
         setUserFavs(userFavsArr)
+        let favsArr = favorites.filter(f => f.id !== favorite.id)
+        favsArr = [favorite, ...favsArr,]
+        setFavorites(favsArr)
     }
 
     return (

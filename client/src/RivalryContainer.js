@@ -20,7 +20,7 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
 
     const filteredGames = games.filter(g => g.rivalry_name === rivalry.name)
     return (
-        <Container style={{paddingTop: "125px"}}>
+        <Container style={{padding: "125px 0px 100px 0px"}}>
             <Row>
                 <Col>
                 <GameList 

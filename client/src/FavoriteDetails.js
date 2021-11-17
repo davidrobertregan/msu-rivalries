@@ -86,8 +86,8 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
     }
 
     return(
-        <Container style={{padding: "100px"}}>
-                    <Card style={{ maxWidth: '60rem'}}>
+        <Container className="d-flex justify-content-center" style={{padding: "100px"}}>
+                    <Card style={{ maxWidth: '50rem'}}>
                         <Card.Header>
                             <Row>
                                 <Col>
@@ -140,7 +140,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                                                 <Form.Control type="text" name="favorite_moment" value={formData.favorite_moment} onChange={handleChange}></Form.Control>
                                             </Form.Group>
                                             <Form.Group className='mb-3'>
-                                                <Form.Label>Upload a personal picture from the game!</Form.Label>
+                                                <Form.Label>Add a personal image link from the game!</Form.Label>
                                                 <Form.Control type="text" name="img_url" value={formData.img_url} onChange={handleChange}></Form.Control>
                                             </Form.Group>
                                                 <Button type="submit">Submit</Button>

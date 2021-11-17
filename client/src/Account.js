@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import Form from "react-bootstrap/Form"
 
 
@@ -18,8 +18,10 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
     let comments = currentUser.comments.map(c => <p key={c.id}><b>{c.time}: </b>{c.author} commented: "{c.content}"</p>)
     let favoritesList = userFavs.map(f => 
         <div key={f.id}>
-            <h5>{f.winning_team} beat {f.losing_team} on {f.game_date}</h5>
-            <p>Favorite Moment: "{f.preview}"</p>
+            <Link to={`/favorite/${f.id}`}>
+                <h5>{f.nickname}</h5>
+            </Link>
+            <p>Preview: "{f.preview}"</p>
         </div>)
         
     function handleDelete(){
@@ -104,12 +106,18 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
                         }
                     </Container>
             : 
-            <div>
-                    <h3><em>Your recent activity</em></h3>
-                        {comments}
-                    <h3><em>Your favorites</em></h3>
-                        {favoritesList}
-                    </div>
+            <Container className="p-5">
+                <Row>
+                    <Col>
+                        <h3><em>Your comments</em></h3>
+                            {comments}
+                    </Col>
+                    <Col>
+                        <h3><em>Your favorites</em></h3>
+                            {favoritesList}
+                    </Col>
+                </Row>
+            </Container>
             }
             </Row>
         </Container>
