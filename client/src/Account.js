@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Form from "react-bootstrap/Form"
 
 
 function Account({ currentUser, setCurrentUser, userFavs }) {
@@ -75,18 +76,25 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
                     <p><b>Email:</b> {currentUser.email}</p>
                 </Col>
                 <Col sm={3}>
-                    <Button onClick={() => setViewEditForm(!viewEditForm)}>Edit your account</Button>
+                    <Button onClick={() => setViewEditForm(!viewEditForm)}>Edit account</Button>
                 </Col>
             {
                 viewEditForm ? 
-                <div>
-                        <form onSubmit={handleSubmit}>
-                            <label>Username</label>
-                            <input onChange={handleChange} name="username" value={formData.username} type="text"></input>
-                            <label>Email</label>
-                            <input onChange={handleChange} name="email" value={formData.email} type="text"></input>
-                            <input type='submit'></input>
-                        </form>
+                <Container className='w-75 p-5'>
+                        <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3"> 
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control onChange={handleChange} name="username" value={formData.username} type="text"></Form.Control>
+                        </Form.Group>   
+                        <Form.Group className="mb-3">  
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control onChange={handleChange} name="email" value={formData.email} type="text"></Form.Control>
+                        </Form.Group>
+                        <div>
+                            <Button type='submit'>Submit</Button>
+                            <Button style={{float: "right"}}variant="danger" onClick={handleDelete}>Delete account</Button>
+                        </div>
+                        </Form>
                         {errors ? 
                             <div>
                                 {errors.errors.map(e => <p style={{color: 'red'}}>{e}</p>)}
@@ -94,8 +102,7 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
                             :
                             <></>
                         }
-                        <Button variant="danger" onClick={handleDelete}>Delete your account</Button>
-                    </div>
+                    </Container>
             : 
             <div>
                     <h3><em>Your recent activity</em></h3>
