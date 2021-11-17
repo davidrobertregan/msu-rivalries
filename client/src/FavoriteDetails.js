@@ -86,7 +86,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
     }
 
     return(
-        <Container className="d-flex justify-content-center" style={{padding: "100px"}}>
+        <Container style={{paddingTop: "100px"}} className="d-flex justify-content-center">
                     <Card style={{ maxWidth: '55em'}}>
                         <Card.Header>
                             <Row>
@@ -102,17 +102,17 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                         </Card.Header>
                         <Card.Body>
                             <Row>
-                                <Col>
+                                <Col sm={6}>
                                     <Card.Img src={formData.img_url}></Card.Img>
                                 </Col>
-                                <Col>
+                                <Col sm={6}>
                                     <Card.Title className="d-flex justify-content-center">
                                         {favorite.nickname ? <h2><em>"{formData.nickname}"</em></h2> : <></>}
                                     </Card.Title>
                                     <Card.Text className="border rounded p-4">
                                         <Row>
                                             <Col className="d-flex justify-content-center">
-                                                {game.winning_team}
+                                                <b>{game.winning_team}</b>
                                             </Col>
                                             <Col>
                                                 <div className="d-flex flex-column">
