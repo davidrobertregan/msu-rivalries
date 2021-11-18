@@ -75,7 +75,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
     function handleDelete() {
         if (window.confirm("Are you sure? This action cannot be undone")){ 
             deleteFavorite(favorite.id)
-            history.push('/favorites')
+            history.push('/')
             fetch(`/favorites/${favorite.id}`, {method: "DELETE" })
         } else {
             console.log("whew! that was close")
