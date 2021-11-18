@@ -8,7 +8,7 @@ mark_dantonio = User.create(username: "mark_dantonio", email: "mark@gmail.com", 
 
 puts "creating teams..."
 
-    msu = Team.create(name: "Michigan State", mascot: "Spartans", cheer: "Go Green", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100494/spartan-logo_qm7mfy.jpg")
+    msu = Team.create(name: "Michigan State", mascot: "Spartans", cheer: "Go Green", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637264051/1200px-Michigan_State_Athletics_logo.svg_qdivkm.png")
     michigan = Team.create(name: "Michigan", mascot: "Wolverines", cheer: "Go Blue", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100557/1280px-Michigan_Wolverines_Logo.svg_kggnji.png")
     notre_dame = Team.create(name: "Notre Dame", mascot: "Fighting Irish", cheer: "Go Irish", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100973/1200px-Notre_Dame_Fighting_Irish_logo.svg_z4jd0f.png")
     indiana = Team.create(name: "Indiana", mascot: "Hoosiers", cheer: "Go Hoosiers", logo_url: "https://res.cloudinary.com/do4zijkje/image/upload/v1637100582/indiana-hoosiers-logo-vector_l1zeul.svg")

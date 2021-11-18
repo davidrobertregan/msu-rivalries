@@ -69,7 +69,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                     {date}
                 </Card.Header>
                 <div className="d-flex justify-content-center">
-                    <Card.Img  style={{maxWidth: "300px"}} className="p-5" src={winner.logo_url}>
+                    <Card.Img style={{maxHeight: "300px", objectFit: "contain"}}className="p-5" src={winner.logo_url}>
                     </Card.Img>
                 </div>
                 <Card.Text>
