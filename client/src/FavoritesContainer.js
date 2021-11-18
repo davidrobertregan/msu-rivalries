@@ -1,6 +1,5 @@
 import FavoriteCard from "./FavoriteCard"
 import Container from "react-bootstrap/Container"
-import Row from 'react-bootstrap/Row'
 
 function FavoritesContainer( { favorites } ) {
 
@@ -12,7 +11,7 @@ function FavoritesContainer( { favorites } ) {
     return (
         <>
         <Container style={{paddingTop: "100px"}} className="d-flex justify-content-center">
-            <h2>Recent Favorites</h2>
+            <h1>Favorites</h1>
         </Container>
         <Container className="d-flex flex-row flex-wrap justify-content-center">
             {favCards}

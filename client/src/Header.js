@@ -20,7 +20,7 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
                 <NavDropdown.Item key={r.id}>
                     <Nav.Link 
                         as={NavLink}
-                        to={`/rivalries/${r.name}`}>
+                        to={`/rivalry/${r.name}`}>
                             {r.name}
                     </Nav.Link>
                 </NavDropdown.Item>
@@ -36,7 +36,7 @@ function Header ({ currentUser, setCurrentUser, rivalries }) {
                         <NavDropdown title="Rivalries" id="basic-nav-dropdown">
                             {rivalryNavLinks}
                         </NavDropdown>
-                        <Nav.Link as={NavLink} to="/favorites">
+                        <Nav.Link as={NavLink} to="/my-favorites">
                             My Favorites
                         </Nav.Link>
                         <Nav.Link as={NavLink} to={`/${currentUser.username}`}>

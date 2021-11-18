@@ -10,7 +10,7 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
     const rivalryRoutes = rivalries.map(r => 
         <Route 
             key={r.id} 
-            path={`/rivalries/${r.name}`}>
+            path={`/rivalry/${r.name}`}>
                 <RivalryContainer 
                     rivalry={r} games={games} 
                     userFavs={userFavs} 
@@ -28,7 +28,7 @@ function Body( { currentUser, rivalries, games, favorites, addFavorite, deleteFa
                     favorites={favorites}/>
             </Route>
                 {rivalryRoutes}
-            <Route path="/favorites">
+            <Route path="/my-favorites">
                 <FavoritesContainer 
                     favorites={userFavs}/>
             </Route>
