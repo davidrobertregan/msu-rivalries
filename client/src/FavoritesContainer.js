@@ -14,7 +14,7 @@ function FavoritesContainer( { favorites } ) {
             <h1>Favorites</h1>
         </Container>
         <Container className="d-flex flex-row flex-wrap justify-content-center">
-            {favCards}
+            {favCards.length > 0 ? favCards : <p>(Your favorites will be stored here!)</p>}
         </Container>  
         </>
     )

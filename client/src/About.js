@@ -10,7 +10,7 @@ function About( { favorites }) {
 
     return (
     <>
-    <Container fluid="lg" style={{paddingTop: "125px"}}>
+    <Container fluid="lg" style={{padding: "125px 25px 0px 25px"}}>
         <Row>
             <h1>
                 Welcome to Spartan Rivalries

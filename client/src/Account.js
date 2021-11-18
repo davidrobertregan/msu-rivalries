@@ -15,14 +15,14 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
     const [errors, setErrors] = useState(null)
     const [formData, setFormData] = useState({ username: currentUser.username, email: currentUser.email })
     
-    let comments = currentUser.comments.map(c => <p key={c.id}><b>{c.time}: </b>{c.author} commented: "{c.content}"</p>)
-    let favoritesList = userFavs.map(f => 
+    let comments = currentUser.comments.length > 0 ? currentUser.comments.map(c => <p key={c.id}><b>{c.time}: </b>{c.author} commented: "{c.content}"</p>) : <p>No comments yet</p>
+    let favoritesList = userFavs.length > 0 ? userFavs.map(f => 
         <div key={f.id}>
             <Link to={`/favorite/${f.id}`}>
                 <h5>{f.nickname}</h5>
             </Link>
             <p>Preview: "{f.preview}"</p>
-        </div>)
+        </div>) : <p>No favorites yet</p>
         
     function handleDelete(){
         if (window.confirm('Are you sure you want to delete your account?')) {
