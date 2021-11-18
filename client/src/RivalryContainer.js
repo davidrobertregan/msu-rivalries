@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
+import Fade from "react-bootstrap/Fade"
 
 function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame } ) {
 
@@ -20,6 +21,7 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
 
     const filteredGames = games.filter(g => g.rivalry_name === rivalry.name)
     return (
+        <Fade in appear={true}>
         <Container style={{padding: "125px 0px 100px 0px"}}>
             <Row>
                 <Col>
@@ -27,8 +29,8 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
                     games={filteredGames} 
                     handleGameClick={handleGameClick}/>  
                 </Col>
-        {!viewGame ?
             <Col>
+            <Fade in={!viewGame} unmountOnExit={true}>
                 <Card>
                     <Card.Body>
                     <Card.Title className='d-flex justify-content-center'>
@@ -49,9 +51,8 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
                     </Card.Text>
                     </Card.Body>
                 </Card>
-            </Col>
-        :
-            <Col>
+            </Fade>
+            <Fade in={viewGame} unmountOnExit={true}>
                 <GameCard 
                     game={game} 
                     setViewGame={setViewGame} 
@@ -62,10 +63,11 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
                     addCommentToGame={addCommentToGame} 
                     deleteCommentFromGame={deleteCommentFromGame}
                 />
+            </Fade>
             </Col>
-        }
             </Row>
         </Container>
+    </Fade>
     )
 }
 

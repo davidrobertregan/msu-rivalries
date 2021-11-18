@@ -5,9 +5,9 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
-import Form from "react-bootstrap/Form"
 import Card from "react-bootstrap/Card"
 import CommentContainer from "./CommentContainer"
+import Fade from "react-bootstrap/Fade"
 
 function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, currentUser, addCommentToGame, deleteCommentFromGame }) {
 
@@ -63,6 +63,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
     const favButtonText = favCheck() ? "⭐️" : "☆"
 
     return(
+        <Fade in appear={true} unmountOnExit={true}> 
         <Container>
             <Card>
                 <Card.Header className="d-flex justify-content-end">
@@ -96,13 +97,11 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                     </Row>
                 </Container>
                 <Card.Text>
-                { showMessage ?
+                <Fade in={showMessage}>
                     <div className="d-flex justify-content-center">
                         <p><em>This game is in your favorites! Customize it <Link to={`/favorite/${favId}`}>here</Link></em></p>
                     </div>
-                :
-                    <></>
-                }
+                </Fade>
                 </Card.Text>
             </Card>
             
@@ -113,6 +112,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                 currentUser={currentUser}/>
 
         </Container>
+        </Fade>
     )
 }
 
