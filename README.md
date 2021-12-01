@@ -12,7 +12,7 @@ REQUIREMENTS
 - NodeJS (v16), and npm
 - Postgresql
 
-DEVELOPMENT INSTALLATION
+TO RUN IN DEVELOPMENT
 
 Run: 
 - bundle install
