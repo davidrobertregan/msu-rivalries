@@ -1,5 +1,7 @@
 # MSU Football Rivalries
 
+<div style="position: relative; padding-bottom: 51.5625%; height: 0;"><iframe src="https://www.loom.com/embed/7e938ab070274d66af55096f342f08ed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 App for Michigan State University (MSU) Spartan fans to explore the history of classic rivalry games and favorite games.
 
 Check out the demo here: demo link
