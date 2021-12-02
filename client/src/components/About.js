@@ -2,9 +2,9 @@ import Container from 'react-bootstrap/Container'
 import FavoritesContainer from './FavoritesContainer'
 import Row from 'react-bootstrap/Row'
 import Carousel from 'react-bootstrap/Carousel'
-import Stadium from "./images/spartan-stadium.jpeg"
-import Duckett from "./images/tj-duckett.jpeg"
-import Jalen from "./images/jalen-watts-jackson.jpeg"
+import Stadium from "../images/spartan-stadium.jpeg"
+import Duckett from "../images/tj-duckett.jpeg"
+import Jalen from "../images/jalen-watts-jackson.jpeg"
 
 function About( { favorites }) {
 

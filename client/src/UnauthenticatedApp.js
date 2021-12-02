@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Route} from "react-router"
 import { Switch, Link } from 'react-router-dom'
-import Login from './Login'
-import Signup from "./Signup"
+import Login from './components/Login'
+import Signup from "./components/Signup"
 
 function UnauthenticatedApp({ setCurrentUser, currentUser}) {
 

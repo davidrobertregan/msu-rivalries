@@ -93,8 +93,8 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
                             <Form.Control onChange={handleChange} name="email" value={formData.email} type="text"></Form.Control>
                         </Form.Group>
                         <div>
-                            <Button type='submit'>Submit</Button>
-                            <Button style={{float: "right"}}variant="danger" onClick={handleDelete}>Delete account</Button>
+                            <Button variant="danger" onClick={handleDelete}>Delete account</Button>
+                            <Button style={{float: "right"}} type='submit'>Submit</Button>
                         </div>
                         </Form>
                         {errors ? 
@@ -125,6 +125,3 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
 }
 
 export default Account
-
-
-// what do we want to do here? delete account would be good and easy. An edit info... see recent activity would be dope! What if you could delete or edit actions from here? That's be cool too... stretch perhaps. We shoudl add a user avatar too. Extra note.

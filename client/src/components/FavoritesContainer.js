@@ -5,6 +5,7 @@ function FavoritesContainer( { favorites } ) {
 
     let favCards = favorites.map(f => 
         <FavoriteCard 
+            key={f.id}
             favorite={f}
             />)
 

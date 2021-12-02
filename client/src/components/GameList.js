@@ -14,13 +14,13 @@ useEffect(() => setGamesLoading(games.length === 0 ? true : false), [games])
 games.sort((a, b) => b.id - a.id )
 
 
-    const gameList = games.map(g => 
-        <li 
-            onClick={handleGameClick} 
-            key={g.id} 
-            value={g.id}>
-            {g.date} - {g.winner.name} - {g.score}
-        </li>)
+    // const gameList = games.map(g => 
+    //     <li 
+    //         onClick={handleGameClick} 
+    //         key={g.id} 
+    //         value={g.id}>
+    //         {g.date} - {g.winner.name} - {g.score}
+    //     </li>)
 
 
     const gameListItems = games.map(g =>

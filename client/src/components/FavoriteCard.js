@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 
@@ -21,10 +20,10 @@ function FavoriteCard( { favorite }) {
                 <Card.Title className="d-flex justify-content-center">
                     {favorite.nickname ? <em>"{favorite.nickname}"</em> : <></>}
                 </Card.Title>
-                <ListGroup.Item><p>{favorite.game_date}</p></ListGroup.Item>
+                <ListGroup.Item>{favorite.game_date}</ListGroup.Item>
                 <ListGroup.Item>
                     <Card.Text>
-                        {favorite.preview ? <p><em>"{favorite.preview}"</em></p> : <></>}
+                        {favorite.preview ? <em>"{favorite.preview}"</em> : <></>}
                     </Card.Text>
                 </ListGroup.Item>
             </ListGroup>
