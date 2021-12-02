@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { Route} from "react-router"
-import { Switch, Link } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import Login from './components/Login'
 import Signup from "./components/Signup"
 
-function UnauthenticatedApp({ setCurrentUser, currentUser}) {
+function UnauthenticatedApp({ setCurrentUser}) {
 
 const [errors, setErrors] = useState(null)
 

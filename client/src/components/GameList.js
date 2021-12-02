@@ -3,7 +3,7 @@ import ListGroup from "react-bootstrap/ListGroup"
 import Tab from "react-bootstrap/Tab"
 import Col from 'react-bootstrap/Col'
 
-function GameList({games, handleGameClick}) {
+function GameList({ games, handleGameClick }) {
 
 const [gamesLoading, setGamesLoading] = useState(true)
 

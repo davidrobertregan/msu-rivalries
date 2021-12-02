@@ -14,7 +14,7 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
     const [favorites, setFavorites] = useState([])
     const [userFavs, setUserFavs] = useState(currentUser.favorites)
     
-    useEffect(() => {
+    const getRivalries = () => {
         fetch("/rivalries")
         .then(r => {
             if (r.ok) {
@@ -23,9 +23,8 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
                 r.json().then(errors => console.log(errors))
             }
         })
-    }, [])
-
-    useEffect(() => {
+    }
+    const getGames = () => {
         fetch("/games")
         .then(r => {
             if (r.ok) {
@@ -34,9 +33,8 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
                 r.json().then(errors => console.log(errors))
             }
         })
-    }, [])
-
-    useEffect(() => {
+    }
+    const getFavs = () => {
         fetch("/favorites")
         .then(r => {
             if (r.ok) {
@@ -45,9 +43,15 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
                 r.json().then(errors => console.log(errors))
             }
         })
-    }, [])
+    }
 
-    function addFavorite(fav){
+    useEffect(getRivalries, [])
+
+    useEffect(getGames, [])
+
+    useEffect(getFavs, [])
+
+    const addFavorite = (fav) => {
         let newUserFavs = [fav, ...userFavs]
         setUserFavs(newUserFavs)
         let newFavs = [fav, ...favorites,]
@@ -55,14 +59,14 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
 
     }
 
-    function deleteFavorite(id) {
+    const deleteFavorite = (id) => {
         let newUserFavs = userFavs.filter(f => f.id !== id)
         setUserFavs(newUserFavs)
         let newFavs = favorites.filter(f => f.id !== id)
         setFavorites(newFavs)
     }
 
-    function addCommentToGame(comment){
+    const addCommentToGame = (comment) => {
         let game = games.filter(g => g.id === comment.game_id)[0]
         let gamesArr = games.filter(g => g.id !== comment.game_id)
         game.comments = [...game.comments, comment]
@@ -70,7 +74,7 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
         setGames(gamesArr)
     }
 
-    function deleteCommentFromGame(comment) {
+    const deleteCommentFromGame = (comment) => {
         let game = games.filter(g => g.id === comment.game_id)[0]
         let gamesArr = games.filter(g => g.id !== comment.game_id)
         game.comments = game.comments.filter(c => c.id !== comment.id)
@@ -79,7 +83,7 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
         setGames(gamesArr)
     }
 
-    function editFavorite(favorite) {
+    const editFavorite = (favorite) => {
         let userFavsArr =  userFavs.filter(f => f.id !== favorite.id)
         userFavsArr = [favorite, ...userFavsArr, ]
         setUserFavs(userFavsArr)
@@ -93,7 +97,8 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
             key={r.id} 
             path={`/rivalry/${r.name}`}>
                 <RivalryContainer 
-                    rivalry={r} games={games} 
+                    rivalry={r} 
+                    games={games} 
                     userFavs={userFavs} 
                     addFavorite={addFavorite} 
                     deleteFavorite={deleteFavorite} 

@@ -23,7 +23,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
         img_url: favorite.img_url
     })
 
-    useEffect(() => {
+    const getFav = () => {
         fetch(`/favorites/${id}`)
         .then(r => {
             if(r.ok) {
@@ -40,9 +40,11 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                 r.json().then(errors => console.log(errors))
             }
         })
-    }, [id])
+    }
 
-    function handleChange(e) {
+    useEffect(getFav, [id])
+
+    const handleChange = (e) => {
         let key = e.target.name
         setFormData({
             ...formData,
@@ -50,7 +52,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
         })
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
         const configObj = {
@@ -72,7 +74,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
         setViewForm(false)
     }
 
-    function handleDelete() {
+    const handleDelete = () => {
         if (window.confirm("Are you sure? This action cannot be undone")){ 
             deleteFavorite(favorite.id)
             history.push('/')

@@ -11,7 +11,7 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
     const [viewGame, setViewGame] = useState(false)
     const [game, setGame] = useState(null) 
 
-    function handleGameClick(e) {
+    const handleGameClick = (e) => {
         let value = e.target.value
         let featGame = games.filter(g => g.id === value)[0]
         setGame(featGame)
@@ -19,6 +19,7 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
     }
 
     const filteredGames = games.filter(g => g.rivalry_name === rivalry.name)
+    
     return (
         <Container style={{padding: "125px 0px 100px 0px"}}>
             <Row>

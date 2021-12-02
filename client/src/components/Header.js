@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 function Header ({ currentUser, setCurrentUser, rivalries }) {
 
-    function handleClick() {
+    const handleClick = () => {
         fetch("/logout", { method: "DELETE" })
         setCurrentUser(null)
         history.push('/')

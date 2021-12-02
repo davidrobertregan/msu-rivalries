@@ -24,7 +24,7 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
             <p>Preview: "{f.preview}"</p>
         </div>) : <p>No favorites yet</p>
         
-    function handleDelete(){
+    const handleDelete =() => {
         if (window.confirm('Are you sure you want to delete your account?')) {
             fetch(`/users/${currentUser.id}`, {method: "DELETE"})
             setCurrentUser(null)
@@ -34,7 +34,7 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
         }
     }
     
-    function handleChange(e) {
+    const handleChange = (e) => {
         let key = e.target.name
         
         setFormData({
@@ -43,7 +43,7 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
         })
     }
     
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault()
         
         const configObj ={
@@ -80,44 +80,43 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
                 <Col sm={3}>
                     <Button onClick={() => setViewEditForm(!viewEditForm)}>Edit account</Button>
                 </Col>
-            {
-                viewEditForm ? 
+            {viewEditForm ? 
                 <Container className='w-75 p-5'>
-                        <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3"> 
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control onChange={handleChange} name="username" value={formData.username} type="text"></Form.Control>
-                        </Form.Group>   
-                        <Form.Group className="mb-3">  
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control onChange={handleChange} name="email" value={formData.email} type="text"></Form.Control>
-                        </Form.Group>
+                    <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3"> 
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control onChange={handleChange} name="username" value={formData.username} type="text"></Form.Control>
+                    </Form.Group>   
+                    <Form.Group className="mb-3">  
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control onChange={handleChange} name="email" value={formData.email} type="text"></Form.Control>
+                    </Form.Group>
+                    <div>
+                        <Button variant="danger" onClick={handleDelete}>Delete account</Button>
+                        <Button style={{float: "right"}} type='submit'>Submit</Button>
+                    </div>
+                    </Form>
+                    {errors ? 
                         <div>
-                            <Button variant="danger" onClick={handleDelete}>Delete account</Button>
-                            <Button style={{float: "right"}} type='submit'>Submit</Button>
-                        </div>
-                        </Form>
-                        {errors ? 
-                            <div>
-                                {errors.errors.map(e => <p style={{color: 'red'}}>{e}</p>)}
-                            </div>    
-                            :
-                            <></>
-                        }
-                    </Container>
+                            {errors.errors.map(e => <p style={{color: 'red'}}>{e}</p>)}
+                        </div>    
+                        :
+                        <></>
+                    }
+                </Container>
             : 
-            <Container className="p-5">
-                <Row>
-                    <Col>
-                        <h3><em>Your comments</em></h3>
-                            {comments}
-                    </Col>
-                    <Col>
-                        <h3><em>Your favorites</em></h3>
-                            {favoritesList}
-                    </Col>
-                </Row>
-            </Container>
+                <Container className="p-5">
+                    <Row>
+                        <Col>
+                            <h3><em>Your comments</em></h3>
+                                {comments}
+                        </Col>
+                        <Col>
+                            <h3><em>Your favorites</em></h3>
+                                {favoritesList}
+                        </Col>
+                    </Row>
+                </Container>
             }
             </Row>
         </Container>

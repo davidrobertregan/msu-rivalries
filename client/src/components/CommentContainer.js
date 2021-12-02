@@ -11,7 +11,7 @@ function CommentContainer( { game, deleteCommentFromGame, addCommentToGame, curr
 
     const comments = game.comments
     
-    function handleDeleteCommentClick(e){
+    const handleDeleteCommentClick = (e) => {
         fetch(`/comments/${e.target.value}`, {method: "DELETE"})
         .then(r => {
             if(r.ok) {
@@ -22,11 +22,11 @@ function CommentContainer( { game, deleteCommentFromGame, addCommentToGame, curr
         })
     }
     
-    function handleChange(e) {
+    const handleChange = (e) => {
         setNewComment(e.target.value)
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
         const body = {
