@@ -1,8 +1,13 @@
-import Header from './components/Header'
-import Body from './components/Body'
-import { useEffect, useState } from 'react'
+import { Route, Switch } from 'react-router'
+import { useState, useEffect } from 'react'
+import About from './components/About'
+import RivalryContainer from './components//RivalryContainer'
+import FavoritesContainer from './components//FavoritesContainer'
+import FavoriteDetails from './components//FavoriteDetails'
+import Account from './components//Account'
+import Header from './components//Header'
 
-function AuthenticatedApp( { currentUser, setCurrentUser } ) {
+function AuthenticatedApp( { currentUser,  setCurrentUser }) {
 
     const [rivalries, setRivalries] = useState([])
     const [games, setGames] = useState([])
@@ -62,7 +67,6 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
         let gamesArr = games.filter(g => g.id !== comment.game_id)
         game.comments = [...game.comments, comment]
         gamesArr = [...gamesArr, game]
-        // need to make sure these games stay in order by date
         setGames(gamesArr)
     }
 
@@ -83,32 +87,51 @@ function AuthenticatedApp( { currentUser, setCurrentUser } ) {
         favsArr = [favorite, ...favsArr,]
         setFavorites(favsArr)
     }
+    
+    const rivalryRoutes = rivalries.map(r => 
+        <Route 
+            key={r.id} 
+            path={`/rivalry/${r.name}`}>
+                <RivalryContainer 
+                    rivalry={r} games={games} 
+                    userFavs={userFavs} 
+                    addFavorite={addFavorite} 
+                    deleteFavorite={deleteFavorite} 
+                    currentUser={currentUser} 
+                    addCommentToGame={addCommentToGame} 
+                    deleteCommentFromGame={deleteCommentFromGame}/>
+        </Route>)
 
-    return (
-        <div>
-            <div>
-                <Header 
+    return(
+        <>
+        <Header 
                     currentUser={currentUser}
                     setCurrentUser={setCurrentUser}
                     rivalries={rivalries}
                 />
-            </div>
-            <div>
-                <Body
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}
-                    rivalries={rivalries}
-                    games={games}
-                    favorites={favorites}
-                    addFavorite={addFavorite}
-                    deleteFavorite={deleteFavorite}
-                    addCommentToGame={addCommentToGame}
-                    deleteCommentFromGame={deleteCommentFromGame}
-                    editFavorite={editFavorite}
-                    userFavs={userFavs}
-                />
-            </div>
-        </div>
+        <Switch>
+            <Route exact path="/">
+                <About 
+                    favorites={favorites}/>
+            </Route>
+                {rivalryRoutes}
+            <Route path="/my-favorites">
+                <FavoritesContainer 
+                    favorites={userFavs}/>
+            </Route>
+            <Route exact path="/favorite/:id">
+                <FavoriteDetails 
+                    editFavorite={editFavorite} 
+                    deleteFavorite={deleteFavorite}/>
+            </Route>
+            <Route path={`/${currentUser.username}`}>
+                <Account 
+                    currentUser={currentUser} 
+                    setCurrentUser={setCurrentUser} 
+                    userFavs={userFavs}/>
+            </Route>
+        </Switch>
+        </>
     )
 }
 

@@ -23,8 +23,6 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
         img_url: favorite.img_url
     })
 
-    console.log(favorite)
-
     useEffect(() => {
         fetch(`/favorites/${id}`)
         .then(r => {
