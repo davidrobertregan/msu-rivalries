@@ -1,4 +1,4 @@
-# MSU Football Rivalries
+# Spartan Football Rivalries
 
 App for Michigan State University (MSU) Spartan fans to explore the history of classic rivalry games and favorite games.
 
