@@ -2,7 +2,7 @@
 
 App for Michigan State University (MSU) Spartan fans to explore the history of classic rivalry games and favorite games.
 
-## Watch the Demo in 2 minutes: 
+## Watch the Demo in two minutes: 
 https://www.loom.com/share/7e938ab070274d66af55096f342f08ed
 
 Check out the app on [Heroku](https://msu-rivalries.herokuapp.com/)
