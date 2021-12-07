@@ -11,6 +11,7 @@ Check out the app on [Heroku](https://msu-rivalries.herokuapp.com/)
 - Started with domain model [relationships](https://res.cloudinary.com/do4zijkje/image/upload/v1638898073/MSU_Rivalries_Backend_zn5hg6.png)
 - Built out a [component tree](https://res.cloudinary.com/do4zijkje/image/upload/v1638898121/MSU_Component_Tree_odjlh4.png)
 - Managed tasks in a [Google Sheet](https://docs.google.com/spreadsheets/d/14jmx_eQZ_ao7nRVJm48_FjACl5dg41H9mpOtaoiXhkY/edit?usp=sharing)
+- Leaned on my Flatiron Instructors/Community throughout development, especially for user authentication and deployment to Heroku.
 
 ## How to navigate this project
 - [Routes](config/routes.rb) for user authentication in the and [session actions](app/controllers/sessions_controller.rb) (thanks [Dakota](https://github.com/DakotaLMartinez))
