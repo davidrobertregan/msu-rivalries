@@ -111,11 +111,6 @@ CSV.foreach('PSU-MSU.csv') do |row|
 
 end
 
-# puts "...creating Dave's favorites"
-
-# david.favorites.create(game: mich_rival.games.last)
-# david.favorites.create(game: indiana_rival.games.last)
-
 puts "...creating comments"
 
 david.comments.create(game: Game.last, content: "What a game! Go green!")
