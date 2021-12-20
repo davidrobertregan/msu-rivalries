@@ -28,7 +28,7 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
                     games={filteredGames} 
                     handleGameClick={handleGameClick}/>  
                 </Col>
-        {!viewGame ?
+        { !viewGame ?
             <Col>
                 <Card>
                     <Card.Body>

@@ -84,12 +84,23 @@ function AuthenticatedApp( { currentUser,  setCurrentUser }) {
     }
 
     const editFavorite = (favorite) => {
-        let userFavsArr =  userFavs.filter(f => f.id !== favorite.id)
-        userFavsArr = [favorite, ...userFavsArr, ]
-        setUserFavs(userFavsArr)
-        let favsArr = favorites.filter(f => f.id !== favorite.id)
-        favsArr = [favorite, ...favsArr,]
-        setFavorites(favsArr)
+        let newUserFavs = userFavs.map(f => {
+            if(f.id === favorite.id){
+                return favorite
+            } else {
+                return f
+            }
+        })
+        setUserFavs(newUserFavs)
+        
+        let newFavsArr = favorites.map(f => {
+            if(f.id === favorite.id){
+                return favorite
+            } else {
+                return f
+            }
+        })
+        setFavorites(newFavsArr)
     }
     
     const rivalryRoutes = rivalries.map(r => 
