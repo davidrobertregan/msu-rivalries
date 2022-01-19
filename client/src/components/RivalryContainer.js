@@ -21,15 +21,15 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
     const filteredGames = games.filter(g => g.rivalry_name === rivalry.name)
     
     return (
-        <Container style={{padding: "125px 0px 100px 0px"}}>
-            <Row>
-                <Col>
+        <Container className="pt-5">
+            <Row className='p-3'>
+                <Col sm={5}>
                 <GameList 
                     games={filteredGames} 
                     handleGameClick={handleGameClick}/>  
                 </Col>
         { !viewGame ?
-            <Col>
+            <Col className='mt-3'>
                 <Card>
                     <Card.Body>
                     <Card.Title className='d-flex justify-content-center'>
@@ -45,7 +45,7 @@ function RivalryContainer( { rivalry, games, userFavs, addFavorite, deleteFavori
                     <Card.Title className='d-flex justify-content-center'>
                         {rivalry.trophy}
                     </Card.Title>
-                    <Card.Text style={{maxHeight: "200px", overflow: "scroll"}} className='d-flex justify-content-center'>
+                    <Card.Text style={{maxWidth: "100%", overflow: "scroll"}} className='d-flex justify-content-center'>
                         {rivalry.description}
                     </Card.Text>
                     </Card.Body>

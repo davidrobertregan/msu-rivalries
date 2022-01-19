@@ -111,7 +111,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                                     <Card.Text className="border rounded p-4">
                                         <Row>
                                             <Col className="d-flex justify-content-center">
-                                                <img style={{maxWidth: "100px", objectFit: "contain"}} src={game.winning_team_logo}></img>
+                                                <img style={{maxWidth: "100%", objectFit: "contain"}} src={game.winning_team_logo}></img>
                                             </Col>
                                             <Col>
                                                 <div className="d-flex flex-column">
@@ -120,7 +120,7 @@ function FavoriteDetails({ editFavorite, deleteFavorite }) {
                                                 </div>
                                             </Col>
                                             <Col className="d-flex justify-content-center">
-                                                <img style={{maxWidth: "100px", objectFit: "contain"}} src={game.losing_team_logo}></img>
+                                                <img style={{maxWidth: "100%", objectFit: "contain"}} src={game.losing_team_logo}></img>
                                             </Col>
                                         </Row>
                                     </Card.Text>

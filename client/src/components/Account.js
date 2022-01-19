@@ -92,8 +92,8 @@ function Account({ currentUser, setCurrentUser, userFavs }) {
                         <Form.Control onChange={handleChange} name="email" value={formData.email} type="text"></Form.Control>
                     </Form.Group>
                     <div>
-                        <Button variant="danger" onClick={handleDelete}>Delete account</Button>
-                        <Button style={{float: "right"}} type='submit'>Submit</Button>
+                        <Button variant="danger" onClick={handleDelete}>Delete account</Button> 
+                        <Button type='submit'>Submit</Button>
                     </div>
                     </Form>
                     {errors ? 

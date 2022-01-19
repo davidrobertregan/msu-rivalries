@@ -73,7 +73,7 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                 </div>
                 <Card.Text>
                     <Row>
-                        <Col className="d-flex justify-content-center">
+                        <Col className="d-flex justify-content-center m-1">
                             <b>{winner.name}</b>
                         </Col>
                         <Col>
@@ -82,21 +82,21 @@ function GameCard( { game, setViewGame, favorites, addFavorite, deleteFavorite, 
                                 <p className="align-self-center">{location}</p>
                             </div>
                         </Col>
-                        <Col className="d-flex justify-content-center">
+                        <Col className="d-flex justify-content-center m-1">
                             {loser.name}
                         </Col>
                     </Row>
                 </Card.Text>
-                <Container className="border-top p-4">
+                <Container className="border-top p-3">
                     <Row>
                         <Col className="d-flex justify-content-start"><Button variant="light" onClick={() => setViewGame(false)}>Back</Button></Col>
                         <Col className="d-flex justify-content-center"><a href="#comment-form"><Button variant="light">Comment</Button></a></Col>
                         <Col className="d-flex justify-content-end"><Button variant="light" onClick={handleFavoriteClick}>{favButtonText}</Button></Col>
                     </Row>
                 </Container>
-                <Card.Text>
+                <Card.Text className="d-flex justify-content-center">
                 { showMessage ?
-                    <div className="d-flex justify-content-center">
+                    <div>
                         <p><em>This game is in your favorites! Customize it <Link to={`/favorite/${favId}`}>here</Link></em></p>
                     </div>
                 :
