@@ -49,7 +49,7 @@ function Login({setCurrentUser, setErrors, errorsList}) {
     return (
         <Container fluid className="p-5">
             <Row>
-                <Col className="p-5" sm={4}>
+                <Col className="p-5">
                     <h2>Log In</h2>
                     <Form onSubmit={handleSubmit}> 
                         <Form.Group className="mb-3"> 
@@ -65,7 +65,7 @@ function Login({setCurrentUser, setErrors, errorsList}) {
                     <div className="p-4">
                         {errorsList}
                     </div>
-                    <Link to="/signup" onClick={() => setErrors(null)}>sign up</Link>
+                    <Link to="/signup" onClick={() => setErrors(null)}>Sign up for an account</Link>
                 </Col>
                 <Col sm={8}>
                     <h1>

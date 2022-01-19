@@ -44,7 +44,7 @@ function Signup({setCurrentUser, setErrors, errorsList}) {
     }
 
     return(
-        <Container className='w-50 p-5'>
+        <Container className='w-50 pt-5'>
             <h2>Sign Up</h2>
             <Form onSubmit={handleSubmit} > 
                 <Form.Group className="mb-3"> 
@@ -68,7 +68,7 @@ function Signup({setCurrentUser, setErrors, errorsList}) {
             <div className="p-4">
                 {errorsList}
             </div>
-            <Link to="/" onClick={() => setErrors(null)}>I already have an account</Link>
+            <Link to="/" onClick={() => setErrors(null)}>I have an account</Link>
         </Container>
 
     )

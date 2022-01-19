@@ -9,6 +9,6 @@ class FavoriteShowSerializer < ActiveModel::Serializer
 
     def owner
         self.object.user.username
-      end
+    end
 
 end

@@ -41,6 +41,7 @@ function CommentContainer( { game, deleteCommentFromGame, addCommentToGame, curr
             },
             body: JSON.stringify(body)
         }
+        
         fetch("/comments", configObj)
         .then(r => {
             if(r.ok) {
