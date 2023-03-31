@@ -5,8 +5,6 @@ App for Michigan State University (MSU) Spartan fans to explore the history of c
 ## Watch the Demo in two minutes: 
 https://www.loom.com/share/7e938ab070274d66af55096f342f08ed
 
-Check out the app on [Heroku](https://msu-rivalries.herokuapp.com/)
-
 ## How I worked on this project
 - Started with domain model [relationships](https://res.cloudinary.com/do4zijkje/image/upload/v1638898073/MSU_Rivalries_Backend_zn5hg6.png)
 - Built out a [component tree](https://res.cloudinary.com/do4zijkje/image/upload/v1638898121/MSU_Component_Tree_odjlh4.png)
