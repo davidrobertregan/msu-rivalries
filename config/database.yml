@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: msu_rivalries_production
   username: msu_rivalries
   password: <%= ENV['MSU_RIVALRIES_DATABASE_PASSWORD'] %>
